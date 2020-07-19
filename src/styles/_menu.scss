@@ -1,28 +1,3 @@
-.hero {
-  background-image: url(../images/backyardsky.jpg);
-  height: 100vh;
-  background-size: cover;
-  color: white;
-}
-
-.overlay {
-  background: rgba(27, 7, 66, 0.2);
-  height: 100vh;
-  text-align: center;
-  display: flex;
-  align-items: center;
-}
-
-html {
-  font-family: sans-serif;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-body {
-  background: rgb(27, 7, 66);
-  color: white;
-}
-
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
