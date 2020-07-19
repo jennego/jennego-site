@@ -1,3 +1,12 @@
+# Personal Hobby Site
+
+This is my personal hobby site.
+I am still working on layouts at the moment
+
+Showcases photography, video and writing.
+
+Need to redo dev portfolio after this
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">

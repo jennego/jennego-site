@@ -17,9 +17,9 @@ const IndexPage = () => (
           <br></br>
           <p> Need a pull out sidebar or toggle menu button</p>
           <p> Dark dark purple theme </p>
-          <p> Prismic for CMS? </p>
           <p> WP for blog?</p>
-          <p> Use Sass? </p>
+          <p> Use Sass </p>
+          <p> Contentful </p>
           <Link to="/page-2/">Go to page 2</Link> <br />
           <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
         </div>
