@@ -1,0 +1,51 @@
+ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+ul.gallery {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+  flex-grow: 1;
+  height: 40vh;
+}
+
+.text-row li {
+  height: 50vh;
+}
+
+img {
+  max-height: 100%;
+  min-width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+}
+
+.text-block {
+  width: 600px;
+  margin: 1rem;
+}
+
+@media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+  ul {
+    flex-direction: row;
+  }
+
+  li {
+    height: auto;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    max-height: 75vh;
+    min-width: 0;
+  }
+}

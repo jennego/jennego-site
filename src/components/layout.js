@@ -12,6 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../styles/styles.scss"
+import Nav from "../components/menu"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -27,6 +28,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <div>
+        <Nav />
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
