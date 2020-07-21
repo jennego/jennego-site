@@ -16,6 +16,27 @@ li {
   flex-grow: 1;
   height: 40vh;
 }
+.photo-layout {
+  display: grid;
+}
+
+@media (max-width: 768px) {
+  .text-row {
+    order: 1;
+  }
+  .top-row {
+    order: 2;
+  }
+}
+
+@media (min-width: 992px) {
+  .top-row li {
+    min-width: 20vw;
+  }
+  .text-row li {
+    min-width: 10vw;
+  }
+}
 
 .text-row li {
   height: 50vh;
@@ -29,11 +50,11 @@ img {
 }
 
 .text-block {
-  width: 600px;
   margin: 1rem;
+  max-width: 40rem;
 }
 
-@media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+@media (max-width: 480px) {
   ul {
     flex-direction: row;
   }
