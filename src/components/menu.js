@@ -1,10 +1,8 @@
 import { elastic as Menu } from "react-burger-menu"
 import React from "react"
+import { Link } from "gatsby"
 
 const Nav = () => {
-  const showSettings = e => {
-    e.preventDefault()
-  }
   return (
     <Menu
       pageWrapId={"page-wrap"}
@@ -12,18 +10,8 @@ const Nav = () => {
       disableAutoFocus
       right
     >
-      <a id="home" className="menu-item" href="/">
-        Home
-      </a>
-      <a id="about" className="menu-item" href="/about">
-        About
-      </a>
-      <a id="contact" className="menu-item" href="/contact">
-        Contact
-      </a>
-      <a onClick={showSettings} className="menu-item--small" href="">
-        Settings
-      </a>
+      <Link to={"/photo"}> Photo </Link>
+      <Link to={"/page-2"}> Page 2 </Link>
     </Menu>
   )
 }

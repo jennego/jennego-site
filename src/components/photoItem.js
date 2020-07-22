@@ -1,8 +1,11 @@
 import React from "react"
 
 const PhotoItem = props => (
-  <li className={props.order}>
-    <img class="galley-img" src={props.imageSrc} />
+  <li className="photo">
+    <div class="hovereffect">
+      <img src={props.imageSrc} />
+      <div class="overlay"></div>
+    </div>
   </li>
 )
 
