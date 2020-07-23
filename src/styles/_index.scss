@@ -1,8 +1,12 @@
 .hero {
-  background-image: url(../images/backyardsky.jpg);
-  height: 100vh;
+  width: 100%;
+  background-position: bottom center;
+  background-repeat: repeat-y;
   background-size: cover;
-  color: white;
+}
+
+.hero-text {
+  text-align: center;
 }
 
 .overlay {
