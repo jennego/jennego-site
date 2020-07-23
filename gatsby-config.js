@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -26,6 +30,14 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `c7t97ojr0qrw`,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.accessToken,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

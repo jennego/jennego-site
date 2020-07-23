@@ -31,6 +31,7 @@ const IndexPage = () => {
           <div className="overlay">
             <div className="container hero-text">
               <h1 className="display-4">Jennego</h1>
+              {console.log(process.env.accessToken)}
               <p>
                 {" "}
                 This is my hobby site. Eventually full screen video overlay?{" "}
