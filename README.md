@@ -7,6 +7,13 @@ Showcases photography, video and writing.
 
 Need to redo dev portfolio after this
 
+to do
+
+- add contentful content and show data
+- convert to gatsby-image if possible?
+- add lightbox/image viewer
+- add production branch -> push completed photo / pages to netlify
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
