@@ -54,8 +54,21 @@ ul.gallery {
 li {
   list-style-type: none;
   flex-grow: 1;
+}
+
+.photo-row > li {
   height: 40vh;
 }
+
+.text-row > li {
+  max-height: 80vh;
+  min-height: 40vh;
+}
+
+.text-row > .photo {
+  max-width: 25vw;
+}
+
 .photo-layout {
   display: grid;
 }
@@ -74,14 +87,8 @@ li {
 
 .text-row {
   .photo li {
-    max-width: 30vw;
+    max-width: 33vw;
   }
-}
-
-.text-row.photo li,
-.text-row.photo li {
-  min-width: 20vw;
-  max-width: 30vw;
 }
 
 img {
@@ -91,9 +98,22 @@ img {
   vertical-align: bottom;
 }
 
+.text-row {
+  max-height: 70vh;
+  img {
+    max-height: 70vh;
+  }
+}
+
+.col > img {
+  object-fit: cover;
+}
+
 .text-block {
-  margin: 1rem;
   max-width: 40rem;
+  word-wrap: break-word;
+  overflow: auto;
+  margin-left: 1.5rem;
 }
 
 @media (max-width: 480px) {
