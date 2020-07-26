@@ -4,22 +4,59 @@ import PhotoItem from "../components/photoItem"
 import TextBlock from "../components/textBlock"
 import SimpleReactLightbox from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox"
+import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 const Photos = () => {
-  const options = {
-    settings: {},
-    caption: {},
-    buttons: {},
-    thumbnails: { showThumbnails: false },
-    progressBar: {},
+  const data = useStaticQuery(graphql`
+    {
+      allContentfulPhotoGallery {
+        edges {
+          node {
+            firstRow {
+              id
+              description
+              title
+              file {
+                url
+              }
+              fixed {
+                ...GatsbyContentfulFixed
+              }
+              fluid {
+                ...GatsbyContentfulFluid
+              }
+            }
+            cloudPhotos {
+              internal {
+                content
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const photos = data.allContentfulPhotoGallery.edges
+  const lightbox = {
+    thumbnails: {
+      thumbnailsPosition: "left",
+    },
   }
   return (
-    <SimpleReactLightbox options={options}>
+    <SimpleReactLightbox>
       <Layout>
         <div className="photo-layout">
-          <SRLWrapper>
+          {console.log(data)}
+          <SRLWrapper options={lightbox}>
             <ul className="top-row photo-row">
-              <PhotoItem
+              {photos[0].node.firstRow.map(p => (
+                <PhotoItem imageSrc={p.file.url} source={p.fluid} />
+              ))}
+
+              {/* {photos.map(({ node }) => console.log(node.firstRow))} */}
+              {/* <PhotoItem
                 imageSrc={
                   "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
                 }
@@ -29,43 +66,18 @@ const Photos = () => {
               />
               <PhotoItem
                 imageSrc={"https://source.unsplash.com/featured/?animal"}
-              />
+              /> */}
             </ul>
 
             <ul className="text-row row no-gutters">
-              <div className="col">
+              <div className="col-md col-12">
                 <TextBlock />
               </div>
-              <div className="col-3">
-                <PhotoItem
-                  imageSrc={"https://source.unsplash.com/featured/?landscape"}
-                />
-              </div>
-              <div className="col-3">
-                <PhotoItem imageSrc={"https://source.unsplash.com/random"} />
-              </div>
+              <div className="col-md-3 col-6"></div>
+              <div className="col-md-3 col-6"></div>
             </ul>
 
-            <ul className="gallery photo-row">
-              <PhotoItem
-                imageSrc={"https://source.unsplash.com/featured/?nature"}
-              />
-              <PhotoItem
-                imageSrc={"https://source.unsplash.com/featured/?animal"}
-              />
-              <PhotoItem
-                imageSrc={"https://source.unsplash.com/featured/?nature"}
-              />
-              <PhotoItem
-                imageSrc={"https://source.unsplash.com/featured/?mountain"}
-              />
-              <PhotoItem
-                imageSrc={"https://source.unsplash.com/featured/?bear"}
-              />
-              <PhotoItem
-                imageSrc={"https://source.unsplash.com/featured/?whale"}
-              />
-            </ul>
+            <ul className="gallery photo-row"></ul>
           </SRLWrapper>
         </div>
       </Layout>
