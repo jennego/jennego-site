@@ -20,7 +20,11 @@ const Photos = () => {
               file {
                 url
               }
-              fixed {
+              fixed(width: 400) {
+                width
+                height
+                src
+                srcSet
                 ...GatsbyContentfulFixed
               }
               fluid {
@@ -52,7 +56,11 @@ const Photos = () => {
           <SRLWrapper options={lightbox}>
             <ul className="top-row photo-row">
               {photos[0].node.firstRow.map(p => (
-                <PhotoItem imageSrc={p.file.url} source={p.fluid} />
+                <PhotoItem
+                  imageSrc={p.fixed.src}
+                  full={p.file.url}
+                  source={p.fluid}
+                />
               ))}
 
               {/* {photos.map(({ node }) => console.log(node.firstRow))} */}

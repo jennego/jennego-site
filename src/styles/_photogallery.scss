@@ -38,6 +38,10 @@
   transform: scale(1.2);
 }
 
+.lazy-load-image-loaded {
+  display: initial !important;
+}
+
 ul {
   display: flex;
   margin: 0;
