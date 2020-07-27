@@ -1,25 +1,32 @@
 import React from "react"
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { useStaticQuery, graphql } from "gatsby"
 
-const TextBlock = props => (
-  <li className="text-block-wrap">
-    <div className="text-block flex-grow-1">
-      <div className="container">
-        <h1>Photos</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-          fermentum ligula non sapien aliquam, quis mollis purus euismod. Nam
-          tempor, est quis tempor aliquet, urna quam convallis sapien, eget
-          ultricies ex mauris nec mauris. Nunc ullamcorper quis nisl nec
-          finibus. Cras in condimentum dui. Donec luctus egestas nulla quis
-          aliquam. Nunc vitae mauris lacinia, tincidunt est a, vulputate justo.
-          Vivamus ex dolor, porta id ullamcorper sed, fringilla sed diam.
-          Quisque risus libero, lacinia a blandit vel, euismod in magna. Duis
-          ultricies accumsan ornare. Pellentesque feugiat venenatis vehicula.
-          Cras ac nisi turpis.{" "}
-        </p>
+const TextBlock = props => {
+  const data = useStaticQuery(graphql`
+    {
+      contentfulPhotoGallery {
+        textBlock {
+          json
+        }
+        title
+      }
+    }
+  `)
+
+  let text = data.contentfulPhotoGallery.textBlock.json
+
+  return (
+    <li className="text-block-wrap">
+      <div className="text-block flex-grow-1">
+        <div className="container">
+          <h1>{data.contentfulPhotoGallery.title}</h1>
+          {console.log(text)}
+          {documentToReactComponents(text)}
+        </div>
       </div>
-    </div>
-  </li>
-)
+    </li>
+  )
+}
 
 export default TextBlock

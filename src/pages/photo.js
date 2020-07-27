@@ -44,6 +44,7 @@ const Photos = () => {
 
   const photos = data.allContentfulPhotoGallery.edges
   const lightbox = {
+    buttons: { showDownloadButton: false },
     thumbnails: {
       thumbnailsPosition: "left",
     },
