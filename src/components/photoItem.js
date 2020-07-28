@@ -11,7 +11,7 @@ const PhotoItem = props => (
           className="photo-img"
           src={props.imageSrc} // use normal <img> attributes as props
         />
-        {/* <div class="overlay"></div> */}
+        <div class="overlay"></div>
       </a>
     </div>
   </li>

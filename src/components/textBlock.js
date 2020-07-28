@@ -21,7 +21,6 @@ const TextBlock = props => {
       <div className="text-block flex-grow-1">
         <div className="container">
           <h1>{data.contentfulPhotoGallery.title}</h1>
-          {console.log(text)}
           {documentToReactComponents(text)}
         </div>
       </div>
