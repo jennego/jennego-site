@@ -31,6 +31,14 @@ const Photos = () => {
                 ...GatsbyContentfulFluid
               }
             }
+            textRowPhotos {
+              file {
+                url
+              }
+              fixed {
+                src
+              }
+            }
             cloudPhotos {
               internal {
                 content
@@ -52,9 +60,32 @@ const Photos = () => {
   return (
     <SimpleReactLightbox>
       <Layout>
-        <div className="photo-layout">
-          {console.log(data)}
-          <SRLWrapper options={lightbox}>
+        <SRLWrapper options={lightbox}>
+          <div className="photo-layout">
+            {/* // need to do something about the overlap on smaller screens  */}
+            <ul className="text-row">
+              {/* <div className="row no-gutters" style={{ width: "100%" }}> */}
+              {/* <div className="col-md col-12"> */}
+              <TextBlock />
+              {/* </div> */}
+              {photos[0].node.textRowPhotos.map(p => (
+                // <div className="co1">
+                <PhotoItem imageSrc={p.fixed.src} full={p.file.url} />
+                // </div>
+              ))}
+              {/* </div> */}
+            </ul>
+
+            <ul className="text-row">
+              {photos[0].node.firstRow.map(p => (
+                <PhotoItem
+                  imageSrc={p.fixed.src}
+                  full={p.file.url}
+                  source={p.fluid}
+                />
+              ))}
+            </ul>
+
             <ul className="top-row photo-row">
               {photos[0].node.firstRow.map(p => (
                 <PhotoItem
@@ -63,32 +94,11 @@ const Photos = () => {
                   source={p.fluid}
                 />
               ))}
-
-              {/* {photos.map(({ node }) => console.log(node.firstRow))} */}
-              {/* <PhotoItem
-                imageSrc={
-                  "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
-                }
-              />
-              <PhotoItem
-                imageSrc={"https://source.unsplash.com/featured/?nature"}
-              />
-              <PhotoItem
-                imageSrc={"https://source.unsplash.com/featured/?animal"}
-              /> */}
-            </ul>
-
-            <ul className="text-row row no-gutters">
-              <div className="col-md col-12">
-                <TextBlock />
-              </div>
-              <div className="col-md-3 col-6"></div>
-              <div className="col-md-3 col-6"></div>
             </ul>
 
             <ul className="gallery photo-row"></ul>
-          </SRLWrapper>
-        </div>
+          </div>
+        </SRLWrapper>
       </Layout>
     </SimpleReactLightbox>
   )

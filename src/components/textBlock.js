@@ -17,12 +17,10 @@ const TextBlock = props => {
   let text = data.contentfulPhotoGallery.textBlock.json
 
   return (
-    <li className="text-block-wrap">
-      <div className="text-block flex-grow-1">
-        <div className="container">
-          <h1>{data.contentfulPhotoGallery.title}</h1>
-          {documentToReactComponents(text)}
-        </div>
+    <li className="text-block">
+      <div className="container">
+        <h1>{data.contentfulPhotoGallery.title}</h1>
+        {documentToReactComponents(text)}
       </div>
     </li>
   )
