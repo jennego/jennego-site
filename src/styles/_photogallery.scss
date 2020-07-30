@@ -51,39 +51,56 @@ ul {
   flex-wrap: wrap;
 }
 
-ul.gallery {
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
 li {
   list-style-type: none;
   flex-grow: 1;
 }
 
+.text-row {
+  img {
+    height: $text-height;
+  }
+}
+
 // need to target images themselves for height
-.photo-row > li {
-  height: 60vh;
-}
-.text-row > li {
-  height: 50vh;
-}
+
+//   .text-row {
+//     order: 2;
+//   }
+//   .top-row {
+//     order: 1;
+//   }
 
 .photo-layout {
   display: grid;
 }
 
 @media (max-width: 768px) {
-  //   .text-row {
-  //     order: 1;
-  //   }
-  //   .top-row {
-  //     order: 2;
-  //   }
+  .photo {
+    width: 100%;
+    height: 50vh;
+    img {
+      height: 50vh;
+      object-position: center; /// make it a prop that can be edited in contentful
+    }
+  }
 }
-@media (min-width: 992px) {
-  /// something here later
+
+@media (min-width: 768px) {
+  .photo {
+    width: 50%;
+    height: 50vh;
+    img {
+      height: 50vh;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .photo-row {
+    img.photo-img {
+      height: 40vh;
+    }
+  }
 }
 
 img.photo-img {
@@ -91,10 +108,7 @@ img.photo-img {
   min-width: 100%;
   object-fit: cover;
   vertical-align: bottom;
-}
-
-.text-row {
-  height: $text-height;
+  max-height: 60vh;
 }
 
 .col > img {
@@ -107,6 +121,7 @@ img.photo-img {
   overflow: auto;
   margin-left: 1.5rem;
   height: $text-height;
+  padding-top: 1rem;
 }
 
 @media (max-width: 480px) {
@@ -119,9 +134,9 @@ img.photo-img {
     width: 100%;
   }
 
-  img {
-    width: 100%;
-    max-height: 75vh;
-    min-width: 0;
-  }
+  // img {
+  //   width: 100%;
+  //   max-height: 60vh;
+  //   min-width: 0;
+  // }
 }

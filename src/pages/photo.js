@@ -62,27 +62,10 @@ const Photos = () => {
       <Layout>
         <SRLWrapper options={lightbox}>
           <div className="photo-layout">
-            {/* // need to do something about the overlap on smaller screens  */}
-            <ul className="text-row">
-              {/* <div className="row no-gutters" style={{ width: "100%" }}> */}
-              {/* <div className="col-md col-12"> */}
+            <ul className="text-row gallery">
               <TextBlock />
-              {/* </div> */}
               {photos[0].node.textRowPhotos.map(p => (
-                // <div className="co1">
                 <PhotoItem imageSrc={p.fixed.src} full={p.file.url} />
-                // </div>
-              ))}
-              {/* </div> */}
-            </ul>
-
-            <ul className="text-row">
-              {photos[0].node.firstRow.map(p => (
-                <PhotoItem
-                  imageSrc={p.fixed.src}
-                  full={p.file.url}
-                  source={p.fluid}
-                />
               ))}
             </ul>
 
