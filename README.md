@@ -9,9 +9,9 @@ Need to redo dev portfolio after this
 
 to do
 
-- add contentful content and show data
-- convert to gatsby-image if possible?
-- add lightbox/image viewer
+- finish photo gallery pages
+- make photo groups
+- add page generation
 - add production branch -> push completed photo / pages to netlify
 
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->

@@ -10,8 +10,10 @@ const Nav = () => {
       disableAutoFocus
       right
     >
-      <Link to={"/photo"}> Photo </Link>
+      Home
+      <Link to={"/photo"}> Photos </Link>
       <Link to={"/page-2"}> Page 2 </Link>
+      Words About
     </Menu>
   )
 }
