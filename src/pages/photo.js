@@ -39,11 +39,6 @@ const Photos = () => {
                 src
               }
             }
-            cloudPhotos {
-              internal {
-                content
-              }
-            }
           }
         }
       }

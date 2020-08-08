@@ -1,0 +1,12 @@
+.overlay-gradient {
+  display: flex;
+  align-items: flex-end;
+  background: rgb(9, 2, 24);
+  background: linear-gradient(
+    0deg,
+    rgba(9, 2, 24, 1) 1%,
+    rgba(5, 1, 13, 0.5382528011204482) 18%,
+    rgba(0, 0, 0, 0.19091386554621848) 29%,
+    rgba(0, 0, 0, 0) 39%
+  );
+}
