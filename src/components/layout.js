@@ -8,13 +8,14 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import SEO from "../components/seo"
 
 import Header from "./header"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../styles/styles.scss"
 import Nav from "../components/menu"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, title }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -29,6 +30,7 @@ const Layout = ({ children }) => {
     <>
       <div>
         <Nav />
+        <SEO title={title} />
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with

@@ -1,5 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
+import Layout from "../components/layout"
 
 const PhotoList = () => {
   const data = useStaticQuery(graphql`
@@ -9,6 +10,7 @@ const PhotoList = () => {
           node {
             id
             title
+            slug
             albumPhoto {
               sizes {
                 src
@@ -29,25 +31,27 @@ const PhotoList = () => {
     }
   `)
   return (
-    <div>
-      {console.log(data.allContentfulPhotoGallery.edges)}
-      {data.allContentfulPhotoGallery.edges.map(({ node }) => (
-        <Link>
+    <Layout>
+      <div className="container-fluid">
+        <h1>Photography</h1>
+        {data.allContentfulPhotoGallery.edges.map(({ node }) => (
           <div className="col-4">
-            <div className="card album">
-              <img
-                class="card-img"
-                src={node.albumPhoto.sizes.src}
-                alt="Card image"
-              />
-              <div class="card-img-overlay overlay-gradient">
-                <h5 class="card-title">{node.title}</h5>
+            <Link to={node.slug}>
+              <div className="card album">
+                <img
+                  class="card-img"
+                  src={node.albumPhoto.sizes.src}
+                  alt="Card image"
+                />
+                <div class="card-img-overlay overlay-gradient">
+                  <h5 class="card-title text-white">{node.title}</h5>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
-        </Link>
-      ))}
-    </div>
+        ))}
+      </div>
+    </Layout>
   )
 }
 

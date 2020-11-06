@@ -11,7 +11,7 @@ const Nav = () => {
       right
     >
       <Link to={"/"}> Home </Link>
-      <Link to={"/photo"}> Photos </Link>
+      <Link to={"/photos"}> Photos </Link>
       <Link to={"/page-2"}> Page 2 </Link>
     </Menu>
   )

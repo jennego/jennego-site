@@ -31,19 +31,7 @@ const IndexPage = () => {
           <div className="overlay">
             <div className="container hero-text">
               <h1 className="display-4">Jennego</h1>
-              {console.log(process.env.accessToken)}
-              <p>
-                {" "}
-                This is my hobby site. Eventually full screen video overlay?{" "}
-              </p>
-              <br></br>
-              <p> Need a pull out sidebar or toggle menu button</p>
-              <p> Dark dark purple theme </p>
-              <p> WP for blog?</p>
-              <p> Use Sass </p>
-              <p> Contentful </p>
-              <Link to="/page-2/">Go to page 2</Link> <br />
-              <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+              <h2>Photography. Writing. Web Experiments. And other things!</h2>
             </div>
           </div>
         </BackgroundImage>

@@ -13,6 +13,12 @@
   opacity: 1;
 }
 
+// @include media-breakpoint-up(lg) {
+.bm-item {
+  font-size: 30px;
+}
+// }
+
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
