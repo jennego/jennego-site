@@ -10,3 +10,26 @@
     rgba(0, 0, 0, 0) 39%
   );
 }
+
+.album {
+  border: 0px;
+}
+
+.hover-zoom-in {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  cursor: default;
+}
+
+.hover-zoom-in img {
+  display: block;
+  position: relative;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+}
+
+.hover-zoom-in:hover img {
+  transform: scale(1.2);
+}

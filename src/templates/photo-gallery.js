@@ -8,7 +8,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 export const query = graphql`
-  query MyQuery($id: String!) {
+  query galleryQuery($id: String!) {
     contentfulPhotoGallery(id: { eq: $id }) {
       id
       title

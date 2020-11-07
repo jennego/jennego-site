@@ -63,9 +63,9 @@ async function createBasicPages(graphql, actions) {
 
   const pageEdges = (result.data.allContentfulPages || {}).edges || []
 
-  photoEdges.forEach((edge, index) => {
+  pageEdges.forEach((edge, index) => {
     const { id, slug, title } = edge.node
-    const path = `/photos/${slug}/`
+    const path = `/${slug}/`
 
     createPage({
       path,

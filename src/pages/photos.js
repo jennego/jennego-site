@@ -37,9 +37,9 @@ const PhotoList = () => {
         {data.allContentfulPhotoGallery.edges.map(({ node }) => (
           <div className="col-4">
             <Link to={node.slug}>
-              <div className="card album">
+              <div className="card album hover-zoom-in">
                 <img
-                  class="card-img"
+                  className="card-img "
                   src={node.albumPhoto.sizes.src}
                   alt="Card image"
                 />
