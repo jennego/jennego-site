@@ -1,3 +1,5 @@
+$menu-bg-color: rgb(117, 28, 130);
+
 .navbar {
   z-index: 3;
 }
@@ -61,14 +63,14 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background: #240a4e;
+  background: $menu-bg-color;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
 
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
-  fill: #240a4e;
+  fill: $menu-bg-color;
 }
 
 /* Wrapper for item list */
