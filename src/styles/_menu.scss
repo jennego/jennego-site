@@ -1,4 +1,6 @@
 $menu-bg-color: rgb(117, 28, 130);
+$menu-link-color: rgba(212, 235, 244, 1);
+$hover-color: rgb(45, 139, 247);
 
 .navbar {
   z-index: 3;
@@ -38,7 +40,7 @@ $menu-bg-color: rgb(117, 28, 130);
 
 /* Color/shape of burger icon bars on hover*/
 .bm-burger-bars-hover {
-  background: rgb(45, 139, 247);
+  background: $hover-color;
 }
 
 /* Position and sizing of clickable cross button */
@@ -76,16 +78,28 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;
-  padding: 0.8em;
+  padding: 0.4em;
+  cursor: pointer;
 }
 
 /* Individual item */
 .bm-item {
-  display: inline-block;
+  // display: inline-block;
 }
 
 a.bm-item {
-  color: rgba(212, 235, 244, 1);
+  color: $menu-link-color;
+  padding: 0px 4px;
+  display: block;
+}
+
+a.bm-item:hover {
+  text-decoration: none;
+  background-color: $hover-color;
+  display: inline-block !important;
+  padding: 0px 4px;
+  transition: 0.5s;
+  border-radius: 10px;
 }
 
 /* Styling of overlay */
