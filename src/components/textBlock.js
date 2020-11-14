@@ -21,7 +21,9 @@ const TextBlock = props => {
       <div className="container">
         <h1>{data.contentfulPhotoGallery.title}</h1>
         {documentToReactComponents(text)}
-        <Link to="/photos"> Back to Main Photo Page </Link>
+        <Link className="btn btn-primary" to="/photos">
+          Back to Main Photo Page
+        </Link>
       </div>
     </li>
   )

@@ -14,6 +14,7 @@ to do
 - style menu
 - tidy sass
 - improve accessibility
+- add icons
 - make layouts for video / writing or blog
 - add video page (gallery?) / may need to customize cms?
 - figure out if other pages should be their own thing or not?
