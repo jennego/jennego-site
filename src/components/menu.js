@@ -16,7 +16,6 @@ const Nav = () => {
       <Link to={"/web"}> Web Things </Link>
       <Link to={"/blog"}> Blog </Link>
       <Link to={"/about"}> About </Link>
-      <Link to={"/page-2"}> Page 2 </Link>
     </Menu>
   )
 }

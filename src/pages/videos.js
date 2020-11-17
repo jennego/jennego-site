@@ -1,10 +1,13 @@
-import React from React;
+import React from "react"
+import SimpleReactLightbox from "simple-react-lightbox"
 
-const Videos = () => {
-  return(
-    <div>
+const VideoPage = () => {
+  return (
+    <div className="container-fluid">
       <h1>Videos</h1>
-      <p> What do I do with this? I dunno</p>
+      <SimpleReactLightbox></SimpleReactLightbox>
     </div>
   )
 }
+
+export default VideoPage

@@ -93,7 +93,13 @@ a.bm-item {
   display: block;
 }
 
-a.bm-item:hover {
+a.bm-item:hover,
+a.bm-item:focus {
+  display: block;
+}
+
+a.bm-item:hover,
+a.bm-item:focus {
   text-decoration: none;
   background-color: $hover-color;
   display: inline-block !important;
