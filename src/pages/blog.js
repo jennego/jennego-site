@@ -28,6 +28,7 @@ const BlogIndex = () => {
   return (
     <Layout>
       <h1>Jennego: The Oft-Forgotten Blog</h1>
+      Need to Design This Still
       {data.allWordpressPost.edges.map(({ node }) => (
         <div>
           <h3 dangerouslySetInnerHTML={{ __html: `${node.title}` }} />
