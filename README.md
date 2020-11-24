@@ -2,7 +2,7 @@
 
 This is my personal hobby site using Gatsby.
 
-Showcases photography, video and writing.
+Showcases photography, video and a blog I guess.
 
 Need to redo dev portfolio after this
 
@@ -32,5 +32,6 @@ to do
 Uses
 
 - Gatsby (default starter)
+- Sass
 - Contentful CMS
 - WordPress

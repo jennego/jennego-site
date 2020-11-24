@@ -1,3 +1,21 @@
+import React from "react"
+
+const AboutPage = () => {
+  return (
+    <div>
+      <h1>About</h1>
+      <p>I am a web developer, equestrian and geek. </p>
+      <p>
+        {" "}
+        You can find me on these platforms to varying degrees of participation{" "}
+      </p>
+
+      <h1> SOCIAL MEDIA </h1>
+      <h1>Contact info?</h1>
+    </div>
+  )
+}
+
 // import Parallax from "parallax-js"
 // import React, { useEffect, useRef } from "react"
 // import bg from "../images/backyardsky-bg.jpg"
