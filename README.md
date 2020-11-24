@@ -21,6 +21,7 @@ to do
 - layouts for blog (single/index)
 - add video page (gallery?) / may need to customize cms?
 - figure out if other pages should be their own thing or not?
+- add modal for more in textblock (photo pages) and to display videos
 - make photo groups ✅
   - style, add hover styles ✅
 - add page generation ✅
