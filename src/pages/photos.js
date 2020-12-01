@@ -11,6 +11,10 @@ const PhotoList = () => {
             id
             title
             slug
+            photo_group {
+              id
+              title
+            }
             albumPhoto {
               sizes {
                 src
@@ -23,6 +27,26 @@ const PhotoList = () => {
               id
               sizes {
                 src
+              }
+            }
+          }
+        }
+      }
+      allContentfulPhotoGroup {
+        edges {
+          node {
+            title
+            slug
+            id
+            groupCoverPhoto {
+              id
+            }
+            photoGalleries {
+              title
+              albumPhoto {
+                sizes {
+                  src
+                }
               }
             }
           }

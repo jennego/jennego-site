@@ -4,10 +4,15 @@ const AboutPage = () => {
   return (
     <div>
       <h1>About</h1>
-      <p>I am a web developer, equestrian and geek. </p>
+      <p>I am a web developer, equestrian and geek.</p>
+
       <p>
         {" "}
-        You can find me on these platforms to varying degrees of participation{" "}
+        I am also a female, on the spectrum, an Asian and I still manage to be
+        terrible at math.{" "}
+      </p>
+      <p>
+        You can find me on these platforms to varying degrees of participation
       </p>
 
       <h1> SOCIAL MEDIA </h1>

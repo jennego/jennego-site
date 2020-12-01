@@ -1,6 +1,7 @@
 import { elastic as Menu } from "react-burger-menu"
 import React from "react"
 import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const Nav = () => {
   return (
@@ -11,6 +12,10 @@ const Nav = () => {
       right
     >
       <Link to={"/"}> Home </Link>
+      <AniLink paintDrip to="/">
+        Go Home
+      </AniLink>
+
       <Link to={"/photos"}> Photos </Link>
       <Link to={"/videos"}> Videos </Link>
       <Link to={"/web"}> Web Things </Link>
