@@ -11,16 +11,21 @@ const Nav = () => {
       disableAutoFocus
       right
     >
-      <Link to={"/"}> Home </Link>
-      <AniLink paintDrip to="/">
-        Go Home
+      <AniLink paintDrip color="rebeccapurple" to="/">
+        Home
       </AniLink>
-
-      <Link to={"/photos"}> Photos </Link>
-      <Link to={"/videos"}> Videos </Link>
-      <Link to={"/web"}> Web Things </Link>
-      <Link to={"/blog"}> Blog </Link>
-      <Link to={"/about"}> About </Link>
+      <AniLink paintDrip color="rebeccapurple" to="/photos">
+        Photos
+      </AniLink>
+      <AniLink paintDrip color="rebeccapurple" to="/web">
+        Web Things
+      </AniLink>
+      <AniLink paintDrip color="rebeccapurple" to="/blog">
+        Blog
+      </AniLink>
+      <AniLink paintDrip color="rebeccapurple" to="/about">
+        About
+      </AniLink>
     </Menu>
   )
 }
