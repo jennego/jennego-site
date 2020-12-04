@@ -84,7 +84,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* Individual item */
 .bm-item {
-  // display: inline-block;
+  display: block;
 }
 
 a.bm-item {
@@ -102,7 +102,6 @@ a.bm-item:hover,
 a.bm-item:focus {
   text-decoration: none;
   background-color: $hover-color;
-  display: inline-block !important;
   padding: 0px 4px;
   transition: 0.5s;
   border-radius: 10px;

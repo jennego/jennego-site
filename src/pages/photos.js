@@ -11,9 +11,10 @@ const PhotoList = () => {
             id
             title
             slug
-            photo_group {
+            photoGroup {
               id
               title
+              slug
             }
             albumPhoto {
               sizes {
@@ -57,23 +58,26 @@ const PhotoList = () => {
   return (
     <Layout>
       <div className="container-fluid">
+        {console.log(data)}
         <h1>Photography</h1>
-        {data.allContentfulPhotoGallery.edges.map(({ node }) => (
-          <div className="col-4">
-            <Link to={node.slug}>
-              <div className="card album hover-zoom-in">
-                <img
-                  className="card-img "
-                  src={node.albumPhoto.sizes.src}
-                  alt="Card image"
-                />
-                <div class="card-img-overlay overlay-gradient">
-                  <h5 class="card-title text-white">{node.title}</h5>
+        <div className="row">
+          {data.allContentfulPhotoGallery.edges.map(({ node }) => (
+            <div className="col-4">
+              <Link to={node.slug}>
+                <div className="card album hover-zoom-in">
+                  <img
+                    className="card-img "
+                    src={node.albumPhoto.sizes.src}
+                    alt="Card image"
+                  />
+                  <div class="card-img-overlay overlay-gradient">
+                    <h5 class="card-title text-white">{node.title}</h5>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          </div>
-        ))}
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </Layout>
   )

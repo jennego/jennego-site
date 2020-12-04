@@ -30,7 +30,7 @@ const IndexPage = () => {
         <BackgroundImage fluid={data.file.childImageSharp.fluid}>
           <div className="overlay">
             <div className="container hero-text">
-              <h1 className="display-4">Jennego</h1>
+              <h1 className="display-1">Jennego</h1>
               <h2>Photography. Writing. Web Experiments. And other things!</h2>
             </div>
           </div>
