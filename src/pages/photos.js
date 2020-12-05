@@ -11,6 +11,7 @@ const PhotoList = () => {
             id
             title
             slug
+            updatedAt
             photoGroup {
               id
               title
@@ -39,6 +40,7 @@ const PhotoList = () => {
             title
             slug
             id
+            updatedAt
             groupCoverPhoto {
               id
             }
