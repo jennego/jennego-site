@@ -1,3 +1,6 @@
+$handwriting: "Just Me Again Down Here", cursive;
+$slab: "Zilla Slab", serif;
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -28,6 +31,8 @@ footer {
 .display-3,
 .display-4 {
   font-family: "Just Me Again Down Here", cursive;
+  font-weight: normal;
+  margin-bottom: 1.5rem;
 }
 
 h1,

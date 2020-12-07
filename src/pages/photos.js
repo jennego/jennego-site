@@ -61,10 +61,10 @@ const PhotoList = () => {
     <Layout>
       <div className="container-fluid">
         {console.log(data)}
-        <h1>Photography</h1>
+        <h1 className="display-2">Photography</h1>
         <div className="row">
           {data.allContentfulPhotoGallery.edges.map(({ node }) => (
-            <div className="col-4">
+            <div className="cold-sm-12 col-md-6 col-lg-4">
               <Link to={node.slug}>
                 <div className="card album hover-zoom-in">
                   <img
@@ -73,7 +73,9 @@ const PhotoList = () => {
                     alt="Card image"
                   />
                   <div class="card-img-overlay overlay-gradient">
-                    <h5 class="card-title text-white">{node.title}</h5>
+                    <h5 class="card-title text-white photo-list-title">
+                      {node.title}
+                    </h5>
                   </div>
                 </div>
               </Link>

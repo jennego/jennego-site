@@ -58,10 +58,11 @@ const PhotoGallery = props => {
   return (
     <SimpleReactLightbox>
       <Layout>
+        {console.log(data.contentfulPhotoGallery.title)}
         <SRLWrapper options={lightbox}>
           <div className="photo-layout">
             <ul className="text-row gallery">
-              <TextBlock />
+              <TextBlock title={photos.title} text={photos.textBlock.json} />
               {photos.textRowPhotos.map(p => (
                 <PhotoItem
                   key={p.id}

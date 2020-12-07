@@ -1,4 +1,4 @@
-$menu-bg-color: rgb(117, 28, 130);
+$menu-bg-color: rgb(119, 45, 204);
 $menu-link-color: rgba(212, 235, 244, 1);
 $hover-color: rgb(45, 139, 247);
 
@@ -20,6 +20,7 @@ $hover-color: rgb(45, 139, 247);
 // @include media-breakpoint-up(lg) {
 .bm-item {
   font-size: 30px;
+  font-family: "Zilla Slab", serif;
 }
 // }
 
