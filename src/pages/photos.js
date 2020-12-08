@@ -57,10 +57,32 @@ const PhotoList = () => {
       }
     }
   `)
+
+  // filter out photo galleries with photo group if !== null
+
+  let filteredPhotoGalleries = data.allContentfulPhotoGallery.edges.filter(
+    ({ node }) => node.photoGroup == null
+  )
+  // combine photo groups and photo galleries into a single array
+
+  let combinedPhotosList = [].concat(
+    filteredPhotoGalleries,
+    data.allContentfulPhotoGroup.edges
+  )
+
+  // order by last updated date
+  // THIS MAY NOT WORK. TEST with more data!
+
+  let sortedPhotosByDate = combinedPhotosList.sort(function (a, b) {
+    return a.node.updatedAt - b.node.updatedAt
+  })
+
   return (
     <Layout>
       <div className="container-fluid">
         {console.log(data)}
+        {console.log(combinedPhotosList)}
+
         <h1 className="display-2">Photography</h1>
         <div className="row">
           {data.allContentfulPhotoGallery.edges.map(({ node }) => (
