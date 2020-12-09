@@ -29,6 +29,9 @@ export const query = graphql`
         fixed {
           src
         }
+        fluid {
+          src
+        }
         file {
           url
         }
@@ -58,7 +61,7 @@ const PhotoGallery = props => {
   return (
     <SimpleReactLightbox>
       <Layout>
-        {console.log(data.contentfulPhotoGallery.title)}
+        {console.log(data.contentfulPhotoGallery.gallery)}
         <SRLWrapper options={lightbox}>
           <div className="photo-layout">
             <ul className="text-row gallery">
@@ -78,12 +81,19 @@ const PhotoGallery = props => {
                   key={p.id}
                   imageSrc={p.fixed.src}
                   full={p.file.url}
-                  source={p.fluid}
                 />
               ))}
             </ul>
 
-            <ul className="gallery photo-row"></ul>
+            <ul className="gallery photo-row">
+              {photos.gallery.map(p => (
+                <PhotoItem
+                  key={p.id}
+                  imageSrc={p.fluid.src}
+                  full={p.file.url}
+                />
+              ))}
+            </ul>
           </div>
         </SRLWrapper>
       </Layout>
