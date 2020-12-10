@@ -17,7 +17,7 @@ export const query = graphql`
       }
       firstRow {
         id
-        fixed {
+        fixed(width: 800) {
           src
         }
         file {
@@ -26,7 +26,7 @@ export const query = graphql`
       }
       gallery {
         id
-        fixed {
+        fixed(width: 900) {
           src
         }
         fluid {
@@ -38,7 +38,7 @@ export const query = graphql`
       }
       textRowPhotos {
         id
-        fixed {
+        fixed(width: 800) {
           src
         }
         file {
