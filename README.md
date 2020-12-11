@@ -8,6 +8,13 @@ Need to redo dev portfolio after this
 
 to do
 
+- add photo gallery content / add date to content model
+- add navigation to photo galleries
+- adjust styling to photo galleries
+- add production branch -> push completed photo / pages to netlify
+
+---
+
 - style title (google fonts?)
 - add content to cms
 - add page transitions
@@ -28,7 +35,6 @@ to do
   - photos ✅
   - other pages ✅
   - blog
-- add production branch -> push completed photo / pages to netlify
 
 Uses
 
