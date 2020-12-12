@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Layout from "../components/layout"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const PhotoList = () => {
   const data = useStaticQuery(graphql`
@@ -87,7 +88,7 @@ const PhotoList = () => {
         <div className="row">
           {data.allContentfulPhotoGallery.edges.map(({ node }) => (
             <div className="cold-sm-12 col-md-6 col-lg-4">
-              <Link to={node.slug}>
+              <AniLink paintDrip color="rebeccapurple" to={node.slug}>
                 <div className="card album hover-zoom-in">
                   <img
                     className="card-img "
@@ -100,7 +101,7 @@ const PhotoList = () => {
                     </h5>
                   </div>
                 </div>
-              </Link>
+              </AniLink>
             </div>
           ))}
         </div>

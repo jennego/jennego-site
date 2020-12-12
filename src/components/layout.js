@@ -33,9 +33,20 @@ const Layout = ({ children, title }) => {
         <SEO title={title} />
         <main>{children}</main>
         <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <div className="container-sm">
+            <div className="row footer">
+              <div className="col">
+                <p> Jennego </p>
+              </div>
+              <div className="col">Link list</div>
+              <div className="col">Social Media </div>
+            </div>
+            <div className="row footer">
+              © {new Date().getFullYear()}, Built with
+              {` `}
+              <a href="https://www.gatsbyjs.org">Gatsby</a>
+            </div>
+          </div>
         </footer>
       </div>
     </>

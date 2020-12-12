@@ -17,6 +17,9 @@ const Nav = () => {
       <AniLink paintDrip color="rebeccapurple" to="/photos">
         Photos
       </AniLink>
+      <AniLink paintDrip color="rebeccapurple" to="/videos">
+        Videos
+      </AniLink>
       <AniLink paintDrip color="rebeccapurple" to="/web">
         Web Things
       </AniLink>
