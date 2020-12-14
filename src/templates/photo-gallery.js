@@ -6,6 +6,7 @@ import SimpleReactLightbox from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
+import PhotoNav from "../components/photoNav"
 
 export const query = graphql`
   query galleryQuery($id: String!) {
@@ -96,6 +97,7 @@ const PhotoGallery = props => {
             </ul>
           </div>
         </SRLWrapper>
+        <PhotoNav></PhotoNav>
       </Layout>
     </SimpleReactLightbox>
   )
