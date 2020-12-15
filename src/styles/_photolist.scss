@@ -13,6 +13,8 @@
 
 .album {
   border: 0px;
+  max-height: 300px;
+  margin-bottom: 1.5rem;
 }
 
 .photo-list-title {
@@ -21,12 +23,17 @@
   bottom: 0;
 }
 
+.card-img {
+  object-fit: cover;
+  height: 100%;
+}
+
 .hover-zoom-in {
   width: 100%;
   height: 100%;
   overflow: hidden;
   position: relative;
-  cursor: default;
+  cursor: pointer;
 }
 
 .hover-zoom-in img {

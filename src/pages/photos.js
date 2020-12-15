@@ -91,7 +91,7 @@ const PhotoList = () => {
               <AniLink paintDrip color="rebeccapurple" to={node.slug}>
                 <div className="card album hover-zoom-in">
                   <img
-                    className="card-img "
+                    className="card-img"
                     src={node.albumPhoto.sizes.src}
                     alt="Card image"
                   />
