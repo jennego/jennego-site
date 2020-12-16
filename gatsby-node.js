@@ -42,6 +42,41 @@ async function createPhotoPages(graphql, actions) {
   })
 }
 
+async function createPhotoGroupPages(graphql, actions) {
+  const { createPage } = actions
+  const result = await graphql(`
+    {
+      allContentfulPhotoGroup {
+        edges {
+          node {
+            slug
+            title
+            id
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) throw result.errors
+
+  const photoEdges = (result.data.allContentfulPhotoGroup || {}).edges || []
+
+  photoEdges.forEach((edge, index) => {
+    const { id, slug, title } = edge.node
+    const path = `/photos/${slug}/`
+
+    createPage({
+      path,
+      component: require.resolve("./src/templates/photo-group.js"),
+      context: {
+        id,
+        title,
+      },
+    })
+  })
+}
+
 async function createBasicPages(graphql, actions) {
   const { createPage } = actions
   const result = await graphql(`
@@ -80,5 +115,6 @@ async function createBasicPages(graphql, actions) {
 
 exports.createPages = async ({ graphql, actions }) => {
   await createPhotoPages(graphql, actions)
+  await createPhotoGroupPages(graphql, actions)
   await createBasicPages(graphql, actions)
 }

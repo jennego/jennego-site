@@ -13,7 +13,7 @@ const PhotoList = () => {
             title
             slug
             updatedAt
-            photoGroup {
+            photo_group {
               id
               title
               slug
@@ -44,6 +44,9 @@ const PhotoList = () => {
             updatedAt
             groupCoverPhoto {
               id
+              sizes {
+                src
+              }
             }
             photoGalleries {
               title
@@ -62,7 +65,7 @@ const PhotoList = () => {
   // filter out photo galleries with photo group if !== null
 
   let filteredPhotoGalleries = data.allContentfulPhotoGallery.edges.filter(
-    ({ node }) => node.photoGroup == null
+    ({ node }) => node.photo_group == null
   )
   // combine photo groups and photo galleries into a single array
 
@@ -86,13 +89,22 @@ const PhotoList = () => {
 
         <h1 className="display-2">Photography</h1>
         <div className="row">
-          {data.allContentfulPhotoGallery.edges.map(({ node }) => (
+          {sortedPhotosByDate.map(({ node }) => (
             <div className="cold-sm-12 col-md-6 col-lg-4">
               <AniLink paintDrip color="rebeccapurple" to={node.slug}>
                 <div className="card album hover-zoom-in">
+                  {console.log(
+                    node.albumPhoto
+                      ? node.albumPhoto.sizes.src
+                      : node.groupCoverPhoto.sizes.src
+                  )}
                   <img
                     className="card-img"
-                    src={node.albumPhoto.sizes.src}
+                    src={
+                      node.albumPhoto
+                        ? node.albumPhoto.sizes.src
+                        : node.groupCoverPhoto.sizes.src
+                    }
                     alt="Card image"
                   />
                   <div class="card-img-overlay overlay-gradient">

@@ -10,14 +10,14 @@ to do
 
 - add photo gallery content / add date to content model
 - add navigation to photo galleries
-- adjust styling to photo galleries
 - add production branch -> push completed photo / pages to netlify
+- figure out what to do with video
+- be more consistant with colours
+- fix photo list so groups display too
 
 ---
 
-- style title (google fonts?)
 - add content to cms
-- add page transitions
 - finish photo gallery pages - add more pages
 - style menu ✅
 - add accordion to menu
