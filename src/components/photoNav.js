@@ -5,13 +5,20 @@ import {
   faAngleLeft,
   faHome,
 } from "@fortawesome/free-solid-svg-icons"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-const photoNav = () => {
+const photoNav = ({ backPath, forwardPath, homePath }) => {
   return (
-    <div className="d-flex  justify-content-around mt-3 position-sticky">
-      <FontAwesomeIcon icon={faAngleLeft} size="5x" />
-      <FontAwesomeIcon icon={faHome} size="3x" />
-      <FontAwesomeIcon icon={faAngleRight} size="5x" />
+    <div className="d-flex  justify-content-around  align-items-center mt-4">
+      <AniLink paintDrip color="rebeccapurple" to={backPath}>
+        <FontAwesomeIcon icon={faAngleLeft} size="5x" />
+      </AniLink>
+      <AniLink paintDrip color="rebeccapurple" to={homePath}>
+        <FontAwesomeIcon icon={faHome} size="3x" />
+      </AniLink>
+      <AniLink paintDrip color="rebeccapurple" to={forwardPath}>
+        <FontAwesomeIcon icon={faAngleRight} size="5x" />
+      </AniLink>
     </div>
   )
 }

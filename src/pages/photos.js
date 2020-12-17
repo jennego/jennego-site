@@ -93,11 +93,6 @@ const PhotoList = () => {
             <div className="cold-sm-12 col-md-6 col-lg-4">
               <AniLink paintDrip color="rebeccapurple" to={node.slug}>
                 <div className="card album hover-zoom-in">
-                  {console.log(
-                    node.albumPhoto
-                      ? node.albumPhoto.sizes.src
-                      : node.groupCoverPhoto.sizes.src
-                  )}
                   <img
                     className="card-img"
                     src={

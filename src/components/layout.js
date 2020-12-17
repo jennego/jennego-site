@@ -9,6 +9,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import SEO from "../components/seo"
+import Footer from "../components/footer"
 
 import Header from "./header"
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -32,23 +33,8 @@ const Layout = ({ children, title }) => {
         <Nav />
         <SEO title={title} />
         <main>{children}</main>
-        <footer>
-          <div className="container-sm">
-            <div className="row footer">
-              <div className="col">
-                <p> Jennego </p>
-              </div>
-              <div className="col">Link list</div>
-              <div className="col">Social Media </div>
-            </div>
-            <div className="row footer">
-              © {new Date().getFullYear()}, Built with
-              {` `}
-              <a href="https://www.gatsbyjs.org">Gatsby</a>
-            </div>
-          </div>
-        </footer>
       </div>
+      <Footer></Footer>
     </>
   )
 }
