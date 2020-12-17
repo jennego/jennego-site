@@ -88,7 +88,7 @@ const PhotoList = () => {
         {console.log(combinedPhotosList)}
 
         <h1 className="display-2">Photography</h1>
-        <div className="row">
+        <div className="row mb-3">
           {sortedPhotosByDate.map(({ node }) => (
             <div className="cold-sm-12 col-md-6 col-lg-4">
               <AniLink paintDrip color="rebeccapurple" to={node.slug}>

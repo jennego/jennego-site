@@ -8,7 +8,11 @@ footer {
 }
 
 .footer-menu {
-  display: block;
   text-align: left;
   font-size: 0.95rem;
+  flex-direction: column;
+}
+
+.footer a {
+  color: lightblue;
 }
