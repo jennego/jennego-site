@@ -59,7 +59,7 @@ const PhotoList = props => {
             </div>
           ))}
         </div>
-        <PhotoNav></PhotoNav>
+        {/* <PhotoNav></PhotoNav> */}
       </div>
     </Layout>
   )

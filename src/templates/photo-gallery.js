@@ -97,7 +97,7 @@ const PhotoGallery = props => {
             </ul>
           </div>
         </SRLWrapper>
-        <PhotoNav></PhotoNav>
+        {/* <PhotoNav></PhotoNav> */}
       </Layout>
     </SimpleReactLightbox>
   )
