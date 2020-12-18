@@ -116,5 +116,5 @@ async function createBasicPages(graphql, actions) {
 exports.createPages = async ({ graphql, actions }) => {
   await createPhotoPages(graphql, actions)
   await createPhotoGroupPages(graphql, actions)
-  await createBasicPages(graphql, actions)
+  // await createBasicPages(graphql, actions)
 }
