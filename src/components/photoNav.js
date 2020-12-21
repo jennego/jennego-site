@@ -4,6 +4,7 @@ import {
   faAngleRight,
   faAngleLeft,
   faHome,
+  faImages,
 } from "@fortawesome/free-solid-svg-icons"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 

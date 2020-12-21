@@ -6,11 +6,12 @@ Showcases photography, video and a blog I guess.
 
 Need to redo dev portfolio after this
 
+<http://jennego.netlify.app>
+
 to do
 
 - add photo gallery content / add date to content model
 - add navigation to photo galleries
-- add production branch -> push completed photo / pages to netlify
 - figure out what to do with video
 - be more consistant with colours
 - fix photo list so groups display too
