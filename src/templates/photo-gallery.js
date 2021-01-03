@@ -7,6 +7,9 @@ import { SRLWrapper } from "simple-react-lightbox"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import PhotoNav from "../components/photoNav"
+import OnImagesLoaded from "react-on-images-loaded"
+
+// needs to rewrite to use state to determine if images are loaded
 
 export const query = graphql`
   query galleryQuery($id: String!) {
@@ -63,6 +66,11 @@ const PhotoGallery = props => {
     <SimpleReactLightbox>
       <Layout>
         {console.log(data.contentfulPhotoGallery.gallery)}
+        {/* <OnImagesLoaded
+          onLoaded={this.runAfterImagesLoaded}
+          onTimeout={this.runTimeoutFunction}
+          timeout={7000}
+        > */}
         <SRLWrapper options={lightbox}>
           <div className="photo-layout">
             <ul className="text-row gallery">
@@ -97,6 +105,7 @@ const PhotoGallery = props => {
             </ul>
           </div>
         </SRLWrapper>
+        {/* </OnImagesLoaded> */}
         <PhotoNav></PhotoNav>
       </Layout>
     </SimpleReactLightbox>
