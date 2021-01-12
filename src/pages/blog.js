@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
+import Img from "gatsby-image"
 
 const BlogIndex = () => {
   const data = useStaticQuery(graphql`
@@ -27,18 +28,31 @@ const BlogIndex = () => {
   `)
   return (
     <Layout>
-      <h1>Jennego: The Oft-Forgotten Blog</h1>
-      Need to Design This Still
-      {data.allWordpressPost.edges.map(({ node }) => (
-        <div>
-          <h3 dangerouslySetInnerHTML={{ __html: `${node.title}` }} />
-          <p
-            className="small"
-            dangerouslySetInnerHTML={{ __html: `${node.date}` }}
-          />
-          <p dangerouslySetInnerHTML={{ __html: `${node.excerpt}` }} />
-        </div>
-      ))}
+      <div className="container">
+        <h1>Jennego: The Oft-Forgotten Blog</h1>
+        {data.allWordpressPost.edges.map(({ node }) => (
+          <div className="d-flex blog-post justify-content-between">
+            {node.featured_media.source_url ? (
+              <img
+                src={node.featured_media.source_url}
+                className="blog-featured-img"
+              />
+            ) : (
+              <div className="img-placeholder"></div>
+            )}
+            <h3
+              className="blog-title align-self-center"
+              dangerouslySetInnerHTML={{ __html: `${node.title}` }}
+            />
+            <p
+              className="small flex-end"
+              dangerouslySetInnerHTML={{ __html: `${node.date}` }}
+            />
+            {/* 
+          <p dangerouslySetInnerHTML={{ __html: `${node.excerpt}` }} /> */}
+          </div>
+        ))}
+      </div>
     </Layout>
   )
 }

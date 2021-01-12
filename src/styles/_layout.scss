@@ -47,3 +47,23 @@ p {
   font-family: "Oxygen", sans-serif;
   font-size: 1.1rem;
 }
+
+.blog-title {
+  margin-left: 17rem;
+  position: absolute;
+  background-color: rgb(45, 139, 247);
+  font-size: 3rem;
+}
+
+.blog-post {
+  border: dashed 1px #3d3d3d;
+}
+
+.blog-post:hover {
+  background-color: #622ca3;
+  margin-left: 0;
+}
+
+.blog-featured-img {
+  width: 25rem;
+}
