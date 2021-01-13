@@ -48,15 +48,23 @@ p {
   font-size: 1.1rem;
 }
 
-.blog-title {
-  margin-left: 17rem;
+.blog-title-container {
+  align-self: center;
   position: absolute;
+  left: 1rem;
+  right: 2rem;
+  max-width: 55%;
+}
+
+.blog-title {
   background-color: rgb(45, 139, 247);
-  font-size: 3rem;
+  line-height: 1.5em;
+  font-size: 2rem;
 }
 
 .blog-post {
   border: dashed 1px #3d3d3d;
+  margin-bottom: 1rem;
 }
 
 .blog-post:hover {
@@ -64,6 +72,33 @@ p {
   margin-left: 0;
 }
 
+.blog-date {
+  position: absolute;
+}
+
 .blog-featured-img {
   width: 25rem;
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  .blog-title-container {
+    left: 8rem;
+    max-width: 55%;
+  }
+}
+
+// small
+@media (max-width: 767.98px) {
+  .blog-title-container {
+    left: 5rem;
+    max-width: 55%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .blog-title-container {
+    left: 15rem;
+    max-width: 55%;
+  }
 }
