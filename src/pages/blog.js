@@ -1,8 +1,10 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Img from "gatsby-image"
 import moment from "moment"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLongArrowAltRight } from "@fortawesome/free-solid-svg-icons"
 
 const BlogIndex = () => {
   const data = useStaticQuery(graphql`
@@ -43,10 +45,15 @@ const BlogIndex = () => {
             )}
             <div className="blog-title-container mx-auto">
               <h3>
-                <span
-                  className="blog-title"
-                  dangerouslySetInnerHTML={{ __html: `${node.title}` }}
-                ></span>
+                <Link className="blog-title-link" to="#">
+                  <span
+                    className="blog-title"
+                    dangerouslySetInnerHTML={{ __html: `${node.title}` }}
+                  ></span>
+                  {/* <p className="read-more btn btn-outline-light btn-sm">
+                    Read More <FontAwesomeIcon icon={faLongArrowAltRight} />
+                  </p> */}
+                </Link>
               </h3>
             </div>
 
@@ -56,8 +63,17 @@ const BlogIndex = () => {
                 __html: `${moment(node.date).format("MMMM Do, YYYY")}`,
               }}
             />
-            {/* 
-          <p dangerouslySetInnerHTML={{ __html: `${node.excerpt}` }} /> */}
+            <div className="blog-tags">
+              <Link to="/tag">
+                <p className="blog-tag-badge badge badge-primary mr-1">Tech</p>
+              </Link>
+              <Link to="/meh">
+                <p className="blog-tag-badge badge badge-primary mr-1">Games</p>
+              </Link>
+              <Link to="/life">
+                <p className="blog-tag-badge badge badge-primary mr-1">Life</p>
+              </Link>
+            </div>
           </div>
         ))}
       </div>
