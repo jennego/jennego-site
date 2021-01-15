@@ -32,10 +32,10 @@ const BlogIndex = () => {
   return (
     <Layout>
       <div className="container">
-        <h1>Jennego: The Oft-Forgotten Blog</h1>
+        <h1 className="display-3">Jennego: The Oft-Forgotten Blog</h1>
         {data.allWordpressPost.edges.map(({ node }) => (
           <div className="d-flex blog-post justify-content-between mx-auto">
-            {node.featured_media.source_url ? (
+            {node.featured_media ? (
               <img
                 src={node.featured_media.source_url}
                 className="blog-featured-img"
