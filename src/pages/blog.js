@@ -45,7 +45,7 @@ const BlogIndex = () => {
             )}
             <div className="blog-title-container mx-auto">
               <h3>
-                <Link className="blog-title-link" to="#">
+                <Link className="blog-title-link" to={node.slug}>
                   <span
                     className="blog-title"
                     dangerouslySetInnerHTML={{ __html: `${node.title}` }}
