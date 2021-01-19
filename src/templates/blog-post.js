@@ -33,10 +33,19 @@ const BlogPost = ({ data, errors, pageContext }) => {
   return (
     <Layout>
       <div className="blog-header">
-        <img
-          className="blog-featured card-img"
-          src={postData.featured_media.source_url}
-        ></img>
+        {postData.featured_media ? (
+          <img
+            className="blog-featured card-img"
+            src={postData.featured_media.source_url}
+          ></img>
+        ) : (
+          <div
+            className="blog-single-img-placeholder"
+            style={{ background: "purple", height: "400px" }}
+          >
+            {" "}
+          </div>
+        )}
         <div className="card-img-overlay header-overlay">
           <h1>
             <span
