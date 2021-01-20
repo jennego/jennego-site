@@ -35,6 +35,8 @@
     "react-helmet": "^6.1.0",
     "react-lazy-load-image-component": "^1.5.0",
     "react-on-images-loaded": "^2.2.5",
+    "react-responsive-embed": "^2.1.0",
+    "reactstrap": "^8.8.1",
     "simple-react-lightbox": "^3.2.3-3"
   },
   "devDependencies": {
