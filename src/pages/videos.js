@@ -3,7 +3,7 @@ import Layout from "../components/layout"
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
 import { useStaticQuery, graphql } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPlayCircle } from "@fortawesome/free-solid-svg-icons"
+import { faPlayCircle } from "@fortawesome/free-regular-svg-icons"
 
 const VideoPage = props => {
   const data = useStaticQuery(graphql`
