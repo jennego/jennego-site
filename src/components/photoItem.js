@@ -5,7 +5,7 @@ import "react-lazy-load-image-component/src/effects/opacity.css"
 
 const PhotoItem = props => (
   <li className="photo">
-    <div className="hovereffect" key={props.keyid}>
+    <div className="hovereffect" key={props.keyid} tabindex="0">
       <a href={props.full} data-attribute="SRL">
         <LazyLoadImage
           className="photo-img"

@@ -64,7 +64,7 @@ const BlogIndex = () => {
               }}
             />
             <div className="blog-tags">
-              <Link to="/tag">
+              {/* <Link to="/tag">
                 <p className="blog-tag-badge badge badge-primary mr-1">Tech</p>
               </Link>
               <Link to="/meh">
@@ -72,7 +72,7 @@ const BlogIndex = () => {
               </Link>
               <Link to="/life">
                 <p className="blog-tag-badge badge badge-primary mr-1">Life</p>
-              </Link>
+              </Link> */}
             </div>
           </div>
         ))}

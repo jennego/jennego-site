@@ -45,21 +45,19 @@ const VideoPage = props => {
           {data.allContentfulVideo.edges.map(({ node }, number) => (
             <>
               <div className="col-4">
-                <div
-                  className="card video-thumb bg-dark border-0"
-                  onClick={() => toggle(number)}
-                  // onKeyDown={toggle}
-                >
-                  <img className="card-img" src={node.thumbUrl} />
-                  <div className="d-flex card-img-overlay thumb-overlay justify-content-center align-items-center">
-                    <FontAwesomeIcon
-                      icon={faPlayCircle}
-                      size="8x"
-                      color="rgba(45, 139, 247, 0)"
-                      className="play-icon"
-                    />
+                <a href="#" onClick={() => toggle(number)}>
+                  <div className="card video-thumb bg-dark border-0">
+                    <img className="card-img" src={node.thumbUrl} />
+                    <div className="d-flex card-img-overlay thumb-overlay justify-content-center align-items-center">
+                      <FontAwesomeIcon
+                        icon={faPlayCircle}
+                        size="8x"
+                        color="rgba(45, 139, 247, 0)"
+                        className="play-icon"
+                      />
+                    </div>
                   </div>
-                </div>
+                </a>
               </div>
             </>
           ))}

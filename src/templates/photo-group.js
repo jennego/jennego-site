@@ -56,8 +56,8 @@ const PhotoList = props => {
                     src={node.albumPhoto.fluid.src}
                     alt="Card image"
                   />
-                  <div class="card-img-overlay overlay-gradient">
-                    <h5 class="card-title text-white photo-list-title">
+                  <div className="card-img-overlay overlay-gradient">
+                    <h5 className="card-title text-white photo-list-title">
                       {node.title}
                     </h5>
                   </div>

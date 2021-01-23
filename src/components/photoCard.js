@@ -6,8 +6,8 @@ const photoCard = ({ photo, title, slug }) => (
     <AniLink paintDrip color="rebeccapurple" to={slug}>
       <div className="card album hover-zoom-in">
         <img className="card-img" src={photo} alt={title} />
-        <div class="card-img-overlay overlay-gradient">
-          <h5 class="card-title text-white photo-list-title">{title}</h5>
+        <div className="card-img-overlay overlay-gradient">
+          <h5 className="card-title text-white photo-list-title">{title}</h5>
         </div>
       </div>
     </AniLink>
