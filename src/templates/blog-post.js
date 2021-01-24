@@ -2,6 +2,7 @@ import React from "react"
 
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
+import { Parallax } from "react-parallax"
 
 export const query = graphql`
   query blogQuery($id: String!) {
@@ -34,11 +35,19 @@ const BlogPost = ({ data, errors, pageContext }) => {
     <Layout>
       <div className="blog-header">
         {postData.featured_media ? (
-          <img
-            className="blog-featured card-img"
-            src={postData.featured_media.source_url}
-          ></img>
+          <Parallax
+            blur={{ min: -15, max: 15 }}
+            bgImage={postData.featured_media.source_url}
+            // bgImageAlt="the cat"
+            strength={-200}
+          >
+            <div className="blog-single-featured" />
+          </Parallax>
         ) : (
+          // <img
+          //   className="blog-featured card-img"
+          //   src={postData.featured_media.source_url}
+          // ></img>
           <div
             className="blog-single-img-placeholder"
             style={{ background: "purple", height: "400px" }}

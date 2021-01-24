@@ -5,7 +5,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlayCircle } from "@fortawesome/free-regular-svg-icons"
 import ResponsiveEmbed from "react-responsive-embed"
-import { node } from "prop-types"
 
 const VideoPage = props => {
   const data = useStaticQuery(graphql`
