@@ -23,11 +23,11 @@ to do
 - style menu ✅
 - add accordion to menu
 - tidy sass
-- improve accessibility
+- improve accessibility - need to work on photo page so it can tabbed
 - add icons ✅
 - make layouts for video (index) ✅
 - layouts for blog (single/index)
-- add video page (gallery?) / may need to customize cms?
+- add video page (gallery?) ✅ (still need to figure out autoplay/autostop video or at least make it accessible)
 - figure out if other pages should be their own thing or not?
 - add modal for more in textblock (photo pages) and to display videos
 - make photo groups ✅
@@ -41,5 +41,6 @@ Uses
 
 - Gatsby (default starter)
 - Sass
-- Contentful CMS
-- WordPress
+- Contentful CMS (content source)
+- WordPress.com (content source)
+- Font Awesome
