@@ -62,10 +62,27 @@ const PhotoGallery = props => {
       thumbnailsPosition: "left",
     },
   }
+
+  //  Needs tweaking to allow for photo galleries, keep same nav in photo album view. Galleries within album should have prev/next to other galleries in album view, home to main album
+
+  const prev = pageContext.prev
+    ? {
+        url: `/photos/${pageContext.prev.slug}`,
+        title: pageContext.prev.title,
+      }
+    : ""
+
+  const next = pageContext.next
+    ? {
+        url: `/photos/${pageContext.next.slug}`,
+        title: pageContext.next.title,
+      }
+    : ""
+
   return (
     <SimpleReactLightbox>
       <Layout>
-        {console.log(data.contentfulPhotoGallery.gallery)}
+        {console.log(pageContext)}
         {/* <OnImagesLoaded
           onLoaded={this.runAfterImagesLoaded}
           onTimeout={this.runTimeoutFunction}
@@ -106,7 +123,14 @@ const PhotoGallery = props => {
           </div>
         </SRLWrapper>
         {/* </OnImagesLoaded> */}
-        <PhotoNav></PhotoNav>
+
+        <PhotoNav
+          backTitle={prev.title}
+          backPath={prev.url}
+          forwardTitle={next.title}
+          forwardPath={next.url}
+          homePath={"/photos"}
+        />
       </Layout>
     </SimpleReactLightbox>
   )

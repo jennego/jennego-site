@@ -35,6 +35,7 @@ const PhotoList = props => {
     <Layout>
       <div className="container-fluid">
         <h1> {data.contentfulPhotoGroup.title} </h1>
+        {console.log(pageContext)}
 
         {/* <OnImagesLoaded
           onLoaded={this.runAfterImagesLoaded}

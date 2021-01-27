@@ -37,6 +37,9 @@ async function createPhotoPages(graphql, actions) {
       context: {
         id,
         title,
+        prev: index === 0 ? null : photoEdges[index - 1].node,
+        next:
+          index === photoEdges.length - 1 ? null : photoEdges[index + 1].node,
       },
     })
   })

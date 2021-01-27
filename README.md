@@ -10,11 +10,8 @@ Need to redo dev portfolio after this
 
 to do
 
-- add photo gallery content / add date to content model
-- add navigation to photo galleries and single blog pages
-- figure out what to do with video - link + image, overlay play icon, on click -> modal, source from contentful
-- be more consistant with colours / tidy sass
-- fix photo list so groups display too ✅
+- add forward/backward navigation to photo galleries and single blog pages
+- be more consistent with colours / tidy sass
 
 ---
 
@@ -26,7 +23,7 @@ to do
 - improve accessibility - need to work on photo page so it can tabbed
 - add icons ✅
 - make layouts for video (index) ✅
-- layouts for blog (single/index)
+- layouts for blog (single/index)✅
 - add video page (gallery?) ✅ (still need to figure out autoplay/autostop video or at least make it accessible)
 - figure out if other pages should be their own thing or not?
 - add modal for more in textblock (photo pages) and to display videos
