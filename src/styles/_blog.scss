@@ -94,6 +94,15 @@ a.blog-title-link {
   align-items: flex-end;
 }
 
+.blog-nav-card {
+  width: 30%;
+}
+
+.blog-nav-title {
+  background-color: black;
+  color: white;
+}
+
 // Medium devices (tablets, less than 992px)
 @media (max-width: 991.98px) {
   .blog-title-container {

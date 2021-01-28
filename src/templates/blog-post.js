@@ -3,6 +3,7 @@ import React from "react"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import { Parallax } from "react-parallax"
+import BlogNav from "../components/blogNav"
 
 export const query = graphql`
   query blogQuery($id: String!) {
@@ -33,6 +34,7 @@ const BlogPost = ({ data, errors, pageContext }) => {
   const postData = data.wordpressPost
   return (
     <Layout>
+      {console.log(pageContext)}
       <div className="blog-header">
         {postData.featured_media ? (
           <Parallax
@@ -77,6 +79,7 @@ const BlogPost = ({ data, errors, pageContext }) => {
           dangerouslySetInnerHTML={{ __html: `${postData.content}` }}
         ></p>
       </div>
+      <BlogNav />
       {console.log(data)}
     </Layout>
   )

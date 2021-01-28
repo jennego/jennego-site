@@ -127,6 +127,9 @@ async function createBlogPosts(graphql, actions) {
             wordpress_id
             slug
             title
+            featured_media {
+              source_url
+            }
           }
         }
       }
@@ -147,6 +150,8 @@ async function createBlogPosts(graphql, actions) {
       context: {
         id,
         title,
+        prev: index === 0 ? null : pageEdges[index - 1].node,
+        next: index === pageEdges.length - 1 ? null : pageEdges[index + 1].node,
       },
     })
   })
