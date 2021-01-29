@@ -13,6 +13,8 @@ const BlogNav = ({
   backTitle,
   forwardPath,
   forwardTitle,
+  backImg,
+  forwardImg,
   homePath,
 }) => {
   return (
@@ -20,16 +22,23 @@ const BlogNav = ({
       {backPath ? (
         <AniLink paintDrip color="rebeccapurple" to={backPath}>
           <div className="card blog-nav-card">
-            {/* <img class="card-img" src={} alt="Card image" /> */}
+            {backImg ? (
+              <img class="card-img" src={backImg.source_url} alt="Card image" />
+            ) : (
+              " "
+            )}
             <div class="card-img-overlay d-flex align-items-center">
               <h5>
-                <span class="card-title blog-nav-title align">Card title </span>
+                <span class="card-title blog-nav-title align">
+                  {" "}
+                  {backTitle}{" "}
+                </span>
               </h5>
             </div>
           </div>
         </AniLink>
       ) : (
-        <div> </div>
+        <div className="card blog-nav-card blog-nav-placeholder"> </div>
       )}
 
       <AniLink paintDrip color="rebeccapurple" to={homePath}>
@@ -39,18 +48,24 @@ const BlogNav = ({
       {forwardPath ? (
         <AniLink paintDrip color="rebeccapurple" to={forwardPath}>
           <div className="card blog-nav-card">
-            {/* <img class="card-img" src={} alt="Card image" /> */}
+            {forwardImg ? (
+              <img
+                class="card-img"
+                src={forwardImg.source_url}
+                alt="Card image"
+              />
+            ) : (
+              ""
+            )}
             <div class="card-img-overlay d-flex align-items-center justify-content-end">
-              <h5>
-                <span class="card-title blog-nav-title text-left">
-                  Card title
-                </span>
+              <h5 className="text-right">
+                <span class="card-title blog-nav-title">{forwardTitle}</span>
               </h5>
             </div>
           </div>
         </AniLink>
       ) : (
-        <div></div>
+        <div className="card blog-nav-card blog-nav-placeholder"> </div>
       )}
     </div>
   )

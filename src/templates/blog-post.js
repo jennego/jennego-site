@@ -32,9 +32,25 @@ export const query = graphql`
 
 const BlogPost = ({ data, errors, pageContext }) => {
   const postData = data.wordpressPost
+  const prev = pageContext.prev
+    ? {
+        url: `/blog/${pageContext.prev.slug}`,
+        title: pageContext.prev.title,
+        image: pageContext.prev.featured_media,
+      }
+    : ""
+
+  const next = pageContext.next
+    ? {
+        url: `/blog/${pageContext.next.slug}`,
+        title: pageContext.next.title,
+        image: pageContext.next.featured_media,
+      }
+    : ""
+
   return (
     <Layout>
-      {console.log(pageContext)}
+      {console.log(prev)}
       <div className="blog-header">
         {postData.featured_media ? (
           <Parallax
@@ -79,8 +95,14 @@ const BlogPost = ({ data, errors, pageContext }) => {
           dangerouslySetInnerHTML={{ __html: `${postData.content}` }}
         ></p>
       </div>
-      <BlogNav />
-      {console.log(data)}
+      <BlogNav
+        forwardImg={next.image}
+        backImg={prev.image}
+        backPath={prev.url}
+        backTitle={prev.title}
+        forwardPath={next.url}
+        forwardTitle={next.title}
+      />
     </Layout>
   )
 }
