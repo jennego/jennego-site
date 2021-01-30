@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import { graphql } from "gatsby"
 import { Parallax } from "react-parallax"
 import BlogNav from "../components/blogNav"
+import moment from "moment"
 
 export const query = graphql`
   query blogQuery($id: String!) {
@@ -83,9 +84,12 @@ const BlogPost = ({ data, errors, pageContext }) => {
         </div>
 
         <div className="card-img-overlay meta-overlay">
-          <div className="blog-meta">Date and stuff</div>
-          <div className="blog-meta">Date and stuff</div>
-          <div className="blog-meta">Date and stuff</div>
+          <p
+            className="single-blog-date"
+            dangerouslySetInnerHTML={{
+              __html: `${moment(postData.date).format("MMMM Do, YYYY")}`,
+            }}
+          />
         </div>
       </div>
 

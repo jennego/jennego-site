@@ -28,7 +28,7 @@ const BlogNav = ({
               " "
             )}
             <div class="card-img-overlay d-flex align-items-center">
-              <h5>
+              <h5 className="ml-2">
                 <span class="card-title blog-nav-title align">
                   {" "}
                   {backTitle}{" "}
@@ -58,7 +58,7 @@ const BlogNav = ({
               ""
             )}
             <div class="card-img-overlay d-flex align-items-center justify-content-end">
-              <h5 className="text-right">
+              <h5 className="text-right mr-2">
                 <span class="card-title blog-nav-title">{forwardTitle}</span>
               </h5>
             </div>
