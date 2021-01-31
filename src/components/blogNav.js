@@ -20,7 +20,7 @@ const BlogNav = ({
   return (
     <div className="d-flex row blog-nav  justify-content-between">
       {backPath ? (
-        <AniLink paintDrip color="rebeccapurple" to={backPath}>
+        <AniLink cover direction="right" color="rebeccapurple" to={backPath}>
           <div className="card blog-nav-card">
             {backImg ? (
               <img class="card-img" src={backImg.source_url} alt="Card image" />
@@ -46,7 +46,7 @@ const BlogNav = ({
       </AniLink>
 
       {forwardPath ? (
-        <AniLink paintDrip color="rebeccapurple" to={forwardPath}>
+        <AniLink cover color="rebeccapurple" direction="left" to={forwardPath}>
           <div className="card blog-nav-card">
             {forwardImg ? (
               <img
