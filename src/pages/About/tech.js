@@ -46,12 +46,24 @@ const AboutTechPage = () => {
           using.
         </p>
         <p>
-          I grew up with Windows but switched to MacOS for ease of using bash
-          tools for development. I know it can be done with Windows and for some
-          it works well, but I really do not need to fight with my OS too. I
-          occasionally boot into Windows to play some games. Well, mostly Zoo
-          Tycoon and old crappy horsey games...so I probably don't need a
-          dedicated gaming rig.
+          I grew up with mostly Windows but switched to MacOS for ease of using
+          unix shell tools. tools for development. I know it can be done with
+          Windows and for some it works well, but I really do not need to fight
+          with my OS too. I occasionally boot into Windows to play some games.
+          Well, mostly Zoo Tycoon and old crappy horsey games...so I probably
+          don't need a dedicated gaming rig.
+        </p>
+        <h2>Other</h2>
+        <p>
+          {" "}
+          I am not much of an illustrator so I don't draw much nowadays. The
+          rare times I do, it's almost always in raster.
+        </p>
+        <p> I write sometimes, but nothing publishable, really.</p>
+        <p>
+          {" "}
+          I do not have a background in music or audio production so no music I
+          use is mine.
         </p>
       </div>
     </Layout>

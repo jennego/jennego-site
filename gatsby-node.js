@@ -16,45 +16,39 @@ async function createPhotoPages(graphql, actions) {
             id
             title
             slug
-            createdAt
+            updatedAt
+            photo_group {
+              id
+            }
+            albumPhoto {
+              sizes {
+                src
+              }
+            }
           }
         }
       }
-    }
-  `)
-
-  if (result.errors) throw result.errors
-
-  const photoEdges = (result.data.allContentfulPhotoGallery || {}).edges || []
-
-  photoEdges.forEach((edge, index) => {
-    const { id, slug, title } = edge.node
-    const path = `/photos/${slug}/`
-
-    createPage({
-      path,
-      component: require.resolve("./src/templates/photo-gallery.js"),
-      context: {
-        id,
-        title,
-        prev: index === 0 ? null : photoEdges[index - 1].node,
-        next:
-          index === photoEdges.length - 1 ? null : photoEdges[index + 1].node,
-      },
-    })
-  })
-}
-
-async function createPhotoGroupPages(graphql, actions) {
-  const { createPage } = actions
-  const result = await graphql(`
-    {
       allContentfulPhotoGroup {
         edges {
           node {
-            slug
             title
+            slug
             id
+            updatedAt
+            groupCoverPhoto {
+              id
+              sizes {
+                src
+              }
+            }
+            photoGalleries {
+              title
+              albumPhoto {
+                sizes {
+                  src
+                }
+              }
+            }
           }
         }
       }
@@ -64,6 +58,114 @@ async function createPhotoGroupPages(graphql, actions) {
   if (result.errors) throw result.errors
 
   const photoEdges = (result.data.allContentfulPhotoGroup || {}).edges || []
+
+  // filter out photo galleries with photo group if !== null
+
+  let filteredPhotoGalleries = result.data.allContentfulPhotoGallery.edges.filter(
+    ({ node }) => node.photo_group == null
+  )
+  // combine photo groups and photo galleries into a single array
+
+  const combinedPhotosList = []
+    .concat(filteredPhotoGalleries, result.data.allContentfulPhotoGroup.edges)
+    .sort(function (a, b) {
+      a.node.date - b.node.date
+    })
+
+  // order by last updated date
+  // THIS MAY NOT WORK. TEST with more data!
+
+  const photoGalleryEdges =
+    (result.data.allContentfulPhotoGallery || {}).edges || []
+
+  photoGalleryEdges.forEach((edge, index) => {
+    const { id, slug, title } = edge.node
+    const path = `/photos/${slug}/`
+
+    createPage({
+      path,
+      component: require.resolve("./src/templates/photo-gallery.js"),
+      context: {
+        id,
+        title,
+        combinedPhotosList,
+        prev: index === 0 ? null : combinedPhotosList[index - 1].node,
+        next:
+          index === combinedPhotosList.length - 1
+            ? null
+            : combinedPhotosList[index + 1].node,
+      },
+    })
+  })
+}
+
+async function createPhotoGroupPages(graphql, actions) {
+  const { createPage } = actions
+  const result = await graphql(`
+    {
+      allContentfulPhotoGallery {
+        edges {
+          node {
+            id
+            title
+            slug
+            updatedAt
+            albumPhoto {
+              sizes {
+                src
+              }
+            }
+          }
+        }
+      }
+      allContentfulPhotoGroup {
+        edges {
+          node {
+            title
+            slug
+            id
+            updatedAt
+            groupCoverPhoto {
+              id
+              sizes {
+                src
+              }
+            }
+            photoGalleries {
+              title
+              albumPhoto {
+                sizes {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) throw result.errors
+
+  // const photoEdges = (result.allContentfulPhotoGroup || {}).edges || []
+  // // filter out photo galleries with photo group if !== null
+
+  // let filteredPhotoGalleries = data.allContentfulPhotoGallery.edges.filter(
+  //   ({ node }) => node.photo_group == null
+  // )
+  // // combine photo groups and photo galleries into a single array
+
+  // let combinedPhotosList = [].concat(
+  //   filteredPhotoGalleries,
+  //   data.allContentfulPhotoGroup.edges
+  // )
+
+  // order by last updated date
+  // THIS MAY NOT WORK. TEST with more data!
+
+  let sortedPhotosByDate = combinedPhotosList.sort(function (a, b) {
+    return a.node.date - b.node.date
+  })
 
   photoEdges.forEach((edge, index) => {
     const { id, slug, title } = edge.node

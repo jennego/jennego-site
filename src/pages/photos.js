@@ -70,27 +70,23 @@ const PhotoList = () => {
   )
   // combine photo groups and photo galleries into a single array
 
-  let combinedPhotosList = [].concat(
-    filteredPhotoGalleries,
-    data.allContentfulPhotoGroup.edges
-  )
+  let combinedPhotosList = []
+    .concat(filteredPhotoGalleries, data.allContentfulPhotoGroup.edges)
+    .sort(function (a, b) {
+      return a.node.date - b.node.date
+    })
 
   // order by last updated date
   // THIS MAY NOT WORK. TEST with more data!
 
-  let sortedPhotosByDate = combinedPhotosList.sort(function (a, b) {
-    return a.node.updatedAt - b.node.updatedAt
-  })
-
   return (
     <Layout>
       <div className="container-fluid">
-        {console.log(data)}
-        {console.log(combinedPhotosList)}
+        {console.log("combined photos list", combinedPhotosList)}
 
         <h1 className="display-2">Photography</h1>
         <div className="row mb-3">
-          {sortedPhotosByDate.map(({ node }) => (
+          {combinedPhotosList.map(({ node }) => (
             <PhotoCard
               photo={
                 node.albumPhoto
