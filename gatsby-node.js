@@ -103,41 +103,16 @@ async function createPhotoGroupPages(graphql, actions) {
   const { createPage } = actions
   const result = await graphql(`
     {
-      allContentfulPhotoGallery {
-        edges {
-          node {
-            id
-            title
-            slug
-            updatedAt
-            albumPhoto {
-              sizes {
-                src
-              }
-            }
-          }
-        }
-      }
       allContentfulPhotoGroup {
         edges {
           node {
-            title
             slug
+            title
             id
-            updatedAt
-            groupCoverPhoto {
-              id
-              sizes {
-                src
-              }
-            }
             photoGalleries {
+              id
+              slug
               title
-              albumPhoto {
-                sizes {
-                  src
-                }
-              }
             }
           }
         }
@@ -147,25 +122,7 @@ async function createPhotoGroupPages(graphql, actions) {
 
   if (result.errors) throw result.errors
 
-  // const photoEdges = (result.allContentfulPhotoGroup || {}).edges || []
-  // // filter out photo galleries with photo group if !== null
-
-  // let filteredPhotoGalleries = data.allContentfulPhotoGallery.edges.filter(
-  //   ({ node }) => node.photo_group == null
-  // )
-  // // combine photo groups and photo galleries into a single array
-
-  // let combinedPhotosList = [].concat(
-  //   filteredPhotoGalleries,
-  //   data.allContentfulPhotoGroup.edges
-  // )
-
-  // order by last updated date
-  // THIS MAY NOT WORK. TEST with more data!
-
-  let sortedPhotosByDate = combinedPhotosList.sort(function (a, b) {
-    return a.node.date - b.node.date
-  })
+  const photoEdges = (result.data.allContentfulPhotoGroup || {}).edges || []
 
   photoEdges.forEach((edge, index) => {
     const { id, slug, title } = edge.node
@@ -182,41 +139,41 @@ async function createPhotoGroupPages(graphql, actions) {
   })
 }
 
-async function createBasicPages(graphql, actions) {
-  const { createPage } = actions
-  const result = await graphql(`
-    {
-      allContentfulPages {
-        edges {
-          node {
-            id
-            title
-            slug
-            createdAt
-          }
-        }
-      }
-    }
-  `)
+// async function createBasicPages(graphql, actions) {
+//   const { createPage } = actions
+//   const result = await graphql(`
+//     {
+//       allContentfulPages {
+//         edges {
+//           node {
+//             id
+//             title
+//             slug
+//             createdAt
+//           }
+//         }
+//       }
+//     }
+//   `)
 
-  if (result.errors) throw result.errors
+//   if (result.errors) throw result.errors
 
-  const pageEdges = (result.data.allContentfulPages || {}).edges || []
+//   const pageEdges = (result.data.allContentfulPages || {}).edges || []
 
-  pageEdges.forEach((edge, index) => {
-    const { id, slug, title } = edge.node
-    const path = `/${slug}/`
+//   pageEdges.forEach((edge, index) => {
+//     const { id, slug, title } = edge.node
+//     const path = `/${slug}/`
 
-    createPage({
-      path,
-      component: require.resolve("./src/templates/basic-page.js"),
-      context: {
-        id,
-        title,
-      },
-    })
-  })
-}
+//     createPage({
+//       path,
+//       component: require.resolve("./src/templates/basic-page.js"),
+//       context: {
+//         id,
+//         title,
+//       },
+//     })
+//   })
+// }
 
 async function createBlogPosts(graphql, actions) {
   const { createPage } = actions
@@ -262,6 +219,6 @@ async function createBlogPosts(graphql, actions) {
 exports.createPages = async ({ graphql, actions }) => {
   await createPhotoPages(graphql, actions)
   await createPhotoGroupPages(graphql, actions)
-  await createBasicPages(graphql, actions)
+  // await createBasicPages(graphql, actions)
   await createBlogPosts(graphql, actions)
 }
