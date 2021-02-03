@@ -83,6 +83,7 @@ const PhotoGallery = props => {
     <SimpleReactLightbox>
       <Layout>
         {console.log("page context", { pageContext })}
+        {console.log(data)}
         {/* <OnImagesLoaded
           onLoaded={this.runAfterImagesLoaded}
           onTimeout={this.runTimeoutFunction}

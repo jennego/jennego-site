@@ -10,16 +10,12 @@ Need to redo dev portfolio after this
 
 to do
 
-- add forward/backward navigation to photo galleries and single blog pages
+- add next/previous to albums within photo group
 - be more consistent with colours / tidy sass
-
----
-
-- add content to cms
+- add more content to cms - rest of photos - more videos
 - finish photo gallery pages - add more pages ✅
 - style menu ✅
-- add accordion to menu
-- tidy sass
+- add accordion to menu - ? do I still need this
 - improve accessibility - need to work on photo page so it can tabbed
 - add icons ✅
 - make layouts for video (index) ✅
@@ -33,6 +29,7 @@ to do
   - photos ✅
   - other pages ✅
   - blog ✅
+  - about pages subpages ?
 
 Uses
 
