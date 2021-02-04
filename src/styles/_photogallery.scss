@@ -20,8 +20,13 @@ $text-height: 50vh;
   transition: all 0.4s ease-in;
 }
 
-.hovereffect:hover .overlay {
+.hovereffect:hover .overlay,
+.hovereffect:focus .overlay {
   background-color: rgba(176, 130, 228, 0.3);
+}
+
+.hovereffect:focus {
+  border: #fff 2px solid;
 }
 
 .hovereffect img {

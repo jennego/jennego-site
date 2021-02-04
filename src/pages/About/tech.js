@@ -15,7 +15,7 @@ const AboutTechPage = () => {
         <p>
           I use Visual Studio Code (in some purple theme), iTerm (zsh,
           oh-my-zsh, Powerline 10k in Purple Rain) and Git/Github as my main
-          tools.
+          tools. And yes, I prefer dark themes.
         </p>
 
         <h2> Photography/Video</h2>

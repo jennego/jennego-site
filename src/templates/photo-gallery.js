@@ -91,9 +91,8 @@ const PhotoGallery = props => {
         > */}
         <SRLWrapper options={lightbox}>
           <div className="photo-layout">
-            <ul className="text-row gallery">
-              <TextBlock title={photos.title} text={photos.textBlock.json} />
-              {photos.textRowPhotos.map(p => (
+            <ul className="top-row photo-row">
+              {photos.firstRow.map(p => (
                 <PhotoItem
                   key={p.id}
                   imageSrc={p.fixed.src}
@@ -101,9 +100,9 @@ const PhotoGallery = props => {
                 />
               ))}
             </ul>
-
-            <ul className="top-row photo-row">
-              {photos.firstRow.map(p => (
+            <ul className="text-row gallery">
+              <TextBlock title={photos.title} text={photos.textBlock.json} />
+              {photos.textRowPhotos.map(p => (
                 <PhotoItem
                   key={p.id}
                   imageSrc={p.fixed.src}
