@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Layout from "../components/layout"
 import PhotoItem from "../components/photoItem"
 import TextBlock from "../components/textBlock"
@@ -56,6 +56,7 @@ export const query = graphql`
 const PhotoGallery = props => {
   const { data, errors, pageContext } = props
   const photos = data.contentfulPhotoGallery
+
   const lightbox = {
     buttons: { showDownloadButton: false },
     thumbnails: {
@@ -92,32 +93,41 @@ const PhotoGallery = props => {
         <SRLWrapper options={lightbox}>
           <div className="photo-layout">
             <ul className="top-row photo-row">
-              {photos.firstRow.map(p => (
+              {photos.firstRow.map((p, index) => (
                 <PhotoItem
                   key={p.id}
                   imageSrc={p.fixed.src}
                   full={p.file.url}
+                  index={index}
                 />
               ))}
             </ul>
             <ul className="text-row gallery">
               <TextBlock title={photos.title} text={photos.textBlock.json} />
-              {photos.textRowPhotos.map(p => (
+              {photos.textRowPhotos.map((p, index) => (
                 <PhotoItem
                   key={p.id}
                   imageSrc={p.fixed.src}
                   full={p.file.url}
+                  index={photos.firstRow.length + index}
                 />
               ))}
             </ul>
 
             <ul className="gallery photo-row">
-              {photos.gallery.map(p => (
-                <PhotoItem
-                  key={p.id}
-                  imageSrc={p.fluid.src}
-                  full={p.file.url}
-                />
+              {photos.gallery.map((p, index) => (
+                <>
+                  <PhotoItem
+                    key={p.id}
+                    imageSrc={p.fluid.src}
+                    full={p.file.url}
+                    index={
+                      photos.textRowPhotos.length +
+                      photos.firstRow.length +
+                      index
+                    }
+                  />
+                </>
               ))}
             </ul>
           </div>
