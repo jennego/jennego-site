@@ -42,6 +42,7 @@ async function createPhotoPages(graphql, actions) {
               }
             }
             photoGalleries {
+              id
               title
               albumPhoto {
                 sizes {
@@ -72,8 +73,15 @@ async function createPhotoPages(graphql, actions) {
       a.node.date - b.node.date
     })
 
-  // order by last updated date
-  // THIS MAY NOT WORK. TEST with more data!
+  // Get photo galleries from photogroup
+
+  // Find the damn array first. Use photo_group id that is in current photo gallery.
+  // const subPhotos = result.allContentfulPhotoGroup.photoGalleries
+
+  // look up current photo gallery - find index in array
+  // if not present return empty string
+  // if present find prev/next
+  // set subPhotosPrev and subPhotosNext in context of PhotoGallery
 
   const photoGalleryEdges =
     (result.data.allContentfulPhotoGallery || {}).edges || []
@@ -88,7 +96,6 @@ async function createPhotoPages(graphql, actions) {
       context: {
         id,
         title,
-        combinedPhotosList,
         prev: index === 0 ? null : combinedPhotosList[index - 1].node,
         next:
           index === combinedPhotosList.length - 1
@@ -103,16 +110,45 @@ async function createPhotoGroupPages(graphql, actions) {
   const { createPage } = actions
   const result = await graphql(`
     {
+      allContentfulPhotoGallery {
+        edges {
+          node {
+            id
+            title
+            slug
+            updatedAt
+            photo_group {
+              id
+            }
+            albumPhoto {
+              sizes {
+                src
+              }
+            }
+          }
+        }
+      }
       allContentfulPhotoGroup {
         edges {
           node {
-            slug
             title
+            slug
             id
+            updatedAt
+            groupCoverPhoto {
+              id
+              sizes {
+                src
+              }
+            }
             photoGalleries {
               id
-              slug
               title
+              albumPhoto {
+                sizes {
+                  src
+                }
+              }
             }
           }
         }
@@ -124,6 +160,19 @@ async function createPhotoGroupPages(graphql, actions) {
 
   const photoEdges = (result.data.allContentfulPhotoGroup || {}).edges || []
 
+  // filter out photo galleries with photo group if !== null
+
+  let filteredPhotoGalleries = result.data.allContentfulPhotoGallery.edges.filter(
+    ({ node }) => node.photo_group == null
+  )
+  // combine photo groups and photo galleries into a single array
+
+  const combinedPhotosList = []
+    .concat(filteredPhotoGalleries, result.data.allContentfulPhotoGroup.edges)
+    .sort(function (a, b) {
+      a.node.date - b.node.date
+    })
+
   photoEdges.forEach((edge, index) => {
     const { id, slug, title } = edge.node
     const path = `/photos/${slug}/`
@@ -134,6 +183,11 @@ async function createPhotoGroupPages(graphql, actions) {
       context: {
         id,
         title,
+        prev: index === 0 ? null : combinedPhotosList[index - 1].node,
+        next:
+          index === combinedPhotosList.length - 1
+            ? null
+            : combinedPhotosList[index + 1].node,
       },
     })
   })

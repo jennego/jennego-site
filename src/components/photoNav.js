@@ -20,10 +20,9 @@ const photoNav = ({
       {backPath ? (
         <AniLink paintDrip color="rebeccapurple" to={backPath}>
           <FontAwesomeIcon icon={faAngleLeft} size="5x" />
-          <p>{backTitle}</p>
         </AniLink>
       ) : (
-        "that is it"
+        <div> </div>
       )}
 
       <AniLink paintDrip color="rebeccapurple" to={homePath}>
@@ -35,7 +34,7 @@ const photoNav = ({
           <FontAwesomeIcon icon={faAngleRight} size="5x" />
         </AniLink>
       ) : (
-        "that is it "
+        <div> </div>
       )}
     </div>
   )
