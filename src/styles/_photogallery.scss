@@ -49,16 +49,18 @@ $text-height: 50vh;
   display: flex !important;
 }
 
-ul {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-}
+.photo-layout {
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
 
-li {
-  list-style-type: none;
-  flex-grow: 1;
+  li {
+    list-style-type: none;
+    flex-grow: 1;
+  }
 }
 
 .text-row {
@@ -148,10 +150,13 @@ li {
   }
 }
 
-// breakpoints for top row
+// breakpoints for top row and width
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
+  img.photo-img {
+    max-width: 25vw;
+  }
 }
 
 // Medium devices (tablets, 768px and up)
@@ -162,6 +167,10 @@ li {
         max-width: 25vw;
       }
     }
+  }
+
+  img.photo-img {
+    max-width: 35vw;
   }
 }
 
@@ -174,10 +183,15 @@ li {
       }
     }
   }
+
+  img.photo-img {
+    max-width: 40vw;
+  }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
+  // hi i am doing nothing
 }
 
 img.photo-img {
@@ -203,13 +217,15 @@ img.photo-img {
 }
 
 @media (max-width: 480px) {
-  ul {
-    flex-direction: row;
-  }
+  .photo-layout {
+    ul {
+      flex-direction: row;
+    }
 
-  li {
-    height: auto;
-    width: 100%;
+    li {
+      height: auto;
+      width: 100%;
+    }
   }
 
   // img {
