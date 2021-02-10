@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Layout from "../components/layout"
 import PhotoItem from "../components/photoItem"
 import TextBlock from "../components/textBlock"
@@ -16,6 +16,10 @@ export const query = graphql`
     contentfulPhotoGallery(id: { eq: $id }) {
       id
       title
+      photo_group {
+        id
+        title
+      }
       textBlock {
         json
       }
@@ -56,6 +60,12 @@ export const query = graphql`
 const PhotoGallery = props => {
   const { data, errors, pageContext } = props
   const photos = data.contentfulPhotoGallery
+  const [arrIndex, setArrIndex] = useState(null)
+
+  // useEffect(() => {
+  // }, [])
+
+  // combinedPhotosList.map(({ node }, index) => console.log(node, index))
 
   const lightbox = {
     buttons: { showDownloadButton: false },
@@ -64,27 +74,26 @@ const PhotoGallery = props => {
     },
   }
 
-  //  Needs tweaking to allow for photo galleries, keep same nav in photo album view. Galleries within album should have prev/next to other galleries in album view, home to main album
+  const combinedPhotosList = pageContext.combinedPhotosList
+  const currentId = pageContext.id
 
-  const prev = pageContext.prev
-    ? {
-        url: `/photos/${pageContext.prev.slug}`,
-        title: pageContext.prev.title,
-      }
-    : ""
+  combinedPhotosList.map(({ node }, index) =>
+    node.id === currentId
+      ? arrIndex === null
+        ? setArrIndex(parseInt(index))
+        : arrIndex
+      : null
+  )
 
-  const next = pageContext.next
-    ? {
-        url: `/photos/${pageContext.next.slug}`,
-        title: pageContext.next.title,
-      }
-    : ""
+  console.log("arr index", arrIndex)
+  console.log("current", combinedPhotosList[arrIndex])
 
   return (
     <SimpleReactLightbox>
       <Layout>
-        {console.log("page context", { pageContext })}
-        {console.log(data)}
+        {console.log("page context", pageContext)}
+        {console.log("data", data)}
+
         {/* <OnImagesLoaded
           onLoaded={this.runAfterImagesLoaded}
           onTimeout={this.runTimeoutFunction}
@@ -134,13 +143,27 @@ const PhotoGallery = props => {
         </SRLWrapper>
         {/* </OnImagesLoaded> */}
 
-        <PhotoNav
-          backTitle={prev.title}
-          backPath={prev.url}
-          forwardTitle={next.title}
-          forwardPath={next.url}
-          homePath={"/photos"}
-        />
+        {photos.photo_group === null ? (
+          <PhotoNav
+            backPath={arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null}
+            backTitle={arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null}
+            forwardTitle={
+              arrIndex >= combinedPhotosList.length
+                ? null
+                : combinedPhotosList[arrIndex + 1]
+            }
+            forwardPath={
+              arrIndex >= combinedPhotosList.length
+                ? null
+                : combinedPhotosList[arrIndex + 1]
+            }
+            homePath={"/photos"}
+          />
+        ) : (
+          <div>
+            <p> Other photos in this album </p>
+          </div>
+        )}
       </Layout>
     </SimpleReactLightbox>
   )

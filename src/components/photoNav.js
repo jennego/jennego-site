@@ -18,8 +18,15 @@ const photoNav = ({
   return (
     <div className="d-flex  justify-content-around  align-items-center mt-4">
       {backPath ? (
-        <AniLink paintDrip color="rebeccapurple" to={backPath}>
-          <FontAwesomeIcon icon={faAngleLeft} size="5x" />
+        <AniLink
+          paintDrip
+          color="rebeccapurple"
+          to={`/photos/${backPath.node.slug}`}
+        >
+          <div className="d-flex align-items-center">
+            <FontAwesomeIcon icon={faAngleLeft} size="5x" />
+            <p className="mb-0">{backTitle.node.title}</p>
+          </div>
         </AniLink>
       ) : (
         <div> </div>
@@ -30,8 +37,15 @@ const photoNav = ({
       </AniLink>
 
       {forwardPath ? (
-        <AniLink paintDrip color="rebeccapurple" to={forwardPath}>
-          <FontAwesomeIcon icon={faAngleRight} size="5x" />
+        <AniLink
+          paintDrip
+          color="rebeccapurple"
+          to={`/photos/${forwardPath.node.slug}`}
+        >
+          <div className="d-flex align-items-center">
+            <p className="mb-0">{forwardTitle.node.title}</p>
+            <FontAwesomeIcon icon={faAngleRight} size="5x" />
+          </div>
         </AniLink>
       ) : (
         <div> </div>

@@ -86,9 +86,11 @@ async function createPhotoPages(graphql, actions) {
   const photoGalleryEdges =
     (result.data.allContentfulPhotoGallery || {}).edges || []
 
-  photoGalleryEdges.forEach((edge, index) => {
+  photoGalleryEdges.forEach((edge, node) => {
     const { id, slug, title } = edge.node
     const path = `/photos/${slug}/`
+
+    // DOES THE NEXT/PREV AND ITS INDEX NEED TO BE IN A SEPARATE FUNCTION?
 
     createPage({
       path,
@@ -96,11 +98,12 @@ async function createPhotoPages(graphql, actions) {
       context: {
         id,
         title,
-        prev: index === 0 ? null : combinedPhotosList[index - 1].node,
-        next:
-          index === combinedPhotosList.length - 1
-            ? null
-            : combinedPhotosList[index + 1].node,
+        combinedPhotosList,
+        // next:
+        //   index === combinedPhotosList.length - 1
+        //     ? null
+        //     : combinedPhotosList[index + 1].node,
+        // prev: index === 0 ? null : combinedPhotosList[index - 1].node,
       },
     })
   })
@@ -173,7 +176,7 @@ async function createPhotoGroupPages(graphql, actions) {
       a.node.date - b.node.date
     })
 
-  photoEdges.forEach((edge, index) => {
+  photoEdges.forEach((edge, { node }, index) => {
     const { id, slug, title } = edge.node
     const path = `/photos/${slug}/`
 
@@ -183,11 +186,11 @@ async function createPhotoGroupPages(graphql, actions) {
       context: {
         id,
         title,
-        prev: index === 0 ? null : combinedPhotosList[index - 1].node,
-        next:
-          index === combinedPhotosList.length - 1
-            ? null
-            : combinedPhotosList[index + 1].node,
+        // prev: index === 0 ? null : combinedPhotosList[index - 1].node,
+        // next:
+        //   index === combinedPhotosList.length - 1
+        //     ? null
+        //     : combinedPhotosList[index + 1].node,
       },
     })
   })
