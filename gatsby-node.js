@@ -86,6 +86,8 @@ async function createPhotoPages(graphql, actions) {
   const photoGalleryEdges =
     (result.data.allContentfulPhotoGallery || {}).edges || []
 
+  const photoGroups = result.data.allContentfulPhotoGroup.edges
+
   photoGalleryEdges.forEach((edge, node) => {
     const { id, slug, title } = edge.node
     const path = `/photos/${slug}/`
@@ -99,11 +101,7 @@ async function createPhotoPages(graphql, actions) {
         id,
         title,
         combinedPhotosList,
-        // next:
-        //   index === combinedPhotosList.length - 1
-        //     ? null
-        //     : combinedPhotosList[index + 1].node,
-        // prev: index === 0 ? null : combinedPhotosList[index - 1].node,
+        photoGroups,
       },
     })
   })
@@ -120,9 +118,6 @@ async function createPhotoGroupPages(graphql, actions) {
             title
             slug
             updatedAt
-            photo_group {
-              id
-            }
             albumPhoto {
               sizes {
                 src
@@ -186,6 +181,7 @@ async function createPhotoGroupPages(graphql, actions) {
       context: {
         id,
         title,
+        combinedPhotosList,
         // prev: index === 0 ? null : combinedPhotosList[index - 1].node,
         // next:
         //   index === combinedPhotosList.length - 1

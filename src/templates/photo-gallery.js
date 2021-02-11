@@ -61,6 +61,7 @@ const PhotoGallery = props => {
   const { data, errors, pageContext } = props
   const photos = data.contentfulPhotoGallery
   const [arrIndex, setArrIndex] = useState(null)
+  const [groupIndex, setGroupIndex] = useState(null)
 
   // useEffect(() => {
   // }, [])
@@ -85,8 +86,25 @@ const PhotoGallery = props => {
       : null
   )
 
+  const photoGroupList = pageContext.photoGroups
+  const currentGroupId = photos.photo_group ? photos.photo_group[0].id : null
+
+  if (currentGroupId !== null) {
+    photoGroupList.map(({ node }, index) =>
+      node.id === currentGroupId
+        ? groupIndex === null
+          ? setGroupIndex(parseInt(index))
+          : groupIndex
+        : null
+    )
+  }
+
+  // pass whole grouplist node to nav as it's not loading it time
+  // use nav component to find current gallery, prev and next
+
   console.log("arr index", arrIndex)
-  console.log("current", combinedPhotosList[arrIndex])
+  // console.log("current", combinedPhotosList[arrIndex])
+  console.log("group index", groupIndex)
 
   return (
     <SimpleReactLightbox>
@@ -160,8 +178,27 @@ const PhotoGallery = props => {
             homePath={"/photos"}
           />
         ) : (
-          <div>
-            <p> Other photos in this album </p>
+          <div className="group-photos">
+            <PhotoNav
+              // backPath={photoGroupList[groupIndex].photoGalleries[arrIndex]}
+              // backPath={
+              //   arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null
+              // }
+              // backTitle={
+              //   arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null
+              // }
+              // forwardTitle={
+              //   arrIndex >= combinedPhotosList.length
+              //     ? null
+              //     : combinedPhotosList[arrIndex + 1]
+              // }
+              // forwardPath={
+              //   arrIndex >= combinedPhotosList.length
+              //     ? null
+              //     : combinedPhotosList[arrIndex + 1]
+              // }
+              homePath={`/photos`}
+            />
           </div>
         )}
       </Layout>

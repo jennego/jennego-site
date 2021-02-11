@@ -8,6 +8,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
+// lower to 3 props for paths
+// pass in photogroup as a prop (may need to duplicate this component)
+
 const photoNav = ({
   backPath,
   backTitle,
@@ -15,6 +18,16 @@ const photoNav = ({
   forwardTitle,
   homePath,
 }) => {
+  // if (groupIndex !== null) {
+  //   photoGroupList.photoGalleries[1].map(({ node }, index) =>
+  //     node.id === currentId
+  //       ? arrIndex === null
+  //         ? setArrIndex(parseInt(index))
+  //         : arrIndex
+  //       : null
+  //   )
+  // }
+
   return (
     <div className="d-flex  justify-content-around  align-items-center mt-4">
       {backPath ? (
