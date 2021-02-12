@@ -35,7 +35,7 @@ const AlbumPhotoNav = ({ groupList, currentGalleryId }) => {
   // console.log("next", forwardPath)
 
   return (
-    <div className="d-flex  justify-content-around  align-items-center mt-4">
+    <div className="d-flex mx-auto  justify-content-around  align-items-center mt-4">
       {galleryIndex && galleryIndex !== 0 ? (
         <AniLink
           paintDrip
@@ -54,20 +54,19 @@ const AlbumPhotoNav = ({ groupList, currentGalleryId }) => {
         <FontAwesomeIcon icon={faHome} size="3x" />
       </AniLink>
       {/*    !galleryIndex >= groupList.node.photoGalleries.length */}
-      {galleryIndex ? (
-        console.log("forward", forwardPath)
+      {galleryIndex !== null && forwardPath !== undefined ? (
+        <AniLink
+          paintDrip
+          color="rebeccapurple"
+          to={`/photos/${forwardPath.slug}`}
+        >
+          <div className="d-flex align-items-center">
+            <p className="mb-0"> {forwardPath.title} </p>
+            <FontAwesomeIcon icon={faAngleRight} size="5x" />
+          </div>
+        </AniLink>
       ) : (
-        //   <AniLink
-        //     paintDrip
-        //     color="rebeccapurple"
-        //     to={`/photos/${forwardPath.slug}`}
-        //   >
-        //     <div className="d-flex align-items-center">
-        //       <FontAwesomeIcon icon={faAngleRight} size="5x" />
-        //       <p className="mb-0"> {forwardPath.title} </p>
-        //     </div>
-        //   </AniLink>
-        <div> </div>
+        <div> nothing </div>
       )}
     </div>
   )
