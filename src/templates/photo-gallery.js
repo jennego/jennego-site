@@ -7,6 +7,8 @@ import { SRLWrapper } from "simple-react-lightbox"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import PhotoNav from "../components/photoNav"
+import AlbumPhotoNav from "../components/subGalleryNav"
+
 import OnImagesLoaded from "react-on-images-loaded"
 
 // needs to rewrite to use state to determine if images are loaded
@@ -99,7 +101,7 @@ const PhotoGallery = props => {
     )
   }
 
-  // pass whole grouplist node to nav as it's not loading it time
+  // pass whole grouplist node to nav as it's
   // use nav component to find current gallery, prev and next
 
   console.log("arr index", arrIndex)
@@ -179,26 +181,10 @@ const PhotoGallery = props => {
           />
         ) : (
           <div className="group-photos">
-            <PhotoNav
-              // backPath={photoGroupList[groupIndex].photoGalleries[arrIndex]}
-              // backPath={
-              //   arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null
-              // }
-              // backTitle={
-              //   arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null
-              // }
-              // forwardTitle={
-              //   arrIndex >= combinedPhotosList.length
-              //     ? null
-              //     : combinedPhotosList[arrIndex + 1]
-              // }
-              // forwardPath={
-              //   arrIndex >= combinedPhotosList.length
-              //     ? null
-              //     : combinedPhotosList[arrIndex + 1]
-              // }
-              homePath={`/photos`}
-            />
+            <AlbumPhotoNav
+              groupList={photoGroupList[groupIndex]}
+              currentGalleryId={currentId}
+            ></AlbumPhotoNav>
           </div>
         )}
       </Layout>

@@ -44,6 +44,7 @@ async function createPhotoPages(graphql, actions) {
             photoGalleries {
               id
               title
+              slug
               albumPhoto {
                 sizes {
                   src
@@ -142,6 +143,7 @@ async function createPhotoGroupPages(graphql, actions) {
             photoGalleries {
               id
               title
+              slug
               albumPhoto {
                 sizes {
                   src
