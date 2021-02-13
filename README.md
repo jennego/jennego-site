@@ -10,7 +10,7 @@ Need to redo dev portfolio after this
 
 to do
 
-- add next/previous to albums within photo group
+- add next/previous to albums within photo group ✅
 - be more consistent with colours / tidy sass
 - add more content to cms - rest of photos - more videos
 - finish photo gallery pages - add more pages ✅

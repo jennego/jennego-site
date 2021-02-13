@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
@@ -30,6 +30,18 @@ export const query = graphql`
 
 const PhotoList = props => {
   const { data, errors, pageContext } = props
+  const [arrIndex, setArrIndex] = useState(null)
+
+  const combinedPhotosList = pageContext.combinedPhotosList
+  const currentId = pageContext.id
+
+  combinedPhotosList.map(({ node }, index) =>
+    node.id === currentId
+      ? arrIndex === null
+        ? setArrIndex(parseInt(index))
+        : arrIndex
+      : null
+  )
 
   return (
     <Layout>
@@ -68,7 +80,21 @@ const PhotoList = props => {
           ))}
         </div>
         {/* </OnImagesLoaded> */}
-        <PhotoNav></PhotoNav>
+        <PhotoNav
+          backPath={arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null}
+          backTitle={arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null}
+          forwardTitle={
+            arrIndex >= combinedPhotosList.length
+              ? null
+              : combinedPhotosList[arrIndex + 1]
+          }
+          forwardPath={
+            arrIndex >= combinedPhotosList.length
+              ? null
+              : combinedPhotosList[arrIndex + 1]
+          }
+          homePath={"/photos"}
+        />
       </div>
     </Layout>
   )
