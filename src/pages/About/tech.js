@@ -42,8 +42,8 @@ const AboutTechPage = () => {
           I am using a 2015 15" MacBook Pro, a old 20" Samsung monitor that I
           apparently only sometimes plug in, a Logitech g502 Hero because I am
           too cheap for an MX Master and I cannot be trusted with receivers. I
-          use a desk mat, it was an upgrade for the cardboard I was previously
-          using.
+          have recently got a Keychron K3 (brown switches). I use a desk mat, it
+          was an upgrade for the cardboard I was previously using.
         </p>
         <p>
           I grew up with mostly Windows but switched to MacOS for ease of using
