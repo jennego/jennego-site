@@ -19,6 +19,7 @@ export const query = graphql`
       id
       title
       photo_group {
+        slug
         id
         title
       }
@@ -90,6 +91,9 @@ const PhotoGallery = props => {
 
   const photoGroupList = pageContext.photoGroups
   const currentGroupId = photos.photo_group ? photos.photo_group[0].id : null
+  const currentGroupSlug = photos.photo_group
+    ? photos.photo_group[0].slug
+    : null
 
   if (currentGroupId !== null) {
     photoGroupList.map(({ node }, index) =>
@@ -184,6 +188,7 @@ const PhotoGallery = props => {
             <AlbumPhotoNav
               groupList={photoGroupList[groupIndex]}
               currentGalleryId={currentId}
+              groupSlug={currentGroupSlug}
             ></AlbumPhotoNav>
           </div>
         )}

@@ -18,16 +18,6 @@ const photoNav = ({
   forwardTitle,
   homePath,
 }) => {
-  // if (groupIndex !== null) {
-  //   photoGroupList.photoGalleries[1].map(({ node }, index) =>
-  //     node.id === currentId
-  //       ? arrIndex === null
-  //         ? setArrIndex(parseInt(index))
-  //         : arrIndex
-  //       : null
-  //   )
-  // }
-
   return (
     <div className="d-flex  justify-content-around  align-items-center mt-4">
       {backPath ? (
@@ -36,18 +26,19 @@ const photoNav = ({
           color="rebeccapurple"
           to={`/photos/${backPath.node.slug}`}
         >
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center  photo-nav-item justify-content-start">
             <FontAwesomeIcon icon={faAngleLeft} size="5x" />
-            <p className="mb-0">{backTitle.node.title}</p>
+            <p className="mb-0 d-none d-sm-block">{backTitle.node.title}</p>
           </div>
         </AniLink>
       ) : (
-        <div> </div>
+        <div className="photo-nav-item"> </div>
       )}
-
-      <AniLink paintDrip color="rebeccapurple" to={homePath}>
-        <FontAwesomeIcon icon={faHome} size="3x" />
-      </AniLink>
+      <div className="photo-nav-item d-flex justify-content-center">
+        <AniLink paintDrip color="rebeccapurple" to={homePath}>
+          <FontAwesomeIcon icon={faHome} size="3x" />
+        </AniLink>
+      </div>
 
       {forwardPath ? (
         <AniLink
@@ -55,13 +46,13 @@ const photoNav = ({
           color="rebeccapurple"
           to={`/photos/${forwardPath.node.slug}`}
         >
-          <div className="d-flex align-items-center">
-            <p className="mb-0">{forwardTitle.node.title}</p>
+          <div className="d-flex align-items-center photo-nav-item justify-content-end">
+            <p className="mb-0 d-none d-sm-block">{forwardTitle.node.title}</p>
             <FontAwesomeIcon icon={faAngleRight} size="5x" />
           </div>
         </AniLink>
       ) : (
-        <div> </div>
+        <div className="photo-nav-item"> </div>
       )}
     </div>
   )
