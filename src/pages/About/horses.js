@@ -19,3 +19,5 @@ const AboutHorses = props => (
     </div>
   </Layout>
 )
+
+export default AboutHorses
