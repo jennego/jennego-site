@@ -9,25 +9,26 @@ import {
 
 const SocialMedia = props => {
   return (
-    <div>
-      <h3 className="display-4">Creep Me Around The Web</h3>
-      <p>Not that I am that interesting enough...</p>
-      <div className="social-media">
-        <a href="https://www.facebook.com/jennego" target="_open">
-          <FontAwesomeIcon icon={faFacebookF} size="5x" className="mr-2" />
-        </a>
-        <a href="https://www.instagram.com/thejennego" target="_open">
-          <FontAwesomeIcon icon={faInstagram} size="5x" className="mr-2" />
-        </a>
-        <a href="https://github.com/jennego" target="_open">
-          <FontAwesomeIcon icon={faGithubAlt} size="5x" className="mr-2" />
-        </a>
-        <a href="https://linkedin.com/in/jennego" target="_open">
-          <FontAwesomeIcon icon={faLinkedinIn} size="5x" className="mr-2" />
-        </a>
+    <>
+      <h3 className="display-5 social-title">Around the Web</h3>
+      <div className="social-media-container d-flex justify-content-center">
+        <div className="social-media">
+          <a href="https://www.facebook.com/jennego" target="_open">
+            <FontAwesomeIcon icon={faFacebookF} size="5x" className="mr-2" />
+          </a>
+          <a href="https://www.instagram.com/thejennego" target="_open">
+            <FontAwesomeIcon icon={faInstagram} size="5x" className="mr-2" />
+          </a>
+          <a href="https://github.com/jennego" target="_open">
+            <FontAwesomeIcon icon={faGithubAlt} size="5x" className="mr-2" />
+          </a>
+          <a href="https://linkedin.com/in/jennego" target="_open">
+            <FontAwesomeIcon icon={faLinkedinIn} size="5x" className="mr-2" />
+          </a>
+        </div>
       </div>
 
-      <div>
+      <div className="container">
         <p>You can also sometimes find me on these games</p>
         <ul>
           <li> Star Stable Online (Cupcake Valley, Mira Purplewater) </li>
@@ -36,7 +37,7 @@ const SocialMedia = props => {
           <li> NeonMob (Jennego)</li>
         </ul>
       </div>
-    </div>
+    </>
   )
 }
 

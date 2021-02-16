@@ -21,8 +21,8 @@ const AboutPage = () => {
       <div className="container-fluid">
         <h1 className="display-2">{data.contentfulAboutPage.title}</h1>
         {documentToReactComponents(data.contentfulAboutPage.body.json)}
-        <SocialMedia></SocialMedia>
       </div>
+      <SocialMedia></SocialMedia>
     </Layout>
   )
 }

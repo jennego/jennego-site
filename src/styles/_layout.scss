@@ -1,6 +1,32 @@
 $handwriting: "Just Me Again Down Here", cursive;
 $slab: "Zilla Slab", serif;
 
+.short-content {
+  .container-fluid {
+    min-height: 100vh;
+  }
+}
+
+.social-media-container {
+  background-color: $darkpurple;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  .social-media {
+    display: block;
+    svg {
+      margin: 0 1rem;
+    }
+    a:hover {
+      color: $hover-color;
+    }
+  }
+}
+.social-title {
+  top: 20px;
+  position: relative;
+  left: 1rem;
+}
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -17,10 +43,6 @@ footer {
   text-align: center;
 }
 
-.container-fluid {
-  min-height: 100vh;
-}
-
 /* Typography */
 @import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,600;1,600&display=swap");
@@ -33,6 +55,12 @@ footer {
   font-family: "Just Me Again Down Here", cursive;
   font-weight: normal;
   margin-bottom: 1.5rem;
+}
+
+.display-5 {
+  font-family: "Just Me Again Down Here", cursive;
+  font-size: 3rem;
+  margin: 0;
 }
 
 h1,
