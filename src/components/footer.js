@@ -15,7 +15,7 @@ const Footer = () => (
           <p className="display-4"> Jennego </p>
         </div>
         <div className="col">
-          <ul class="footer-menu">
+          <ul className="footer-menu">
             <li>
               {" "}
               <AniLink paintDrip color="rebeccapurple" to="/">

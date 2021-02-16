@@ -1,0 +1,139 @@
+.blog-title-container {
+  align-self: center;
+  position: absolute;
+  left: 1rem;
+  right: 2rem;
+  max-width: 55%;
+}
+
+a.blog-title-link {
+  color: white;
+}
+
+.blog-title:hover {
+  color: darkslateblue;
+  background-color: rgba(212, 235, 244, 1);
+}
+
+.blog-title {
+  background-color: rgb(45, 139, 247);
+  line-height: 1.5em;
+  font-size: 2rem;
+}
+
+.blog-single-title {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.blog-post {
+  border: dashed 1px #3d3d3d;
+  margin-bottom: 1rem;
+}
+
+.blog-post:hover {
+  background-color: #2c134b;
+  margin-left: 0;
+}
+
+.blog-date a {
+  color: white;
+}
+
+.blog-date {
+  position: absolute;
+  padding: 2px 5px;
+}
+
+.blog-featured-img {
+  width: 25rem;
+  height: 16rem;
+  // max-height
+}
+
+.blog-single-featured {
+  height: 500px;
+}
+
+.img-placeholder {
+  width: 25rem;
+  height: 15rem;
+  background-color: darkviolet;
+}
+
+.blog-tags {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+}
+
+.read-more {
+  margin-left: 1rem;
+  margin-top: 10px;
+}
+
+.blog-header {
+  height: 500px;
+}
+
+.blog-featured-img {
+  object-fit: cover;
+}
+
+.header-overlay {
+  height: 400px; // same as blog header
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.meta-overlay {
+  height: 500px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.blog-nav-card {
+  width: 40rem;
+  height: 100px;
+  border: 0;
+  background: rgb(189, 70, 252);
+  background: radial-gradient(
+    circle,
+    rgba(189, 70, 252, 1) 0%,
+    rgba(79, 30, 214, 1) 100%
+  );
+}
+
+.blog-nav-placeholder {
+  background: $background;
+}
+
+.blog-nav-title {
+  background-color: black;
+  color: white;
+}
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+  .blog-title-container {
+    left: 8rem;
+    max-width: 55%;
+  }
+}
+
+// small
+@media (max-width: 767.98px) {
+  .blog-title-container {
+    left: 5rem;
+    max-width: 55%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .blog-title-container {
+    left: 15rem;
+    max-width: 55%;
+  }
+}

@@ -1,18 +1,22 @@
 footer {
   padding: 1.5rem;
-  background-color: rgb(37, 6, 53);
-}
+  background-color: $darkpurple;
 
-.footer {
-  justify-content: center;
-}
+  ul {
+    list-style-type: none;
+  }
 
-.footer-menu {
-  text-align: left;
-  font-size: 0.95rem;
-  flex-direction: column;
-}
+  .footer {
+    justify-content: center;
+  }
 
-.footer a {
-  color: lightblue;
+  .footer-menu {
+    text-align: left;
+    font-size: 0.95rem;
+    flex-direction: column;
+  }
+
+  .footer a {
+    color: lightblue;
+  }
 }

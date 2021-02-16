@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import PhotoNav from "../components/photoNav"
+import OnImagesLoaded from "react-on-images-loaded"
 
 export const query = graphql`
   query photoGroupQuery($id: String!) {
@@ -29,11 +30,30 @@ export const query = graphql`
 
 const PhotoList = props => {
   const { data, errors, pageContext } = props
+  const [arrIndex, setArrIndex] = useState(null)
+
+  const combinedPhotosList = pageContext.combinedPhotosList
+  const currentId = pageContext.id
+
+  combinedPhotosList.map(({ node }, index) =>
+    node.id === currentId
+      ? arrIndex === null
+        ? setArrIndex(parseInt(index))
+        : arrIndex
+      : null
+  )
 
   return (
     <Layout>
       <div className="container-fluid">
         <h1> {data.contentfulPhotoGroup.title} </h1>
+        {console.log(pageContext)}
+
+        {/* <OnImagesLoaded
+          onLoaded={this.runAfterImagesLoaded}
+          onTimeout={this.runTimeoutFunction}
+          timeout={7000}
+        > */}
         <div className="row">
           {console.log(data)}
           {data.contentfulPhotoGroup.photoGalleries.map(node => (
@@ -49,8 +69,8 @@ const PhotoList = props => {
                     src={node.albumPhoto.fluid.src}
                     alt="Card image"
                   />
-                  <div class="card-img-overlay overlay-gradient">
-                    <h5 class="card-title text-white photo-list-title">
+                  <div className="card-img-overlay overlay-gradient">
+                    <h5 className="card-title text-white photo-list-title">
                       {node.title}
                     </h5>
                   </div>
@@ -59,7 +79,22 @@ const PhotoList = props => {
             </div>
           ))}
         </div>
-        {/* <PhotoNav></PhotoNav> */}
+        {/* </OnImagesLoaded> */}
+        <PhotoNav
+          backPath={arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null}
+          backTitle={arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null}
+          forwardTitle={
+            arrIndex >= combinedPhotosList.length
+              ? null
+              : combinedPhotosList[arrIndex + 1]
+          }
+          forwardPath={
+            arrIndex >= combinedPhotosList.length
+              ? null
+              : combinedPhotosList[arrIndex + 1]
+          }
+          homePath={"/photos"}
+        />
       </div>
     </Layout>
   )

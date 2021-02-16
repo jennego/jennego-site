@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import { useStaticQuery } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import SocialMedia from "../components/socialmedia"
 
 const AboutPage = () => {
   const data = useStaticQuery(graphql`
@@ -21,6 +22,7 @@ const AboutPage = () => {
         <h1 className="display-2">{data.contentfulAboutPage.title}</h1>
         {documentToReactComponents(data.contentfulAboutPage.body.json)}
       </div>
+      <SocialMedia></SocialMedia>
     </Layout>
   )
 }
