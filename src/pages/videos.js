@@ -40,7 +40,7 @@ const VideoPage = props => {
       <div className="container-fluid">
         <h1 className="display-2">Videos</h1>
         {/* {console.log(data)} */}
-        <div className="row no-gutters">
+        <div className="row no-gutters mb-3">
           {data.allContentfulVideo.edges.map(({ node }, number) => (
             <>
               <div className="col-4">
