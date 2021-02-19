@@ -66,11 +66,6 @@ const PhotoGallery = props => {
   const [arrIndex, setArrIndex] = useState(null)
   const [groupIndex, setGroupIndex] = useState(null)
 
-  // useEffect(() => {
-  // }, [])
-
-  // combinedPhotosList.map(({ node }, index) => console.log(node, index))
-
   const lightbox = {
     buttons: { showDownloadButton: false },
     thumbnails: {
@@ -105,24 +100,12 @@ const PhotoGallery = props => {
     )
   }
 
-  // pass whole grouplist node to nav as it's
-  // use nav component to find current gallery, prev and next
-
-  console.log("arr index", arrIndex)
-  // console.log("current", combinedPhotosList[arrIndex])
-  console.log("group index", groupIndex)
-
   return (
     <SimpleReactLightbox>
       <Layout>
         {console.log("page context", pageContext)}
         {console.log("data", data)}
 
-        {/* <OnImagesLoaded
-          onLoaded={this.runAfterImagesLoaded}
-          onTimeout={this.runTimeoutFunction}
-          timeout={7000}
-        > */}
         <SRLWrapper options={lightbox}>
           <div className="photo-layout">
             <ul className="top-row photo-row">
@@ -165,7 +148,6 @@ const PhotoGallery = props => {
             </ul>
           </div>
         </SRLWrapper>
-        {/* </OnImagesLoaded> */}
 
         {photos.photo_group === null ? (
           <PhotoNav
