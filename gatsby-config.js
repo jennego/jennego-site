@@ -4,9 +4,9 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Jennego`,
+    description: `Hobby photography portfolio site. Sourcing from ContentfulCMS and Wordpress.com. Made from default starter.`,
+    author: `@jennego`,
   },
   plugins: [
     `gatsby-plugin-transition-link`,
