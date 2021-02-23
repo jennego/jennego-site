@@ -22,7 +22,8 @@ const photoNav = ({
     <div className="d-flex  justify-content-around  align-items-center mt-4">
       {backPath ? (
         <AniLink
-          paintDrip
+          cover
+          direction="right"
           color="rebeccapurple"
           to={`/photos/${backPath.node.slug}`}
         >
@@ -42,7 +43,8 @@ const photoNav = ({
 
       {forwardPath ? (
         <AniLink
-          paintDrip
+          cover
+          direction="left"
           color="rebeccapurple"
           to={`/photos/${forwardPath.node.slug}`}
         >

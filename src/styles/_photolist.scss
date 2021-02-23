@@ -12,9 +12,13 @@
 }
 
 .album {
-  border: 0px;
+  border: 0;
   max-height: 300px;
   margin-bottom: 1.5rem;
+}
+
+.album:hover {
+  border: 0;
 }
 
 .photo-list-title {

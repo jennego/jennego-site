@@ -38,7 +38,8 @@ const AlbumPhotoNav = ({ groupList, currentGalleryId, groupSlug }) => {
     <div className="mt-4 d-flex align-items-center justify-content-around">
       {galleryIndex && galleryIndex !== 0 ? (
         <AniLink
-          paintDrip
+          cover
+          direction="right"
           color="rebeccapurple"
           to={`/photos/${backPath.slug}`}
         >
@@ -58,7 +59,8 @@ const AlbumPhotoNav = ({ groupList, currentGalleryId, groupSlug }) => {
       {/*    !galleryIndex >= groupList.node.photoGalleries.length */}
       {galleryIndex !== null && forwardPath !== undefined ? (
         <AniLink
-          paintDrip
+          cover
+          direction="left"
           color="rebeccapurple"
           to={`/photos/${forwardPath.slug}`}
         >
