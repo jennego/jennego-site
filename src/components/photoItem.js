@@ -20,7 +20,7 @@ const PhotoItem = props => {
           {console.log(CurrentIndex)}
           <LazyLoadImage
             className="photo-img"
-            effect="blur"
+            effect="opacity"
             src={props.imageSrc} // use normal <img> attributes as props
           />
           <div className="overlay"></div>
