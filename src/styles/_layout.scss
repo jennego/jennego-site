@@ -7,24 +7,27 @@ $slab: "Zilla Slab", serif;
   }
 }
 
-.social-media-container {
-  background-color: $darkpurple;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  .social-media {
-    display: block;
-    svg {
-      margin: 0 1rem;
-    }
-    a:hover {
-      color: $hover-color;
+.social-media-block {
+  clear: both;
+  .social-media-container {
+    background-color: $darkpurple;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    .social-media {
+      display: block;
+      svg {
+        margin: 0 1rem;
+      }
+      a:hover {
+        color: $hover-color;
+      }
     }
   }
-}
-.social-title {
-  top: 20px;
-  position: relative;
-  left: 1rem;
+  .social-title {
+    top: 20px;
+    position: relative;
+    left: 1rem;
+  }
 }
 
 html {
@@ -75,3 +78,32 @@ p {
   font-family: "Oxygen", sans-serif;
   font-size: 1.1rem;
 }
+
+.image-float-right {
+  width: 300px;
+  clear: both;
+  float: right;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .image-float-right {
+    width: 40%;
+    clear: both;
+  }
+}
+
+@media (max-width: 576px) {
+  .image-float-right {
+    width: 100%;
+    clear: both;
+    margin-left: 0;
+  }
+}
+
+// .image-float-left {
+//   width: 300px;
+//   clear: both;
+//   float: left;
+// }

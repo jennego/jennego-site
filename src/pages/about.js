@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import { useStaticQuery } from "gatsby"
+import Img from "gatsby-image"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import SocialMedia from "../components/socialmedia"
 
@@ -10,6 +11,16 @@ const AboutPage = () => {
       contentfulAboutPage {
         id
         title
+        singleImage {
+          fluid(maxWidth: 700) {
+            ...GatsbyContentfulFluid
+          }
+        }
+        singleImage2 {
+          fluid(maxWidth: 700) {
+            ...GatsbyContentfulFluid
+          }
+        }
         body {
           json
         }
@@ -20,6 +31,12 @@ const AboutPage = () => {
     <Layout>
       <div className="container-fluid">
         <h1 className="display-2">{data.contentfulAboutPage.title}</h1>
+        <div className="image-float-right">
+          <Img fluid={data.contentfulAboutPage.singleImage.fluid}></Img>
+        </div>
+        <div className="image-float-right">
+          <Img fluid={data.contentfulAboutPage.singleImage2.fluid}></Img>
+        </div>
         {documentToReactComponents(data.contentfulAboutPage.body.json)}
       </div>
       <SocialMedia></SocialMedia>
