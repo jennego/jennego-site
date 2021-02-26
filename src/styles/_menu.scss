@@ -105,6 +105,10 @@ a.bm-item:focus,
   border-radius: 10px;
 }
 
+.active-menu-link {
+  text-decoration: underline;
+}
+
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(255, 255, 255, 0.3);
