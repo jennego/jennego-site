@@ -96,7 +96,8 @@ a.bm-item:focus {
 }
 
 a.bm-item:hover,
-a.bm-item:focus {
+a.bm-item:focus,
+.active-menu-link {
   text-decoration: none;
   background-color: $hover-color;
   padding: 0px 4px;
