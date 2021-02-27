@@ -81,32 +81,36 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* Individual item */
 .bm-item {
-  display: block;
+  display: inline-block;
 }
 
 a.bm-item {
   color: $menu-link-color;
   padding: 0px 4px;
-  display: block;
+  display: inline-block;
 }
+
+// a.bm-item:hover,
+// a.bm-item:focus {
+//   display: block;
+// }
 
 a.bm-item:hover,
 a.bm-item:focus {
-  display: block;
-}
-
-a.bm-item:hover,
-a.bm-item:focus,
-.active-menu-link {
   text-decoration: none;
   background-color: $hover-color;
   padding: 0px 4px;
   transition: 0.5s;
   border-radius: 10px;
+  display: inline-block;
 }
 
 .active-menu-link {
-  text-decoration: underline;
+  padding: 0px 4px;
+  transition: 0.5s;
+  border-radius: 10px;
+  border: 2px solid;
+  display: inline-block;
 }
 
 /* Styling of overlay */
