@@ -43,10 +43,13 @@ const VideoPage = props => {
         <div className="row no-gutters mb-3">
           {data.allContentfulVideo.edges.map(({ node }, number) => (
             <>
-              <div className="col-4">
+              <div className="col-xl-4 col-lg-6 col-xs-12 ">
                 <a href="#" onClick={() => toggle(number)}>
                   <div className="card video-thumb bg-dark border-0">
-                    <img className="card-img" src={node.thumbUrl} />
+                    <img
+                      className="card-img video-thumb-img"
+                      src={node.thumbUrl}
+                    />
                     <div className="d-flex card-img-overlay thumb-overlay justify-content-center align-items-center">
                       <FontAwesomeIcon
                         icon={faPlayCircle}
