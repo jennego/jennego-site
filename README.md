@@ -15,10 +15,11 @@ to do
 - add "current page/section" to page nav
 <!-- https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-link/
 https://reach.tech/router/api/Link -->
-- add accordion to menu - ? do I still need this
+- add accordion to menu - ? do I still need this / how to use with path matching
 - make video modal accessible / autoplay? / add description
 - add modal for more in textblock (photo pages) - later?
 - about pages subpages ?
+- Animation
 
 Uses
 

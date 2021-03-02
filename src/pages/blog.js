@@ -44,9 +44,9 @@ const BlogIndex = () => {
             ) : (
               <div className="img-placeholder"></div>
             )}
-            <div className="blog-title-container mx-auto">
-              <h3>
-                <Link className="blog-title-link" to={node.slug}>
+            <Link className="blog-title-link" to={node.slug}>
+              <div className="blog-title-container mx-auto">
+                <h3>
                   <span
                     className="blog-title"
                     dangerouslySetInnerHTML={{ __html: `${node.title}` }}
@@ -54,9 +54,9 @@ const BlogIndex = () => {
                   {/* <p className="read-more btn btn-outline-light btn-sm">
                     Read More <FontAwesomeIcon icon={faLongArrowAltRight} />
                   </p> */}
-                </Link>
-              </h3>
-            </div>
+                </h3>
+              </div>
+            </Link>
 
             <p
               className="small blog-date"
