@@ -10,11 +10,6 @@ a.blog-title-link {
   color: white;
 }
 
-.blog-title:hover {
-  color: darkslateblue;
-  background-color: rgba(212, 235, 244, 1);
-}
-
 .blog-title {
   background-color: rgb(45, 139, 247);
   line-height: 1.5em;
@@ -34,6 +29,11 @@ a.blog-title-link {
 .blog-post:hover {
   background-color: #2c134b;
   margin-left: 0;
+
+  .blog-title {
+    color: darkslateblue;
+    background-color: rgba(212, 235, 244, 1);
+  }
 }
 
 .blog-date a {

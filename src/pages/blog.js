@@ -35,16 +35,16 @@ const BlogIndex = () => {
       <div className="container">
         <h1 className="display-3">Jennego: The Oft-Forgotten Blog</h1>
         {data.allWordpressPost.edges.map(({ node }) => (
-          <div className="d-flex blog-post justify-content-between mx-auto">
-            {node.featured_media ? (
-              <img
-                src={node.featured_media.source_url}
-                className="blog-featured-img"
-              />
-            ) : (
-              <div className="img-placeholder"></div>
-            )}
-            <Link className="blog-title-link" to={node.slug}>
+          <Link className="blog-title-link" to={node.slug}>
+            <div className="d-flex blog-post justify-content-between mx-auto">
+              {node.featured_media ? (
+                <img
+                  src={node.featured_media.source_url}
+                  className="blog-featured-img"
+                />
+              ) : (
+                <div className="img-placeholder"></div>
+              )}
               <div className="blog-title-container mx-auto">
                 <h3>
                   <span
@@ -56,26 +56,26 @@ const BlogIndex = () => {
                   </p> */}
                 </h3>
               </div>
-            </Link>
 
-            <p
-              className="small blog-date"
-              dangerouslySetInnerHTML={{
-                __html: `${moment(node.date).format("MMMM Do, YYYY")}`,
-              }}
-            />
-            <div className="blog-tags">
-              {/* <Link to="/tag">
+              <p
+                className="small blog-date"
+                dangerouslySetInnerHTML={{
+                  __html: `${moment(node.date).format("MMMM Do, YYYY")}`,
+                }}
+              />
+              <div className="blog-tags">
+                {/* <Link to="/tag">
                 <p className="blog-tag-badge badge badge-primary mr-1">Tech</p>
-              </Link>
-              <Link to="/meh">
+                </Link>
+                <Link to="/meh">
                 <p className="blog-tag-badge badge badge-primary mr-1">Games</p>
-              </Link>
-              <Link to="/life">
+                </Link>
+                <Link to="/life">
                 <p className="blog-tag-badge badge badge-primary mr-1">Life</p>
               </Link> */}
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </Layout>

@@ -1,5 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
+import ResponsiveEmbed from "react-responsive-embed"
 
 const WebTemplate = props => {
   return (

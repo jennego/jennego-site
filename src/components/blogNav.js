@@ -41,7 +41,7 @@ const BlogNav = ({
         <div className="card blog-nav-card blog-nav-placeholder"> </div>
       )}
 
-      <AniLink paintDrip color="rebeccapurple" to={homePath}>
+      <AniLink paintDrip color="rebeccapurple" to="/blog">
         <FontAwesomeIcon icon={faHome} size="3x" />
       </AniLink>
 
