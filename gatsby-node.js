@@ -21,8 +21,8 @@ async function createPhotoPages(graphql, actions) {
               id
             }
             albumPhoto {
-              sizes {
-                src
+              file {
+                url
               }
             }
           }
@@ -37,8 +37,8 @@ async function createPhotoPages(graphql, actions) {
             updatedAt
             groupCoverPhoto {
               id
-              sizes {
-                src
+              file {
+                url
               }
             }
             photoGalleries {
@@ -46,8 +46,8 @@ async function createPhotoPages(graphql, actions) {
               title
               slug
               albumPhoto {
-                sizes {
-                  src
+                file {
+                  url
                 }
               }
             }
@@ -120,8 +120,8 @@ async function createPhotoGroupPages(graphql, actions) {
             slug
             updatedAt
             albumPhoto {
-              sizes {
-                src
+              file {
+                url
               }
             }
           }
@@ -136,8 +136,8 @@ async function createPhotoGroupPages(graphql, actions) {
             updatedAt
             groupCoverPhoto {
               id
-              sizes {
-                src
+              file {
+                url
               }
             }
             photoGalleries {
@@ -145,8 +145,8 @@ async function createPhotoGroupPages(graphql, actions) {
               title
               slug
               albumPhoto {
-                sizes {
-                  src
+                file {
+                  url
                 }
               }
             }

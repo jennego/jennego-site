@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
-import { useStaticQuery } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import SocialMedia from "../components/socialmedia"
@@ -22,7 +22,7 @@ const AboutPage = () => {
           }
         }
         body {
-          json
+          raw
         }
       }
     }
@@ -37,7 +37,9 @@ const AboutPage = () => {
         <div className="image-float-right">
           <Img fluid={data.contentfulAboutPage.singleImage2.fluid}></Img>
         </div>
-        {documentToReactComponents(data.contentfulAboutPage.body.json)}
+        {documentToReactComponents(
+          JSON.parse(data.contentfulAboutPage.body.raw)
+        )}
       </div>
       <SocialMedia></SocialMedia>
     </Layout>

@@ -7,7 +7,7 @@ const TextBlock = ({ title, text }) => {
     <li className="text-block">
       <div className="container">
         <h1>{title}</h1>
-        {documentToReactComponents(text)}
+        {documentToReactComponents(JSON.parse(text))}
         <Link className="btn btn-primary" to="/photos">
           Back to Main Photo Page
         </Link>

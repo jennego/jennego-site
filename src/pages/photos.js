@@ -20,8 +20,8 @@ const PhotoList = () => {
               slug
             }
             albumPhoto {
-              sizes {
-                src
+              file {
+                url
               }
             }
             textRowPhotos {
@@ -29,8 +29,8 @@ const PhotoList = () => {
             }
             firstRow {
               id
-              sizes {
-                src
+              file {
+                url
               }
             }
           }
@@ -45,15 +45,15 @@ const PhotoList = () => {
             updatedAt
             groupCoverPhoto {
               id
-              sizes {
-                src
+              file {
+                url
               }
             }
             photoGalleries {
               title
               albumPhoto {
-                sizes {
-                  src
+                file {
+                  url
                 }
               }
             }
@@ -90,8 +90,8 @@ const PhotoList = () => {
             <PhotoCard
               photo={
                 node.albumPhoto
-                  ? node.albumPhoto.sizes.src
-                  : node.groupCoverPhoto.sizes.src
+                  ? node.albumPhoto.file.url
+                  : node.groupCoverPhoto.file.url
               }
               slug={node.slug}
               title={node.title}

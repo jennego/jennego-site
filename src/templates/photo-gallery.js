@@ -24,7 +24,7 @@ export const query = graphql`
         title
       }
       textBlock {
-        json
+        raw
       }
       firstRow {
         id
@@ -119,7 +119,7 @@ const PhotoGallery = props => {
               ))}
             </ul>
             <ul className="text-row gallery">
-              <TextBlock title={photos.title} text={photos.textBlock.json} />
+              <TextBlock title={photos.title} text={photos.textBlock.raw} />
               {photos.textRowPhotos.map((p, index) => (
                 <PhotoItem
                   key={p.id}

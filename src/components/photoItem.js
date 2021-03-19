@@ -23,7 +23,7 @@ const PhotoItem = props => {
             effect="opacity"
             src={props.imageSrc} // use normal <img> attributes as props
           />
-          <div className="overlay"></div>
+          <div className="hovereffect photo-overlay"></div>
         </a>
       </div>
     </li>
