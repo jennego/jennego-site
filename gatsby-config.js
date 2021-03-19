@@ -14,7 +14,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass`,
       options: {
-        includePaths: ["@bootstrap"],
+        sassOptions: {
+          includePaths: ["@bootstrap"],
+        },
       },
     },
     `gatsby-plugin-react-helmet`,
