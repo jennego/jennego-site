@@ -116,6 +116,9 @@ img.photo-img {
   width: 15.625rem;
 }
 
+@include media-breakpoint-up(sm) {
+}
+
 // @media (max-width: 575.98px) {
 //   .photo-nav-item {
 //     width: 5.625rem;
@@ -262,4 +265,4 @@ img.photo-img {
 //   //   max-height: 60vh;
 //   //   min-width: 0;
 //   // }
-// }
+// };
