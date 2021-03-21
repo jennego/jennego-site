@@ -3,24 +3,21 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const SecondPage = () => {
-  const data = useStaticQuery(graphql`
-    {
-      file(name: { eq: "backyardsky" }) {
-        name
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-          fixed {
-            ...GatsbyImageSharpFixed
-          }
-        }
+  const data = useStaticQuery(graphql`{
+  file(name: {eq: "backyardsky"}) {
+    name
+    childImageSharp {
+      gatsbyImageData(layout: FULL_WIDTH)
+      fixed {
+        ...GatsbyImageSharpFixed
       }
     }
-  `)
+  }
+}
+`)
   return (
     <Layout>
       <SEO title="Page two" />
@@ -28,12 +25,12 @@ const SecondPage = () => {
       <p>Welcome to page 2</p>
       <Link to="/">Go back to the homepage</Link>
       <div style={{ maxWidth: "800px" }}>
-        <Img className="img-fluid" fluid={data.file.childImageSharp.fluid} />
+        <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} className="img-fluid" />
       </div>
       <h2>Fixed</h2>
-      <Img fixed={data.file.childImageSharp.fixed} />
+      <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} />
     </Layout>
-  )
+  );
 }
 
 export default SecondPage

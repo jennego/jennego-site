@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Layout from "../components/layout"
 import PhotoItem from "../components/photoItem"
 import TextBlock from "../components/textBlock"
 import SimpleReactLightbox from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox"
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { graphql } from "gatsby"
 import PhotoNav from "../components/photoNav"
 import AlbumPhotoNav from "../components/subGalleryNav"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 import OnImagesLoaded from "react-on-images-loaded"
-
-// needs to rewrite to use state to determine if images are loaded
 
 export const query = graphql`
   query galleryQuery($id: String!) {
@@ -28,30 +26,21 @@ export const query = graphql`
       }
       firstRow {
         id
-        fixed(width: 800) {
-          src
-        }
+        gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
         file {
           url
         }
       }
       gallery {
         id
-        fixed(width: 900) {
-          src
-        }
-        fluid {
-          src
-        }
+        gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
         file {
           url
         }
       }
       textRowPhotos {
         id
-        fixed(width: 800) {
-          src
-        }
+        gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
         file {
           url
         }
@@ -106,48 +95,46 @@ const PhotoGallery = props => {
         {console.log("page context", pageContext)}
         {console.log("data", data)}
 
-        <SRLWrapper options={lightbox}>
-          <div className="photo-layout">
-            <ul className="top-row photo-row">
-              {photos.firstRow.map((p, index) => (
-                <PhotoItem
-                  key={p.id}
-                  imageSrc={p.fixed.src}
-                  full={p.file.url}
-                  index={index}
-                />
-              ))}
-            </ul>
-            <ul className="text-row gallery">
-              <TextBlock title={photos.title} text={photos.textBlock.raw} />
-              {photos.textRowPhotos.map((p, index) => (
-                <PhotoItem
-                  key={p.id}
-                  imageSrc={p.fixed.src}
-                  full={p.file.url}
-                  index={photos.firstRow.length + index}
-                />
-              ))}
-            </ul>
+        {/* <SRLWrapper options={lightbox}> */}
+        <div className="photo-layout">
+          <ul className="top-row photo-row flex-nowrap">
+            {photos.firstRow.map((p, index) => (
+              <PhotoItem
+                key={p.id}
+                imageSrc={p.gatsbyImageData}
+                full={p.file.url}
+                index={index}
+              />
+            ))}
+          </ul>
+          <ul className="text-row photo-row flex-nowrap">
+            <TextBlock title={photos.title} text={photos.textBlock.raw} />
+            {photos.textRowPhotos.map((p, index) => (
+              <PhotoItem
+                key={p.id}
+                imageSrc={p.gatsbyImageData}
+                full={p.file.url}
+                index={photos.firstRow.length + index}
+              />
+            ))}
+          </ul>
 
-            <ul className="gallery photo-row">
-              {photos.gallery.map((p, index) => (
-                <>
-                  <PhotoItem
-                    key={p.id}
-                    imageSrc={p.fluid.src}
-                    full={p.file.url}
-                    index={
-                      photos.textRowPhotos.length +
-                      photos.firstRow.length +
-                      index
-                    }
-                  />
-                </>
-              ))}
-            </ul>
-          </div>
-        </SRLWrapper>
+          <ul className="gallery photo-row">
+            {photos.gallery.map((p, index) => (
+              <>
+                <PhotoItem
+                  key={p.id}
+                  imageSrc={p.gatsbyImageData}
+                  full={p.file.url}
+                  index={
+                    photos.textRowPhotos.length + photos.firstRow.length + index
+                  }
+                />
+              </>
+            ))}
+          </ul>
+        </div>
+        {/* </SRLWrapper> */}
 
         {photos.photo_group === null ? (
           <PhotoNav
