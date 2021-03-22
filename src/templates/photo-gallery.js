@@ -97,7 +97,7 @@ const PhotoGallery = props => {
 
         {/* <SRLWrapper options={lightbox}> */}
         <div className="photo-layout">
-          <ul className="top-row photo-row flex-nowrap">
+          <ul className="top-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
             {photos.firstRow.map((p, index) => (
               <PhotoItem
                 key={p.id}
@@ -107,7 +107,7 @@ const PhotoGallery = props => {
               />
             ))}
           </ul>
-          <ul className="text-row photo-row flex-nowrap">
+          <ul className="text-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
             <TextBlock title={photos.title} text={photos.textBlock.raw} />
             {photos.textRowPhotos.map((p, index) => (
               <PhotoItem

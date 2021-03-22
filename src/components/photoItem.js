@@ -21,7 +21,7 @@ const PhotoItem = props => {
           <GatsbyImage
             alt="hi"
             imgClassName="photo-img"
-            className="gallery-wrapper"
+            className="gallery-photo-wrapper"
             image={props.imageSrc}
           />
           <div className="hovereffect photo-overlay"></div>

@@ -1,6 +1,6 @@
 $text-height: 50vh;
 
-.gallery-wrapper {
+.gallery-photo-wrapper {
   position: initial !important;
   overflow: auto;
   display: flex;
@@ -56,9 +56,9 @@ $text-height: 50vh;
   transform: scale(1.2);
 }
 
-.lazy-load-image-loaded {
-  display: flex !important;
-}
+// .lazy-load-image-loaded {
+//   display: flex !important;
+// }
 
 img.photo-img {
   width: 100%;
@@ -81,25 +81,19 @@ img.photo-img {
 }
 
 .text-row {
-  .text-block {
-    width: 60%;
-  }
   img {
     height: $text-height;
   }
 }
 
-.gallery {
-  order: 3;
+.top-row {
+  order: 1;
 }
-
-// need to target images themselves for height
-
 .text-row {
   order: 2;
 }
-.top-row {
-  order: 1;
+.gallery {
+  order: 3;
 }
 
 .photo-layout {
@@ -116,153 +110,86 @@ img.photo-img {
   width: 15.625rem;
 }
 
-@include media-breakpoint-up(sm) {
+// small and xs
+@include media-breakpoint-down(sm) {
+  .text-row {
+    order: 1;
+    flex-wrap: wrap;
+    .text-block {
+      width: 100%;
+    }
+  }
+  .top-row {
+    order: 2;
+  }
+
+  .photo {
+    .gallery-photo-wrapper {
+      max-height: 50vh;
+    }
+  }
 }
 
-// @media (max-width: 575.98px) {
-//   .photo-nav-item {
-//     width: 5.625rem;
-//   }
-// }
+@include media-breakpoint-up(md) {
+  .top-row {
+    img {
+      height: 45vh;
+    }
+  }
 
-// @media (max-width: 768px) {
-//   .photo {
-//     max-width: 100%;
-//     height: 50vh;
-//     img {
-//       height: 50vh;
-//       object-position: center; /// make it a prop that can be edited in contentful
-//     }
-//   }
-//   .text-row {
-//     order: 1;
-//   }
-//   .top-row {
-//     order: 2;
-//   }
-// }
+  .text-row {
+    .text-block {
+      width: 105vw;
+    }
+  }
+  .gallery {
+    img {
+      height: 50vh;
+    }
+    .gallery-photo-wrapper {
+      max-width: 40vw; // 2 column
+    }
+  }
+}
 
-// @media (min-width: 768px) {
-//   // .photo {
-//   //   height: 50vh;
-//   //   max-width: 33vw;
-//   //   object-position: center;
-//   //   img {
-//   //     height: 50vh;
-//   //   }
-//   // }
-// }
+@include media-breakpoint-up(lg) {
+  .top-row {
+    img {
+      height: 45vh;
+    }
+  }
+  .text-row {
+    .text-block {
+      width: 80vw;
+    }
+  }
+  .gallery {
+    img {
+      height: 50vh;
+    }
+    .gallery-photo-wrapper {
+      max-width: 33vw; // 3 column
+    }
+  }
+}
 
-// @media (min-width: 900px) {
-//   .text-row {
-//     .text-block {
-//       width: 50%;
-//     }
-//     .photo {
-//       img.photo-img {
-//         max-width: 20vw;
-//       }
-//     }
-//   }
-// }
-
-// @media (min-width: 1200px) {
-//   .top-row {
-//     width: 100%;
-//   }
-//   // .text-row {
-//   //   .text-block {
-//   //     width: 60%;
-//   //   }
-//   // .photo {
-//   //   img.photo-img {
-//   //     max-width: 25vw;
-//   //   }
-//   // }
-//   // }
-// }
-
-// // breakpoints for top row and width
-
-// // Small devices (landscape phones, 576px and up)
-// // @media (min-width: 576px) {
-// //   img.photo-img {
-// //     max-width: 25vw;
-// //   }
-// // }
-
-// // Medium devices (tablets, 768px and up)
-// @media (min-width: 768px) {
-//   .top-row.photo-row {
-//     .photo {
-//       img.photo-img {
-//         max-width: 25vw;
-//       }
-//     }
-//   }
-
-//   // img.photo-img {
-//   //   max-width: 35vw;
-//   // }
-// }
-
-// // Large devices (desktops, 992px and up)
-// @media (min-width: 992px) {
-//   .top-row.photo-row {
-//     .photo {
-//       img.photo-img {
-//         max-width: 30vw;
-//       }
-//     }
-//   }
-
-//   // img.photo-img {
-//   //   max-width: 40vw;
-//   // }
-// }
-
-// // Extra large devices (large desktops, 1200px and up)
-// @media (min-width: 1200px) {
-//   // hi i am doing nothing
-// }
-
-// // img.photo-img {
-// //   max-height: 100%;
-// //   min-width: 100%;
-// //   object-fit: cover;
-// //   vertical-align: bottom;
-// //   max-height: 60vh;
-// //   // max-width: 50vw;
-// // }
-
-// .col > img {
-//   object-fit: cover;
-// }
-
-// .text-block {
-//   max-width: 40rem;
-//   word-wrap: break-word;
-//   overflow: auto;
-//   margin-left: 1.5rem;
-//   height: $text-height;
-//   padding-top: 1rem;
-// }
-
-// @media (max-width: 480px) {
-//   .photo-layout {
-//     ul {
-//       flex-direction: row;
-//     }
-
-//     li {
-//       height: auto;
-//       width: 100%;
-//     }
-//   }
-
-//   // img {
-//   //   width: 100%;
-//   //   max-height: 60vh;
-//   //   min-width: 0;
-//   // }
-// };
+@include media-breakpoint-up(xl) {
+  .top-row {
+    img {
+      height: 45vh;
+    }
+  }
+  .text-row {
+    .text-block {
+      width: 60vw;
+    }
+  }
+  .gallery {
+    img {
+      height: 50vh;
+    }
+    .gallery-photo-wrapper {
+      max-width: 33vw; // 3 column
+    }
+  }
+}
