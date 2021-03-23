@@ -2,8 +2,8 @@ $text-height: 50vh;
 
 .gallery-photo-wrapper {
   position: initial !important;
-  overflow: auto;
   display: flex;
+  overflow: hidden;
 }
 
 .nowrap-row {
@@ -55,10 +55,6 @@ $text-height: 50vh;
   -ms-transform: scale(1.2);
   transform: scale(1.2);
 }
-
-// .lazy-load-image-loaded {
-//   display: flex !important;
-// }
 
 img.photo-img {
   width: 100%;

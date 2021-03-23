@@ -7,9 +7,6 @@ import { SRLWrapper } from "simple-react-lightbox"
 import { graphql } from "gatsby"
 import PhotoNav from "../components/photoNav"
 import AlbumPhotoNav from "../components/subGalleryNav"
-import { GatsbyImage } from "gatsby-plugin-image"
-
-import OnImagesLoaded from "react-on-images-loaded"
 
 export const query = graphql`
   query galleryQuery($id: String!) {

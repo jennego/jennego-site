@@ -1,22 +1,33 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import { StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    {
+      file(name: { eq: "backyardsky" }) {
+        name
+        childImageSharp {
+          gatsbyImageData(placeholder: BLURRED, formats: [AUTO], width: 1200)
+        }
+      }
+    }
+  `)
   return (
     <Layout>
       <SEO title="Home" />
+
       <div className="hero">
-        <StaticImage
-          alt="hi"
-          src="../images/backyardsky.jpg"
-          placeholder="blurred"
-          className="index-image-wrapper"
-          imgClassName="index-image"
+        <GatsbyImage
+          imgClassName="index-img"
+          className="index-image-wrapper "
+          alt="starry sky"
+          layout="full-width"
+          image={data.file.childImageSharp.gatsbyImageData}
         />
         <div className="overlay">
           <div className="container hero-text">

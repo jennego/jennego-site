@@ -1,8 +1,5 @@
 import React, { useState } from "react"
-import { LazyLoadImage } from "react-lazy-load-image-component"
 import { GatsbyImage } from "gatsby-plugin-image"
-import "react-lazy-load-image-component/src/effects/blur.css"
-import "react-lazy-load-image-component/src/effects/opacity.css"
 import { Link } from "gatsby"
 import { useLightbox } from "simple-react-lightbox"
 

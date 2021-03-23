@@ -1,15 +1,16 @@
+.index-image-wrapper {
+  height: 100vh;
+  width: 100%;
+}
+
+img.index-image {
+  height: 100vh;
+  z-index: -1;
+}
+
 .hero {
   width: 100%;
   height: 100vh;
-
-  .index-image-wrapper {
-    height: 100vh;
-  }
-
-  img.index-image {
-    height: 100vh;
-    z-index: -1;
-  }
 
   .hero-text {
     text-align: center;
