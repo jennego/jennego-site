@@ -7,11 +7,20 @@ const PhotoItem = props => {
   const { openLightbox, closeLightbox } = useLightbox()
   let [CurrentIndex, setCurrentIndex] = useState(0)
 
+  const lightbox = {
+    buttons: { showDownloadButton: false },
+    thumbnails: {
+      thumbnailsPosition: "left",
+    },
+  }
+
   return (
     <li
       className={`photo ${props.rowClassName ? props.rowClassName : ""}`}
       onKeyDown={e => (e.key === "Enter" ? setCurrentIndex(props.index) : "")}
       onKeyUp={e => (e.key === "Enter" ? openLightbox(CurrentIndex) : "")}
+      onMouseDown={e => (e.key === "Enter" ? setCurrentIndex(props.index) : "")}
+      onMouseUp={e => (e.key === "Enter" ? openLightbox(CurrentIndex) : "")}
     >
       <div className="hovereffect" key={props.keyid} tabIndex="0">
         <a href={props.full} data-attribute="SRL">

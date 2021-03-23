@@ -92,46 +92,48 @@ const PhotoGallery = props => {
         {console.log("page context", pageContext)}
         {console.log("data", data)}
 
-        {/* <SRLWrapper options={lightbox}> */}
-        <div className="photo-layout">
-          <ul className="top-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
-            {photos.firstRow.map((p, index) => (
-              <PhotoItem
-                key={p.id}
-                imageSrc={p.gatsbyImageData}
-                full={p.file.url}
-                index={index}
-              />
-            ))}
-          </ul>
-          <ul className="text-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
-            <TextBlock title={photos.title} text={photos.textBlock.raw} />
-            {photos.textRowPhotos.map((p, index) => (
-              <PhotoItem
-                key={p.id}
-                imageSrc={p.gatsbyImageData}
-                full={p.file.url}
-                index={photos.firstRow.length + index}
-              />
-            ))}
-          </ul>
-
-          <ul className="gallery photo-row">
-            {photos.gallery.map((p, index) => (
-              <>
+        <SRLWrapper>
+          <div className="photo-layout">
+            <ul className="top-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
+              {photos.firstRow.map((p, index) => (
                 <PhotoItem
                   key={p.id}
                   imageSrc={p.gatsbyImageData}
                   full={p.file.url}
-                  index={
-                    photos.textRowPhotos.length + photos.firstRow.length + index
-                  }
+                  index={index}
                 />
-              </>
-            ))}
-          </ul>
-        </div>
-        {/* </SRLWrapper> */}
+              ))}
+            </ul>
+            <ul className="text-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
+              <TextBlock title={photos.title} text={photos.textBlock.raw} />
+              {photos.textRowPhotos.map((p, index) => (
+                <PhotoItem
+                  key={p.id}
+                  imageSrc={p.gatsbyImageData}
+                  full={p.file.url}
+                  index={photos.firstRow.length + index}
+                />
+              ))}
+            </ul>
+
+            <ul className="gallery photo-row">
+              {photos.gallery.map((p, index) => (
+                <>
+                  <PhotoItem
+                    key={p.id}
+                    imageSrc={p.gatsbyImageData}
+                    full={p.file.url}
+                    index={
+                      photos.textRowPhotos.length +
+                      photos.firstRow.length +
+                      index
+                    }
+                  />
+                </>
+              ))}
+            </ul>
+          </div>
+        </SRLWrapper>
 
         {photos.photo_group === null ? (
           <PhotoNav
