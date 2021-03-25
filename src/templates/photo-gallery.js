@@ -7,6 +7,7 @@ import { SRLWrapper } from "simple-react-lightbox"
 import { graphql } from "gatsby"
 import PhotoNav from "../components/photoNav"
 import AlbumPhotoNav from "../components/subGalleryNav"
+import FsLightbox from "fslightbox-react"
 
 export const query = graphql`
   query galleryQuery($id: String!) {
@@ -27,6 +28,9 @@ export const query = graphql`
         file {
           url
         }
+        resize(width: 1000) {
+          src
+        }
       }
       gallery {
         id
@@ -34,12 +38,18 @@ export const query = graphql`
         file {
           url
         }
+        resize(width: 1000) {
+          src
+        }
       }
       textRowPhotos {
         id
         gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
         file {
           url
+        }
+        resize(width: 1000) {
+          src
         }
       }
     }
@@ -51,12 +61,30 @@ const PhotoGallery = props => {
   const photos = data.contentfulPhotoGallery
   const [arrIndex, setArrIndex] = useState(null)
   const [groupIndex, setGroupIndex] = useState(null)
+  const [CurrentIndex, setCurrentIndex] = useState(0)
 
-  const lightbox = {
-    buttons: { showDownloadButton: false },
-    thumbnails: {
-      thumbnailsPosition: "left",
-    },
+  const [lightboxController, setLightboxController] = useState({
+    toggler: false,
+    slide: 0,
+  })
+
+  const lightboxPhotoListCombine = [
+    ...photos.firstRow,
+    ...photos.textRowPhotos,
+    ...photos.gallery,
+  ]
+
+  const lightboxPhotoList = lightboxPhotoListCombine.map((p, index) => {
+    return p.resize.src
+  })
+  console.log(lightboxPhotoList)
+
+  const openLightboxAt = number => {
+    setLightboxController({
+      toggler: !lightboxController.toggler,
+      slide: number,
+    })
+    console.log("getting sent to lightbox", lightboxController)
   }
 
   const combinedPhotosList = pageContext.combinedPhotosList
@@ -89,51 +117,71 @@ const PhotoGallery = props => {
   return (
     <SimpleReactLightbox>
       <Layout>
-        {console.log("page context", pageContext)}
-        {console.log("data", data)}
-
-        <SRLWrapper>
-          <div className="photo-layout">
-            <ul className="top-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
-              {photos.firstRow.map((p, index) => (
-                <PhotoItem
-                  key={p.id}
-                  imageSrc={p.gatsbyImageData}
-                  full={p.file.url}
-                  index={index}
-                />
-              ))}
-            </ul>
-            <ul className="text-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
-              <TextBlock title={photos.title} text={photos.textBlock.raw} />
-              {photos.textRowPhotos.map((p, index) => (
-                <PhotoItem
-                  key={p.id}
-                  imageSrc={p.gatsbyImageData}
-                  full={p.file.url}
-                  index={photos.firstRow.length + index}
-                />
-              ))}
-            </ul>
-
-            <ul className="gallery photo-row">
-              {photos.gallery.map((p, index) => (
-                <>
+        {/* <SRLWrapper> */}
+        <div className="photo-layout">
+          <ul className="top-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
+            {photos.firstRow.map((p, index) => (
+              <li>
+                <a
+                  onMouseDown={e => setCurrentIndex(index)}
+                  onMouseUp={e => openLightboxAt(CurrentIndex)}
+                >
                   <PhotoItem
                     key={p.id}
                     imageSrc={p.gatsbyImageData}
                     full={p.file.url}
-                    index={
-                      photos.textRowPhotos.length +
-                      photos.firstRow.length +
-                      index
-                    }
+                    index={index}
                   />
-                </>
-              ))}
-            </ul>
-          </div>
-        </SRLWrapper>
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <ul className="text-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
+            <TextBlock title={photos.title} text={photos.textBlock.raw} />
+            {photos.textRowPhotos.map((p, index) => (
+              <li>
+                <a
+                  onMouseDown={e =>
+                    setCurrentIndex(photos.firstRow.length + index)
+                  }
+                  onMouseUp={e => openLightboxAt(CurrentIndex)}
+                >
+                  <PhotoItem
+                    key={p.id}
+                    imageSrc={p.gatsbyImageData}
+                    full={p.file.url}
+                    index={index}
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <ul className="gallery photo-row">
+            {photos.gallery.map((p, index) => (
+              <li>
+                <a
+                  onMouseDown={e =>
+                    setCurrentIndex(
+                      photos.textRowPhotos.length +
+                        photos.firstRow.length +
+                        index
+                    )
+                  }
+                  onMouseUp={e => openLightboxAt(CurrentIndex)}
+                >
+                  <PhotoItem
+                    key={p.id}
+                    imageSrc={p.gatsbyImageData}
+                    full={p.file.url}
+                    index={index}
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         {photos.photo_group === null ? (
           <PhotoNav
@@ -160,6 +208,12 @@ const PhotoGallery = props => {
             ></AlbumPhotoNav>
           </div>
         )}
+
+        <FsLightbox
+          toggler={lightboxController.toggler}
+          sourceIndex={lightboxController.slide}
+          sources={lightboxPhotoList}
+        />
       </Layout>
     </SimpleReactLightbox>
   )
