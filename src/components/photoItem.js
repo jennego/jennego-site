@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { useLightbox } from "simple-react-lightbox"
-import FsLightbox from "fslightbox-react"
+// import FsLightbox from "fslightbox-react"
 
 const PhotoItem = props => {
   const { openLightbox, closeLightbox } = useLightbox()

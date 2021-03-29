@@ -4,10 +4,10 @@ import PhotoItem from "../components/photoItem"
 import TextBlock from "../components/textBlock"
 import SimpleReactLightbox from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import PhotoNav from "../components/photoNav"
 import AlbumPhotoNav from "../components/subGalleryNav"
-import FsLightbox from "fslightbox-react"
+// import FsLightbox from "fslightbox-react"
 
 export const query = graphql`
   query galleryQuery($id: String!) {
@@ -122,17 +122,19 @@ const PhotoGallery = props => {
           <ul className="top-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
             {photos.firstRow.map((p, index) => (
               <li>
-                <a
+                {/* <a
                   onMouseDown={e => setCurrentIndex(index)}
                   onMouseUp={e => openLightboxAt(CurrentIndex)}
-                >
+                > */}
+                <Link to={`/photos/${p.id}`} state={{ image: p.file.url }}>
                   <PhotoItem
                     key={p.id}
                     imageSrc={p.gatsbyImageData}
                     full={p.file.url}
                     index={index}
                   />
-                </a>
+                </Link>
+                {/* </a> */}
               </li>
             ))}
           </ul>
@@ -209,11 +211,11 @@ const PhotoGallery = props => {
           </div>
         )}
 
-        <FsLightbox
+        {/* <FsLightbox
           toggler={lightboxController.toggler}
           sourceIndex={lightboxController.slide}
           sources={lightboxPhotoList}
-        />
+        /> */}
       </Layout>
     </SimpleReactLightbox>
   )

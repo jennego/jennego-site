@@ -81,6 +81,7 @@ const Nav = () => {
       >
         About
       </AniLink>
+      <Link to="/SinglePhoto">Test Page</Link>
     </Menu>
   )
 }
