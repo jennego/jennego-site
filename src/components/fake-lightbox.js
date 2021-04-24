@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { navigate } from "@reach/router"
+import "animate.css/animate.min.css"
 
 const FakeLightbox = (props, { fullImage }) => {
   const [selectedImage, setSelectedImage] = useState(
@@ -16,6 +17,9 @@ const FakeLightbox = (props, { fullImage }) => {
   )
   const [nextImage, setNextImage] = useState()
   const [prevImage, setPrevImage] = useState()
+  const [animateCss, setAnimateCss] = useState(
+    "animate__animated animate__fadeIn"
+  )
 
   const handleUrlChange = () => {
     // window.history.pushState("page2 state", "Useless Title", "/photos")
@@ -27,6 +31,7 @@ const FakeLightbox = (props, { fullImage }) => {
   const thumbnailSelectHandler = image => {
     console.log(image)
     setSelectedImage(image)
+    setAnimateCss("animate__animated animate__fadeIn")
   }
 
   return (
@@ -39,11 +44,15 @@ const FakeLightbox = (props, { fullImage }) => {
               alt="hi"
               id={photo.id}
               onClick={() => thumbnailSelectHandler(photo)}
+              tabIndex="0"
             />
           ))}
         </div>
 
-        <div className="close" style={{ position: "absolute", right: "5px" }}>
+        <div
+          className="close"
+          style={{ position: "absolute", right: "5px", zIndex: "5" }}
+        >
           <AniLink>
             <FontAwesomeIcon icon={faTimes} size="lg" color="white" />
           </AniLink>
@@ -66,6 +75,7 @@ const FakeLightbox = (props, { fullImage }) => {
             alt="hi"
             id={selectedImage.id}
             style={{ height: "100vh", objectFit: "contain" }}
+            className={animateCss}
           />
 
           <div
