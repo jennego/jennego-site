@@ -15,31 +15,27 @@ const PhotoItem = props => {
     },
   }
 
-  const [lightboxController, setLightboxController] = useState({
-    toggler: false,
-    slide: 0,
-  })
-
-  const openLightboxAt = number => {
-    setLightboxController({
-      toggler: !lightboxController.toggler,
-      slide: number,
-    })
-    console.log(lightboxController)
-  }
+  // const openLightboxAt = number => {
+  //   setLightboxController({
+  //     toggler: !lightboxController.toggler,
+  //     slide: number,
+  //   })
+  //   console.log(lightboxController)
+  // }
 
   return (
-    // <li
-    //   className={`photo ${props.rowClassName ? props.rowClassName : ""}`}
-    //   // onKeyDown={e => (e.key === "Enter" ? setCurrentIndex(props.index) : "")}
-    //   // onKeyUp={e => (e.key === "Enter" ? openLightbox(CurrentIndex) : "")}
-    //   onMouseDown={e => (e.key === "Enter" ? setCurrentIndex(props.index) : "")}
-    //   onMouseUp={e => (e.key === "Enter" ? openLightbox(CurrentIndex) : "")}
-
-    //     onMouseDown={e => setCurrentIndex(props.index)}
-    //     onMouseUp={e => openLightboxAt(CurrentIndex)}
-    //   >
-    <div className="hovereffect" key={props.keyid} tabIndex="0">
+    <div
+      className="hovereffect"
+      key={props.keyid}
+      tabIndex="0"
+      className={`photo ${props.rowClassName ? props.rowClassName : ""}`}
+      // onKeyDown={e => (e.key === "Enter" ? setCurrentIndex(props.index) : "")}
+      // onKeyUp={e => (e.key === "Enter" ? openLightbox(CurrentIndex) : "")}
+      onMouseDown={e => (e.key === "Enter" ? setCurrentIndex(props.index) : "")}
+      onMouseUp={e => (e.key === "Enter" ? openLightbox(CurrentIndex) : "")}
+      onMouseDown={e => setCurrentIndex(props.index)}
+      onMouseUp={e => openLightbox(CurrentIndex)}
+    >
       <GatsbyImage
         alt="hi"
         imgClassName="photo-img"

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import Layout from "../components/layout"
 import PhotoItem from "../components/photoItem"
 import TextBlock from "../components/textBlock"
-import SimpleReactLightbox from "simple-react-lightbox"
+import SimpleReactLightbox, { useLightbox } from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox"
 import { graphql, Link } from "gatsby"
 import PhotoNav from "../components/photoNav"
@@ -63,6 +63,7 @@ const PhotoGallery = props => {
   const [groupIndex, setGroupIndex] = useState(null)
   const [CurrentIndex, setCurrentIndex] = useState(0)
 
+  const { openLightbox, closeLightbox } = useLightbox()
   const [lightboxController, setLightboxController] = useState({
     toggler: false,
     slide: 0,
@@ -79,13 +80,7 @@ const PhotoGallery = props => {
   })
   console.log(lightboxPhotoList)
 
-  const openLightboxAt = number => {
-    setLightboxController({
-      toggler: !lightboxController.toggler,
-      slide: number,
-    })
-    console.log("getting sent to lightbox", lightboxController)
-  }
+  const openLightboxAt = number => openLightbox(number)
 
   const combinedPhotosList = pageContext.combinedPhotosList
   const currentId = pageContext.id
@@ -122,19 +117,14 @@ const PhotoGallery = props => {
           <ul className="top-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
             {photos.firstRow.map((p, index) => (
               <li>
-                {/* <a
-                  onMouseDown={e => setCurrentIndex(index)}
-                  onMouseUp={e => openLightboxAt(CurrentIndex)}
-                > */}
-                <Link to={`/photos/${p.id}`} state={{ image: p.file.url }}>
-                  <PhotoItem
-                    key={p.id}
-                    imageSrc={p.gatsbyImageData}
-                    full={p.file.url}
-                    index={index}
-                  />
-                </Link>
-                {/* </a> */}
+                {/* <Link to={`/photos/${p.id}`} state={{ image: p.file.url }}> */}
+                <PhotoItem
+                  key={p.id}
+                  imageSrc={p.gatsbyImageData}
+                  full={p.file.url}
+                  index={index}
+                />
+                {/* </Link> */}
               </li>
             ))}
           </ul>
@@ -216,6 +206,7 @@ const PhotoGallery = props => {
           sourceIndex={lightboxController.slide}
           sources={lightboxPhotoList}
         /> */}
+        {/* </SRLWrapper> */}
       </Layout>
     </SimpleReactLightbox>
   )

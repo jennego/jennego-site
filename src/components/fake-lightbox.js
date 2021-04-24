@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faAngleRight,
@@ -14,34 +15,52 @@ const FakeLightbox = (props, { fullImage }) => {
     window.history.pushState("page2 state", "Useless Title", "/photos")
     console.log("hi")
   }
+  console.log(props.data)
+
+  // if props are not then use graphql query
+  // take current id, affix it to thumbnail, scroll into view on load
 
   return (
     <div className="fake-lightbox">
       <div className="row">
-        <div className="col-1 thumbs">
-          {" "}
-          {/* hide on mobile */}
-          Thumbs
-        </div>
-        <div className="col-1 photo-prev">
-          <a onClick={handleUrlChange}>
-            <FontAwesomeIcon icon={faAngleLeft} size="5x" />
-          </a>
+        <div className="col-2 d-md-block d-none thumbs">
+          {props.data.contentfulPhotoGallery.gallery.map(photo => (
+            <GatsbyImage image={photo.gatsbyImageData} alt="hi" id={photo.id} />
+          ))}
         </div>
 
-        <div className="col main">
-          {/* feed props to image component which will change   */}
-          <img src="https://source.unsplash.com/random" className="img-fluid" />
+        <div className="close" style={{ position: "absolute", right: "5px" }}>
+          <AniLink>
+            <FontAwesomeIcon icon={faTimes} size="lg" color="white" />
+          </AniLink>
         </div>
-        <div className="col-1 photo-next">
-          <a onClick={handleUrlChange}>
-            <FontAwesomeIcon icon={faAngleRight} size="5x" />
-          </a>
+        <div
+          className="col-md-9 col-12 main d-flex flex-row justify-content-center"
+          style={{ background: "#3f364f" }}
+        >
+          <div
+            className="photo-prev align-self-center "
+            style={{ position: "absolute", left: 0 }}
+          >
+            <a onClick={handleUrlChange}>
+              <FontAwesomeIcon icon={faAngleLeft} size="5x" />
+            </a>
+          </div>
+          {/* feed props to image component which will change.   */}
+          <img
+            src="https://source.unsplash.com/random"
+            className="img-fluid"
+            style={{ height: "100vh", objectFit: "contain" }}
+          />
+          <div
+            className="photo-next align-self-center "
+            style={{ position: "absolute", right: 0 }}
+          >
+            <a onClick={handleUrlChange}>
+              <FontAwesomeIcon icon={faAngleRight} size="5x" />
+            </a>
+          </div>
         </div>
-
-        <AniLink>
-          <FontAwesomeIcon icon={faTimes} size="5x" />
-        </AniLink>
       </div>
     </div>
   )
