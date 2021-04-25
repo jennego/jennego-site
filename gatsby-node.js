@@ -273,7 +273,7 @@ async function createPhotoUrls(graphql, actions) {
       allContentfulAsset {
         edges {
           node {
-            id
+            contentful_id
             title
             description
           }
@@ -294,6 +294,7 @@ async function createPhotoUrls(graphql, actions) {
       path,
       component: require.resolve("./src/templates/single-photo.js"),
       context: {
+        contentful_id,
         id,
         title,
         prev: index === 0 ? null : photoEdges[index - 1].node,
