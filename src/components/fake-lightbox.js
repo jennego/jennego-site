@@ -31,9 +31,7 @@ const MainImage = props => {
 }
 
 const FakeLightbox = (props, { fullImage }) => {
-  const [selectedImage, setSelectedImage] = useState(
-    props.data.contentfulPhotoGallery.gallery[1]
-  )
+  const [selectedImage, setSelectedImage] = useState()
   const [nextImage, setNextImage] = useState()
   const [prevImage, setPrevImage] = useState()
   const [animateCss, setAnimateCss] = useState(

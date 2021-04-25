@@ -273,9 +273,11 @@ async function createPhotoUrls(graphql, actions) {
       allContentfulAsset {
         edges {
           node {
+            id
             contentful_id
             title
             description
+            gatsbyImageData
           }
         }
       }
@@ -287,19 +289,16 @@ async function createPhotoUrls(graphql, actions) {
   const photoEdges = (result.data.allContentfulAsset || {}).edges || []
 
   photoEdges.forEach((edge, index) => {
-    const { id, title } = edge.node
-    const path = `/photos/${id}/`
+    const { contentful_id, title, gatsbyImageData } = edge.node
+    const path = `/photos/${contentful_id}`
 
     createPage({
       path,
       component: require.resolve("./src/templates/single-photo.js"),
       context: {
         contentful_id,
-        id,
         title,
-        prev: index === 0 ? null : photoEdges[index - 1].node,
-        next:
-          index === photoEdges.length - 1 ? null : photoEdges[index + 1].node,
+        gatsbyImageData,
       },
     })
   })

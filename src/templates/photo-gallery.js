@@ -23,6 +23,7 @@ export const query = graphql`
         raw
       }
       firstRow {
+        contentful_id
         id
         gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
         file {
@@ -33,6 +34,7 @@ export const query = graphql`
         }
       }
       gallery {
+        contentful_id
         id
         gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
         file {
@@ -43,6 +45,7 @@ export const query = graphql`
         }
       }
       textRowPhotos {
+        contentful_id
         id
         gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
         file {
@@ -126,7 +129,10 @@ const PhotoGallery = props => {
                   onMouseDown={e => setCurrentIndex(index)}
                   onMouseUp={e => openLightboxAt(CurrentIndex)}
                 > */}
-                <Link to={`/photos/${p.id}`} state={{ image: p.file.url }}>
+                <Link
+                  to={`/photos/${p.contentful_id}`}
+                  state={{ image: p.file.url }}
+                >
                   <PhotoItem
                     key={p.id}
                     imageSrc={p.gatsbyImageData}
