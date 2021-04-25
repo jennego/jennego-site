@@ -11,6 +11,25 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { navigate } from "@reach/router"
 import "animate.css/animate.min.css"
 
+const MainImage = props => {
+  return (
+    <div>
+      {/* <img
+        src={props.image.gatsbyImageData.images.fallback.src}
+        style={{ height: "100vh", objectFit: "contain" }}
+        className="img-fluid"
+      /> */}
+      <GatsbyImage
+        image={props.image.gatsbyImageData}
+        alt="hi"
+        id={props.image.id}
+        style={{ height: "100vh", objectFit: "contain" }}
+        className="animate__animated animate__fadeIn"
+      />
+    </div>
+  )
+}
+
 const FakeLightbox = (props, { fullImage }) => {
   const [selectedImage, setSelectedImage] = useState(
     props.data.contentfulPhotoGallery.gallery[1]
@@ -29,9 +48,12 @@ const FakeLightbox = (props, { fullImage }) => {
   // take current id, affix it to thumbnail, scroll into view on load
 
   const thumbnailSelectHandler = image => {
-    console.log(image)
     setSelectedImage(image)
     setAnimateCss("animate__animated animate__fadeIn")
+  }
+
+  {
+    console.log(selectedImage)
   }
 
   return (
@@ -45,6 +67,7 @@ const FakeLightbox = (props, { fullImage }) => {
               id={photo.id}
               onClick={() => thumbnailSelectHandler(photo)}
               tabIndex="0"
+              className="thumb-image"
             />
           ))}
         </div>
@@ -70,13 +93,7 @@ const FakeLightbox = (props, { fullImage }) => {
             </a>
           </div>
           {/* feed props to image component which will change.   */}
-          <GatsbyImage
-            image={selectedImage.gatsbyImageData}
-            alt="hi"
-            id={selectedImage.id}
-            style={{ height: "100vh", objectFit: "contain" }}
-            className={animateCss}
-          />
+          <MainImage image={selectedImage} animate={animateCss} />
 
           <div
             className="photo-next align-self-center "

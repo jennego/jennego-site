@@ -1,4 +1,7 @@
 .fake-lightbox {
+  .thumb-image:hover {
+    opacity: 0.5;
+  }
   .thumbs {
     overflow: auto;
     background-color: $background;
