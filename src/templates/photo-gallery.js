@@ -129,10 +129,7 @@ const PhotoGallery = props => {
                   onMouseDown={e => setCurrentIndex(index)}
                   onMouseUp={e => openLightboxAt(CurrentIndex)}
                 > */}
-                <Link
-                  to={`/photos/${p.contentful_id}`}
-                  state={{ image: p.file.url }}
-                >
+                <Link to={`/photos/${p.contentful_id}`}>
                   <PhotoItem
                     key={p.id}
                     imageSrc={p.gatsbyImageData}

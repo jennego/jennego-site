@@ -4,6 +4,8 @@ import Layout from "../components/layout"
 
 const SinglePhotoPage = props => {
   const imageContentfulId = props.pageContext.contentful_id
+  const image = props.pageContext.gatsbyImageData
+
   const [gallery, setGallery] = useState([])
   const [error, setError] = useState(false)
 
@@ -24,15 +26,14 @@ const SinglePhotoPage = props => {
     return () => {
       // cleanup
     }
-  }, [gallery])
+  }, [imageContentfulId])
 
-  console.log(gallery)
   // /spaces/c7t97ojr0qrw/entries?access_token=wi6KVuiWYDkKfeC3P_ywvoQ05_Gd1Oq7NOQ4FH9VaxU&links_to_asset=80977216-3b46-5d79-aaec-4dfa76ea7917
 
   return (
-    <Layout>
-      <div>Hi single image </div>
-    </Layout>
+    <div>
+      <FakeLightbox gallery={gallery} {...props} />
+    </div>
   )
 }
 
