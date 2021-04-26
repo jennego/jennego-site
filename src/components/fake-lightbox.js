@@ -12,6 +12,8 @@ import { navigate } from "@reach/router"
 import "animate.css/animate.min.css"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import "react-lazy-load-image-component/src/effects/blur.css"
+import AwesomeSlider from "react-awesome-slider"
+import "react-awesome-slider/dist/styles.css"
 
 const MainImage = ({ image }) => {
   return (
@@ -35,16 +37,15 @@ const MainImage = ({ image }) => {
 
 const FakeLightbox = props => {
   let fullImage = props.image
+  let imageIndex = props.imageIndex
 
-  const [selectedImage, setSelectedImage] = useState(fullImage)
+  const [selectedImage, setSelectedImage] = useState(imageIndex)
   const [nextImage, setNextImage] = useState()
   const [prevImage, setPrevImage] = useState()
 
   const [animateCss, setAnimateCss] = useState(
     "animate__animated animate__fadeIn"
   )
-
-  const [galleryRow, setGalleryRow] = useState([])
 
   // useEffect(() => {
   //   props.gallery.length > 0
@@ -69,26 +70,22 @@ const FakeLightbox = props => {
 
   const thumbnailSelectHandler = image => {
     setSelectedImage(image)
-    setAnimateCss("animate__animated animate__fadeIn")
   }
 
   return (
     <div className="fake-lightbox animate__animated animate__zoomIn">
       <div className="row">
         <div className="col-2 d-md-block d-none thumbs">
-          {/* {galleryRow.length > 0
-            ? galleryRow.map(photo => (
-                <LazyLoadImage
-                  src={photo.fields.file.url}
-                  alt="hi"
-                  effect="blur"
-                  // id={photo.id}
-                  // onClick={() => thumbnailSelectHandler(photo)}
-                  tabIndex="0"
-                  className="thumb-image img-fluid"
-                />
-              ))
-            : ""} */}
+          {props.gallery.map((photo, index) => (
+            <GatsbyImage
+              image={photo.gatsbyImageData}
+              alt="hi"
+              id={photo.contentful_id}
+              onClick={() => setSelectedImage(index)}
+              tabIndex="0"
+              className="thumb-image img-fluid"
+            />
+          ))}
         </div>
 
         <div
@@ -99,28 +96,26 @@ const FakeLightbox = props => {
           <FontAwesomeIcon icon={faTimes} size="2x" color="white" />
         </div>
         <div
-          className="col-md-10 col-12 main d-flex flex-row justify-content-center"
+          className="col-md-10 col-12 main d-flex flex-row justify-content-center mx-auto"
           style={{ background: "#3f364f" }}
         >
-          <div
-            className="photo-prev align-self-center "
-            style={{ position: "absolute", left: "1rem", zIndex: "5" }}
+          <AwesomeSlider
+            bullets={false}
+            selected={selectedImage}
+            fillParent={true}
           >
-            <a onClick={handleUrlChange}>
-              <FontAwesomeIcon icon={faAngleLeft} size="5x" />
-            </a>
-          </div>
-          {/* feed props to image component which will change.   */}
-          <MainImage image={selectedImage} />
-
-          <div
-            className="photo-next align-self-center "
-            style={{ position: "absolute", right: "1rem", zIndex: "5" }}
-          >
-            <a onClick={handleUrlChange}>
-              <FontAwesomeIcon icon={faAngleRight} size="5x" />
-            </a>
-          </div>
+            {props.gallery.map((image, index) => (
+              <div style={{ width: "100%" }}>
+                <GatsbyImage
+                  image={image.gatsbyImageData}
+                  alt="hi"
+                  id={image.contentful_id}
+                  objectFit="contain"
+                  style={{ height: "99vh" }}
+                />
+              </div>
+            ))}
+          </AwesomeSlider>
         </div>
       </div>
     </div>

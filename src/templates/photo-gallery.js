@@ -81,10 +81,11 @@ const PhotoGallery = props => {
     ...photos.gallery,
   ]
 
-  const lightboxPhotoList = lightboxPhotoListCombine.map((p, index) => {
-    return p.resize.src
-  })
-  console.log(lightboxPhotoList)
+  const galleryPhotoList = lightboxPhotoListCombine.map((p, index) => ({
+    gatsbyImageData: p.gatsbyImageData,
+    contentful_id: p.contentful_id,
+    index: p.index,
+  }))
 
   const openLightboxAt = number => {
     setLightboxController({
@@ -135,7 +136,7 @@ const PhotoGallery = props => {
           imageIndex={CurrentIndex}
           image={singleImage}
           close={() => setSingleView(false)}
-          gallery={combinedPhotosList}
+          gallery={galleryPhotoList}
         />
       ) : (
         <Layout>
@@ -234,12 +235,6 @@ const PhotoGallery = props => {
               ></AlbumPhotoNav>
             </div>
           )}
-          {/* <FsLightbox
-          toggler={lightboxController.toggler}
-          sourceIndex={lightboxController.slide}
-          sources={lightboxPhotoList}
-        /> */}
-          }
         </Layout>
       )}
     </div>
