@@ -25,7 +25,8 @@ const MainImage = ({ image }) => {
         image={image.gatsbyImageData}
         alt="hi"
         id={image.contentful_id}
-        style={{ height: "100vh", objectFit: "contain" }}
+        objectFit="contain"
+        style={{ height: "99vh" }}
         className="animate__animated animate__fadeIn"
       />
     </div>
@@ -33,7 +34,8 @@ const MainImage = ({ image }) => {
 }
 
 const FakeLightbox = props => {
-  let fullImage = props.pageContext
+  let fullImage = props.image
+
   const [selectedImage, setSelectedImage] = useState(fullImage)
   const [nextImage, setNextImage] = useState()
   const [prevImage, setPrevImage] = useState()
@@ -71,7 +73,7 @@ const FakeLightbox = props => {
   }
 
   return (
-    <div className="fake-lightbox">
+    <div className="fake-lightbox animate__animated animate__zoomIn">
       <div className="row">
         <div className="col-2 d-md-block d-none thumbs">
           {/* {galleryRow.length > 0
@@ -92,29 +94,28 @@ const FakeLightbox = props => {
         <div
           className="close"
           style={{ position: "absolute", right: "5px", zIndex: "5" }}
+          onClick={props.close}
         >
-          <AniLink>
-            <FontAwesomeIcon icon={faTimes} size="lg" color="white" />
-          </AniLink>
+          <FontAwesomeIcon icon={faTimes} size="2x" color="white" />
         </div>
         <div
-          className="col-md-9 col-12 main d-flex flex-row justify-content-center"
+          className="col-md-10 col-12 main d-flex flex-row justify-content-center"
           style={{ background: "#3f364f" }}
         >
           <div
             className="photo-prev align-self-center "
-            style={{ position: "absolute", left: 0, zIndex: "5" }}
+            style={{ position: "absolute", left: "1rem", zIndex: "5" }}
           >
             <a onClick={handleUrlChange}>
               <FontAwesomeIcon icon={faAngleLeft} size="5x" />
             </a>
           </div>
           {/* feed props to image component which will change.   */}
-          <MainImage image={selectedImage} animate={animateCss} />
+          <MainImage image={selectedImage} />
 
           <div
             className="photo-next align-self-center "
-            style={{ position: "absolute", right: 0, zIndex: "5" }}
+            style={{ position: "absolute", right: "1rem", zIndex: "5" }}
           >
             <a onClick={handleUrlChange}>
               <FontAwesomeIcon icon={faAngleRight} size="5x" />

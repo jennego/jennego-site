@@ -28,14 +28,14 @@ const Layout = ({ children, title }) => {
   `)
 
   return (
-    <>
-      <div>
-        <Nav />
+    <div id="outer-container">
+      <Nav />
+      <div id="page-wrap">
         <SEO title={title} />
         <main>{children}</main>
       </div>
       <Footer></Footer>
-    </>
+    </div>
   )
 }
 

@@ -7,6 +7,7 @@ import { SRLWrapper } from "simple-react-lightbox"
 import { graphql, Link } from "gatsby"
 import PhotoNav from "../components/photoNav"
 import AlbumPhotoNav from "../components/subGalleryNav"
+import FakeLightbox from "../components/fake-lightbox"
 // import FsLightbox from "fslightbox-react"
 
 export const query = graphql`
@@ -66,6 +67,9 @@ const PhotoGallery = props => {
   const [groupIndex, setGroupIndex] = useState(null)
   const [CurrentIndex, setCurrentIndex] = useState(0)
 
+  const [singleView, setSingleView] = useState(false)
+  const [singleImage, setSingleImage] = useState({})
+
   const [lightboxController, setLightboxController] = useState({
     toggler: false,
     slide: 0,
@@ -90,7 +94,14 @@ const PhotoGallery = props => {
     console.log("getting sent to lightbox", lightboxController)
   }
 
+  const openImageHandler = (image, index) => {
+    setSingleImage(image)
+    setSingleView(true)
+    setCurrentIndex(index)
+  }
+
   const combinedPhotosList = pageContext.combinedPhotosList
+
   const currentId = pageContext.id
 
   combinedPhotosList.map(({ node }, index) =>
@@ -118,109 +129,120 @@ const PhotoGallery = props => {
   }
 
   return (
-    <SimpleReactLightbox>
-      <Layout>
-        {/* <SRLWrapper> */}
-        <div className="photo-layout">
-          <ul className="top-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
-            {photos.firstRow.map((p, index) => (
-              <li>
-                {/* <a
+    <div>
+      {singleView ? (
+        <FakeLightbox
+          imageIndex={CurrentIndex}
+          image={singleImage}
+          close={() => setSingleView(false)}
+          gallery={combinedPhotosList}
+        />
+      ) : (
+        <Layout>
+          <div className="photo-layout">
+            <ul className="top-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
+              {photos.firstRow.map((p, index) => (
+                <li onClick={() => openImageHandler(p, index)}>
+                  {/* <a
                   onMouseDown={e => setCurrentIndex(index)}
                   onMouseUp={e => openLightboxAt(CurrentIndex)}
                 > */}
-                <Link to={`/photos/${p.contentful_id}`}>
+                  {/* <Link to={`/photos/${p.contentful_id}`}> */}
                   <PhotoItem
                     key={p.id}
                     imageSrc={p.gatsbyImageData}
                     full={p.file.url}
                     index={index}
                   />
-                </Link>
-                {/* </a> */}
-              </li>
-            ))}
-          </ul>
+                  {/* </Link> */}
+                  {/* </a> */}
+                </li>
+              ))}
+            </ul>
 
-          <ul className="text-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
-            <TextBlock title={photos.title} text={photos.textBlock.raw} />
-            {photos.textRowPhotos.map((p, index) => (
-              <li>
-                <a
-                  onMouseDown={e =>
-                    setCurrentIndex(photos.firstRow.length + index)
-                  }
-                  onMouseUp={e => openLightboxAt(CurrentIndex)}
-                >
-                  <PhotoItem
-                    key={p.id}
-                    imageSrc={p.gatsbyImageData}
-                    full={p.file.url}
-                    index={index}
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
+            <ul className="text-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
+              <TextBlock title={photos.title} text={photos.textBlock.raw} />
+              {photos.textRowPhotos.map((p, index) => (
+                <li>
+                  <a
+                    onMouseDown={e =>
+                      setCurrentIndex(photos.firstRow.length + index)
+                    }
+                    onMouseUp={e => openLightboxAt(CurrentIndex)}
+                  >
+                    <PhotoItem
+                      key={p.id}
+                      imageSrc={p.gatsbyImageData}
+                      full={p.file.url}
+                      index={index}
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
 
-          <ul className="gallery photo-row">
-            {photos.gallery.map((p, index) => (
-              <li>
-                <a
-                  onMouseDown={e =>
-                    setCurrentIndex(
-                      photos.textRowPhotos.length +
-                        photos.firstRow.length +
-                        index
-                    )
-                  }
-                  onMouseUp={e => openLightboxAt(CurrentIndex)}
-                >
-                  <PhotoItem
-                    key={p.id}
-                    imageSrc={p.gatsbyImageData}
-                    full={p.file.url}
-                    index={index}
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {photos.photo_group === null ? (
-          <PhotoNav
-            backPath={arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null}
-            backTitle={arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null}
-            forwardTitle={
-              arrIndex >= combinedPhotosList.length
-                ? null
-                : combinedPhotosList[arrIndex + 1]
-            }
-            forwardPath={
-              arrIndex >= combinedPhotosList.length
-                ? null
-                : combinedPhotosList[arrIndex + 1]
-            }
-            homePath={"/photos"}
-          />
-        ) : (
-          <div className="group-photos">
-            <AlbumPhotoNav
-              groupList={photoGroupList[groupIndex]}
-              currentGalleryId={currentId}
-              groupSlug={currentGroupSlug}
-            ></AlbumPhotoNav>
+            <ul className="gallery photo-row">
+              {photos.gallery.map((p, index) => (
+                <li>
+                  <a
+                    onMouseDown={e =>
+                      setCurrentIndex(
+                        photos.textRowPhotos.length +
+                          photos.firstRow.length +
+                          index
+                      )
+                    }
+                    onMouseUp={e => openLightboxAt(CurrentIndex)}
+                  >
+                    <PhotoItem
+                      key={p.id}
+                      imageSrc={p.gatsbyImageData}
+                      full={p.file.url}
+                      index={index}
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
-        )}
-
-        {/* <FsLightbox
+          {photos.photo_group === null ? (
+            <PhotoNav
+              backPath={
+                arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null
+              }
+              backTitle={
+                arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null
+              }
+              forwardTitle={
+                arrIndex >= combinedPhotosList.length
+                  ? null
+                  : combinedPhotosList[arrIndex + 1]
+              }
+              forwardPath={
+                arrIndex >= combinedPhotosList.length
+                  ? null
+                  : combinedPhotosList[arrIndex + 1]
+              }
+              homePath={"/photos"}
+            />
+          ) : (
+            <div className="group-photos">
+              <AlbumPhotoNav
+                groupList={photoGroupList[groupIndex]}
+                currentGalleryId={currentId}
+                groupSlug={currentGroupSlug}
+              ></AlbumPhotoNav>
+            </div>
+          )}
+          {/* <FsLightbox
           toggler={lightboxController.toggler}
           sourceIndex={lightboxController.slide}
           sources={lightboxPhotoList}
         /> */}
-      </Layout>
-    </SimpleReactLightbox>
+          }
+        </Layout>
+      )}
+    </div>
   )
 }
 
