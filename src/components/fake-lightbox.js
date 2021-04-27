@@ -13,6 +13,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component"
 import AwesomeSlider from "react-awesome-slider"
 import "animate.css/animate.min.css"
 import Styles from "react-awesome-slider/dist/styles.css"
+import { throttle, debounce } from "lodash"
 
 const FakeLightbox = props => {
   let fullImage = props.image
@@ -49,6 +50,17 @@ const FakeLightbox = props => {
     setSelectedImage(image)
   }
 
+  const handleArrows = (e, currentindex) => {
+    console.log(e)
+    let index = selectedImage
+
+    if (e.eventName == "next") {
+      setSelectedImage((index += 1))
+    } else if (e.eventName == "prev") {
+      setSelectedImage((index -= 1))
+    }
+  }
+
   useEffect(() => {
     targetRef.current.scrollIntoView({
       behavior: "smooth",
@@ -57,7 +69,7 @@ const FakeLightbox = props => {
     return () => {
       // cleanup
     }
-  }, [])
+  }, [selectedImage])
 
   const arrowsFunction = useCallback(event => {
     let index = selectedImage
@@ -90,10 +102,7 @@ const FakeLightbox = props => {
   }, [selectedImage])
 
   return (
-    <div
-      className={`fake-lightbox animate__animated ${props.animate}`}
-      onKeyPress={e => console.log(e.key)}
-    >
+    <div className={`fake-lightbox animate__animated ${props.animate}`}>
       <div className="row no-gutters">
         <div className="col-2 d-md-block d-none thumbs">
           {props.gallery.map((photo, index) => (
@@ -130,9 +139,15 @@ const FakeLightbox = props => {
             selected={selectedImage}
             fillParent={true}
             cssModule={Styles}
+            infinite={false}
+            onTransitionRequest={debounce(e => handleArrows(e), 1000)}
           >
             {props.gallery.map((image, index) => (
-              <div style={{ width: "100%" }} key={image.contentful_id}>
+              <div
+                style={{ width: "100%" }}
+                key={image.contentful_id}
+                index={index}
+              >
                 <GatsbyImage
                   image={image.gatsbyImageData}
                   alt="hi"
