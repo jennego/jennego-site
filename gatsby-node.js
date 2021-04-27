@@ -266,48 +266,9 @@ async function createBlogPosts(graphql, actions) {
   })
 }
 
-async function createPhotoUrls(graphql, actions) {
-  const { createPage } = actions
-  const result = await graphql(`
-    {
-      allContentfulAsset {
-        edges {
-          node {
-            id
-            contentful_id
-            title
-            description
-            gatsbyImageData
-          }
-        }
-      }
-    }
-  `)
-
-  if (result.errors) throw result.errors
-
-  const photoEdges = (result.data.allContentfulAsset || {}).edges || []
-
-  photoEdges.forEach((edge, index) => {
-    const { contentful_id, title, gatsbyImageData } = edge.node
-    const path = `/photos/${contentful_id}`
-
-    createPage({
-      path,
-      component: require.resolve("./src/templates/single-photo.js"),
-      context: {
-        contentful_id,
-        title,
-        gatsbyImageData,
-      },
-    })
-  })
-}
-
 exports.createPages = async ({ graphql, actions }) => {
   await createPhotoPages(graphql, actions)
   await createPhotoGroupPages(graphql, actions)
   // await createBasicPages(graphql, actions)
   await createBlogPosts(graphql, actions)
-  await createPhotoUrls(graphql, actions)
 }
