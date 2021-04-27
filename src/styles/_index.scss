@@ -1,18 +1,31 @@
+.index-image-wrapper {
+  height: 100vh;
+  width: 100%;
+}
+
+img.index-image {
+  height: 100vh;
+  z-index: -1;
+}
+
 .hero {
   width: 100%;
-  background-position: bottom center;
-  background-repeat: repeat-y;
-  background-size: cover;
-}
-
-.hero-text {
-  text-align: center;
-}
-
-.overlay {
-  background: rgba(40, 9, 75, 0.4);
   height: 100vh;
-  text-align: center;
-  display: flex;
-  align-items: center;
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .overlay {
+    background: rgba(40, 9, 75, 0.4);
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+  }
 }

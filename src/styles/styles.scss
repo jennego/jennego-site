@@ -1,3 +1,10 @@
+// src/components/layout.scss
+@import "~bootstrap/scss/functions.scss";
+@import "~bootstrap/scss/variables.scss";
+@import "~bootstrap/scss/mixins.scss";
+@import "~bootstrap/scss/reboot.scss";
+@import "~bootstrap/scss/type.scss";
+
 /* put your custom stuff here */
 @import "variables";
 @import "layout";
@@ -8,3 +15,5 @@
 @import "blog";
 @import "footer";
 @import "video";
+@import "singleImage";
+

@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import Layout from "../components/layout"
 import PhotoItem from "../components/photoItem"
 import TextBlock from "../components/textBlock"
 import SimpleReactLightbox from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox"
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { graphql, Link } from "gatsby"
 import PhotoNav from "../components/photoNav"
 import AlbumPhotoNav from "../components/subGalleryNav"
-
-import OnImagesLoaded from "react-on-images-loaded"
-
-// needs to rewrite to use state to determine if images are loaded
+import FakeLightbox from "../components/fake-lightbox"
+// import FsLightbox from "fslightbox-react"
 
 export const query = graphql`
   query galleryQuery($id: String!) {
@@ -27,33 +24,36 @@ export const query = graphql`
         raw
       }
       firstRow {
+        contentful_id
         id
-        fixed(width: 800) {
-          src
-        }
+        gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
         file {
           url
+        }
+        resize(width: 1000) {
+          src
         }
       }
       gallery {
+        contentful_id
         id
-        fixed(width: 900) {
-          src
-        }
-        fluid {
-          src
-        }
+        gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
         file {
           url
+        }
+        resize(width: 1000) {
+          src
         }
       }
       textRowPhotos {
+        contentful_id
         id
-        fixed(width: 800) {
-          src
-        }
+        gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
         file {
           url
+        }
+        resize(width: 1000) {
+          src
         }
       }
     }
@@ -65,18 +65,62 @@ const PhotoGallery = props => {
   const photos = data.contentfulPhotoGallery
   const [arrIndex, setArrIndex] = useState(null)
   const [groupIndex, setGroupIndex] = useState(null)
+  const [CurrentIndex, setCurrentIndex] = useState(0)
 
-  const lightbox = {
-    buttons: { showDownloadButton: false },
-    thumbnails: {
-      thumbnailsPosition: "left",
-    },
+  const [singleView, setSingleView] = useState(false)
+  const [singleImage, setSingleImage] = useState({})
+
+  const [animateCss, setAnimateCss] = useState(
+    "animate__animated animate__zoomIn"
+  )
+
+  const lightboxPhotoListCombine = [
+    ...photos.firstRow,
+    ...photos.textRowPhotos,
+    ...photos.gallery,
+  ]
+
+  const galleryPhotoList = lightboxPhotoListCombine.map((p, index) => ({
+    gatsbyImageData: p.gatsbyImageData,
+    contentful_id: p.contentful_id,
+    index: p.index,
+  }))
+
+  const openImageHandler = (image, index) => {
+    setSingleImage(image)
+    setSingleView(true)
+    setCurrentIndex(index)
+    setAnimateCss("animate__animated animate__zoomIn")
   }
 
-  const combinedPhotosList = pageContext.combinedPhotosList
+  const closeSingleView = () => {
+    setAnimateCss("animate__animated animate__fadeOut")
+    setTimeout(() => {
+      setSingleView(false)
+    }, 500)
+  }
+
+  const escFunction = useCallback(event => {
+    if (event.key === "Escape") {
+      closeSingleView()
+    }
+    if (event.key === "Esc") {
+      closeSingleView()
+    }
+  })
+
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, false)
+
+    return () => {
+      document.removeEventListener("keydown", escFunction, false)
+    }
+  }, [])
+
+  const combinedGalleryList = pageContext.combinedPhotosList
   const currentId = pageContext.id
 
-  combinedPhotosList.map(({ node }, index) =>
+  combinedGalleryList.map(({ node }, index) =>
     node.id === currentId
       ? arrIndex === null
         ? setArrIndex(parseInt(index))
@@ -101,81 +145,127 @@ const PhotoGallery = props => {
   }
 
   return (
-    <SimpleReactLightbox>
-      <Layout>
-        {console.log("page context", pageContext)}
-        {console.log("data", data)}
-
-        <SRLWrapper options={lightbox}>
-          <div className="photo-layout">
-            <ul className="top-row photo-row">
+    <div>
+      {singleView ? (
+        <FakeLightbox
+          imageIndex={CurrentIndex}
+          image={singleImage}
+          close={() => closeSingleView()}
+          gallery={galleryPhotoList}
+          animate={animateCss}
+        />
+      ) : (
+        <Layout>
+          <div className="photo-layout animate__animated animate__fadeIn">
+            <ul className="top-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
               {photos.firstRow.map((p, index) => (
-                <PhotoItem
-                  key={p.id}
-                  imageSrc={p.fixed.src}
-                  full={p.file.url}
-                  index={index}
-                />
+                <li
+                  onClick={() => openImageHandler(p, index)}
+                  onKeyPress={e =>
+                    e.key === "Enter" ? openImageHandler(p, index) : ""
+                  }
+                >
+                  <PhotoItem
+                    key={p.id}
+                    imageSrc={p.gatsbyImageData}
+                    full={p.file.url}
+                    index={index}
+                  />
+                </li>
               ))}
             </ul>
-            <ul className="text-row gallery">
+
+            <ul className="text-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
               <TextBlock title={photos.title} text={photos.textBlock.raw} />
               {photos.textRowPhotos.map((p, index) => (
-                <PhotoItem
-                  key={p.id}
-                  imageSrc={p.fixed.src}
-                  full={p.file.url}
-                  index={photos.firstRow.length + index}
-                />
+                <li
+                  onClick={() =>
+                    openImageHandler(p, photos.firstRow.length + index)
+                  }
+                  onKeyPress={e =>
+                    e.key === "Enter"
+                      ? openImageHandler(p, photos.firstRow.length + index)
+                      : ""
+                  }
+                >
+                  <PhotoItem
+                    key={p.id}
+                    imageSrc={p.gatsbyImageData}
+                    full={p.file.url}
+                    index={photos.firstRow.length + index}
+                  />
+                </li>
               ))}
             </ul>
 
             <ul className="gallery photo-row">
               {photos.gallery.map((p, index) => (
-                <>
+                <li
+                  onClick={() =>
+                    openImageHandler(
+                      p,
+                      photos.firstRow.length +
+                        photos.textRowPhotos.length +
+                        index
+                    )
+                  }
+                  onKeyPress={e =>
+                    e.key === "Enter"
+                      ? openImageHandler(
+                          p,
+                          photos.firstRow.length +
+                            photos.textRowPhotos.length +
+                            index
+                        )
+                      : ""
+                  }
+                >
                   <PhotoItem
                     key={p.id}
-                    imageSrc={p.fluid.src}
+                    imageSrc={p.gatsbyImageData}
                     full={p.file.url}
                     index={
-                      photos.textRowPhotos.length +
                       photos.firstRow.length +
+                      photos.textRowPhotos.length +
                       index
                     }
                   />
-                </>
+                </li>
               ))}
             </ul>
           </div>
-        </SRLWrapper>
-
-        {photos.photo_group === null ? (
-          <PhotoNav
-            backPath={arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null}
-            backTitle={arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null}
-            forwardTitle={
-              arrIndex >= combinedPhotosList.length
-                ? null
-                : combinedPhotosList[arrIndex + 1]
-            }
-            forwardPath={
-              arrIndex >= combinedPhotosList.length
-                ? null
-                : combinedPhotosList[arrIndex + 1]
-            }
-            homePath={"/photos"}
-          />
-        ) : (
-          <div className="group-photos">
-            <AlbumPhotoNav
-              groupList={photoGroupList[groupIndex]}
-              currentGalleryId={currentId}
-              groupSlug={currentGroupSlug}
-            ></AlbumPhotoNav>
-          </div>
-        )}
-      </Layout>
-    </SimpleReactLightbox>
+          {photos.photo_group === null ? (
+            <PhotoNav
+              backPath={
+                arrIndex !== 0 ? combinedGalleryList[arrIndex - 1] : null
+              }
+              backTitle={
+                arrIndex !== 0 ? combinedGalleryList[arrIndex - 1] : null
+              }
+              forwardTitle={
+                arrIndex >= combinedGalleryList.length
+                  ? null
+                  : combinedGalleryList[arrIndex + 1]
+              }
+              forwardPath={
+                arrIndex >= combinedGalleryList.length
+                  ? null
+                  : combinedGalleryList[arrIndex + 1]
+              }
+              homePath={"/photos"}
+            />
+          ) : (
+            <div className="group-photos">
+              <AlbumPhotoNav
+                groupList={photoGroupList[groupIndex]}
+                currentGalleryId={currentId}
+                groupSlug={currentGroupSlug}
+              ></AlbumPhotoNav>
+            </div>
+          )}
+        </Layout>
+      )}
+    </div>
   )
 }
 

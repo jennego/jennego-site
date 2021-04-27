@@ -5,7 +5,7 @@ import TextBlock from "../components/textBlock"
 import SimpleReactLightbox from "simple-react-lightbox"
 import { SRLWrapper } from "simple-react-lightbox"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const Photos = () => {
   const data = useStaticQuery(graphql`
