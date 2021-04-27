@@ -39,10 +39,10 @@
   .thumbs::-webkit-scrollbar {
     width: 11px;
   }
-  // .thumbs {
-  //   scrollbar-width: thin;
-  //   scrollbar-color: #472999 #8c78c4;
-  // }
+  .thumbs {
+    scrollbar-width: thin;
+    scrollbar-color: white $background;
+  }
   .thumbs::-webkit-scrollbar-track {
     background: $menu-bg-color;
   }

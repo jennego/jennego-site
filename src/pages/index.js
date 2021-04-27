@@ -4,7 +4,8 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, Sta } from "gatsby-plugin-image"
+import backyardsky from "../images/backyardsky.jpg"
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`
@@ -24,7 +25,7 @@ const IndexPage = () => {
       <div className="hero">
         <GatsbyImage
           imgClassName="index-img"
-          className="index-image-wrapper "
+          className="index-image-wrapper"
           alt="starry sky"
           layout="full-width"
           image={data.file.childImageSharp.gatsbyImageData}
