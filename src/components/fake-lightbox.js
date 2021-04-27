@@ -100,6 +100,7 @@ const FakeLightbox = props => {
             <div
               style={{ marginBottom: "-5px" }}
               ref={selectedImage === index ? targetRef : notTargetRef}
+              key={photo.contentful_id}
             >
               <GatsbyImage
                 image={photo.gatsbyImageData}
@@ -131,7 +132,7 @@ const FakeLightbox = props => {
             cssModule={Styles}
           >
             {props.gallery.map((image, index) => (
-              <div style={{ width: "100%" }}>
+              <div style={{ width: "100%" }} key={image.contentful_id}>
                 <GatsbyImage
                   image={image.gatsbyImageData}
                   alt="hi"
