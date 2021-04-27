@@ -38,6 +38,9 @@ $text-height: 50vh;
 
 .hovereffect:focus {
   border: #fff 2px solid;
+  .hovereffect.photo-overlay {
+    background-color: rgba(108, 56, 167, 0.5);
+  }
 }
 
 .hovereffect img {

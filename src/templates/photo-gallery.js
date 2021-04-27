@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import Layout from "../components/layout"
 import PhotoItem from "../components/photoItem"
 import TextBlock from "../components/textBlock"
@@ -70,10 +70,9 @@ const PhotoGallery = props => {
   const [singleView, setSingleView] = useState(false)
   const [singleImage, setSingleImage] = useState({})
 
-  const [lightboxController, setLightboxController] = useState({
-    toggler: false,
-    slide: 0,
-  })
+  const [animateCss, setAnimateCss] = useState(
+    "animate__animated animate__zoomIn"
+  )
 
   const lightboxPhotoListCombine = [
     ...photos.firstRow,
@@ -91,7 +90,32 @@ const PhotoGallery = props => {
     setSingleImage(image)
     setSingleView(true)
     setCurrentIndex(index)
+    setAnimateCss("animate__animated animate__zoomIn")
   }
+
+  const closeSingleView = () => {
+    setAnimateCss("animate__animated animate__fadeOut")
+    setTimeout(() => {
+      setSingleView(false)
+    }, 500)
+  }
+
+  const escFunction = useCallback(event => {
+    if (event.key === "Escape") {
+      closeSingleView()
+    }
+    if (event.key === "Esc") {
+      closeSingleView()
+    }
+  })
+
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, false)
+
+    return () => {
+      document.removeEventListener("keydown", escFunction, false)
+    }
+  }, [])
 
   const combinedGalleryList = pageContext.combinedPhotosList
   const currentId = pageContext.id
@@ -126,15 +150,21 @@ const PhotoGallery = props => {
         <FakeLightbox
           imageIndex={CurrentIndex}
           image={singleImage}
-          close={() => setSingleView(false)}
+          close={() => closeSingleView()}
           gallery={galleryPhotoList}
+          animate={animateCss}
         />
       ) : (
         <Layout>
-          <div className="photo-layout">
+          <div className="photo-layout animate__animated animate__fadeIn">
             <ul className="top-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
               {photos.firstRow.map((p, index) => (
-                <li onClick={() => openImageHandler(p, index)}>
+                <li
+                  onClick={() => openImageHandler(p, index)}
+                  onKeyPress={e =>
+                    e.key === "Enter" ? openImageHandler(p, index) : ""
+                  }
+                >
                   <PhotoItem
                     key={p.id}
                     imageSrc={p.gatsbyImageData}
@@ -151,6 +181,11 @@ const PhotoGallery = props => {
                 <li
                   onClick={() =>
                     openImageHandler(p, photos.firstRow.length + index)
+                  }
+                  onKeyPress={e =>
+                    e.key === "Enter"
+                      ? openImageHandler(p, photos.firstRow.length + index)
+                      : ""
                   }
                 >
                   <PhotoItem
@@ -173,6 +208,16 @@ const PhotoGallery = props => {
                         photos.textRowPhotos.length +
                         index
                     )
+                  }
+                  onKeyPress={e =>
+                    e.key === "Enter"
+                      ? openImageHandler(
+                          p,
+                          photos.firstRow.length +
+                            photos.textRowPhotos.length +
+                            index
+                        )
+                      : ""
                   }
                 >
                   <PhotoItem
