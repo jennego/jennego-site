@@ -11,7 +11,6 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { navigate } from "@reach/router"
 import { LazyLoadImage } from "react-lazy-load-image-component"
 import AwesomeSlider from "react-awesome-slider"
-import "animate.css/animate.min.css"
 import Styles from "react-awesome-slider/dist/styles.css"
 import { throttle, debounce } from "lodash"
 

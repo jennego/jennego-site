@@ -12,8 +12,10 @@ import SEO from "../components/seo"
 import Footer from "../components/footer"
 
 import Header from "./header"
+import "animate.css/animate.min.css"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "../styles/styles.scss"
+
 import Nav from "../components/menu"
 
 const Layout = ({ children, title }) => {
