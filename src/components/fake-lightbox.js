@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
@@ -9,9 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { navigate } from "@reach/router"
-import "animate.css/animate.min.css"
 import { LazyLoadImage } from "react-lazy-load-image-component"
-import "react-lazy-load-image-component/src/effects/blur.css"
 import AwesomeSlider from "react-awesome-slider"
 import "react-awesome-slider/dist/styles.css"
 
@@ -38,6 +36,8 @@ const MainImage = ({ image }) => {
 const FakeLightbox = props => {
   let fullImage = props.image
   let imageIndex = props.imageIndex
+  let targetRef = useRef(null)
+  let notTargetRef = useRef()
 
   const [selectedImage, setSelectedImage] = useState(imageIndex)
   const [nextImage, setNextImage] = useState()
@@ -63,7 +63,7 @@ const FakeLightbox = props => {
     // window.history.pushState("page2 state", "Useless Title", "/photos")
   }
 
-  console.log("fake lightbox", props)
+  console.log("ref", targetRef)
 
   // if props are not then use graphql query
   // take current id, affix it to thumbnail, scroll into view on load
@@ -72,19 +72,36 @@ const FakeLightbox = props => {
     setSelectedImage(image)
   }
 
+  useEffect(() => {
+    targetRef.current.scrollIntoView({
+      behavior: "smooth",
+    })
+    return () => {
+      // cleanup
+    }
+  }, [])
+
   return (
     <div className="fake-lightbox animate__animated animate__zoomIn">
-      <div className="row">
+      <div className="row no-gutters">
         <div className="col-2 d-md-block d-none thumbs">
           {props.gallery.map((photo, index) => (
-            <GatsbyImage
-              image={photo.gatsbyImageData}
-              alt="hi"
-              id={photo.contentful_id}
-              onClick={() => setSelectedImage(index)}
-              tabIndex="0"
-              className="thumb-image img-fluid"
-            />
+            <div
+              style={{ marginBottom: "-5px" }}
+              ref={selectedImage === index ? targetRef : notTargetRef}
+            >
+              <GatsbyImage
+                image={photo.gatsbyImageData}
+                alt="hi"
+                index={index}
+                id={photo.contentful_id}
+                onClick={() => setSelectedImage(index)}
+                tabIndex="0"
+                className={
+                  index === selectedImage ? "thumb-selected" : "thumb-image"
+                }
+              />
+            </div>
           ))}
         </div>
 

@@ -87,25 +87,16 @@ const PhotoGallery = props => {
     index: p.index,
   }))
 
-  const openLightboxAt = number => {
-    setLightboxController({
-      toggler: !lightboxController.toggler,
-      slide: number,
-    })
-    console.log("getting sent to lightbox", lightboxController)
-  }
-
   const openImageHandler = (image, index) => {
     setSingleImage(image)
     setSingleView(true)
     setCurrentIndex(index)
   }
 
-  const combinedPhotosList = pageContext.combinedPhotosList
-
+  const combinedGalleryList = pageContext.combinedPhotosList
   const currentId = pageContext.id
 
-  combinedPhotosList.map(({ node }, index) =>
+  combinedGalleryList.map(({ node }, index) =>
     node.id === currentId
       ? arrIndex === null
         ? setArrIndex(parseInt(index))
@@ -144,19 +135,12 @@ const PhotoGallery = props => {
             <ul className="top-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
               {photos.firstRow.map((p, index) => (
                 <li onClick={() => openImageHandler(p, index)}>
-                  {/* <a
-                  onMouseDown={e => setCurrentIndex(index)}
-                  onMouseUp={e => openLightboxAt(CurrentIndex)}
-                > */}
-                  {/* <Link to={`/photos/${p.contentful_id}`}> */}
                   <PhotoItem
                     key={p.id}
                     imageSrc={p.gatsbyImageData}
                     full={p.file.url}
                     index={index}
                   />
-                  {/* </Link> */}
-                  {/* </a> */}
                 </li>
               ))}
             </ul>
@@ -164,44 +148,43 @@ const PhotoGallery = props => {
             <ul className="text-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
               <TextBlock title={photos.title} text={photos.textBlock.raw} />
               {photos.textRowPhotos.map((p, index) => (
-                <li>
-                  <a
-                    onMouseDown={e =>
-                      setCurrentIndex(photos.firstRow.length + index)
-                    }
-                    onMouseUp={e => openLightboxAt(CurrentIndex)}
-                  >
-                    <PhotoItem
-                      key={p.id}
-                      imageSrc={p.gatsbyImageData}
-                      full={p.file.url}
-                      index={index}
-                    />
-                  </a>
+                <li
+                  onClick={() =>
+                    openImageHandler(p, photos.firstRow.length + index)
+                  }
+                >
+                  <PhotoItem
+                    key={p.id}
+                    imageSrc={p.gatsbyImageData}
+                    full={p.file.url}
+                    index={photos.firstRow.length + index}
+                  />
                 </li>
               ))}
             </ul>
 
             <ul className="gallery photo-row">
               {photos.gallery.map((p, index) => (
-                <li>
-                  <a
-                    onMouseDown={e =>
-                      setCurrentIndex(
+                <li
+                  onClick={() =>
+                    openImageHandler(
+                      p,
+                      photos.firstRow.length +
                         photos.textRowPhotos.length +
-                          photos.firstRow.length +
-                          index
-                      )
+                        index
+                    )
+                  }
+                >
+                  <PhotoItem
+                    key={p.id}
+                    imageSrc={p.gatsbyImageData}
+                    full={p.file.url}
+                    index={
+                      photos.firstRow.length +
+                      photos.textRowPhotos.length +
+                      index
                     }
-                    onMouseUp={e => openLightboxAt(CurrentIndex)}
-                  >
-                    <PhotoItem
-                      key={p.id}
-                      imageSrc={p.gatsbyImageData}
-                      full={p.file.url}
-                      index={index}
-                    />
-                  </a>
+                  />
                 </li>
               ))}
             </ul>
@@ -209,20 +192,20 @@ const PhotoGallery = props => {
           {photos.photo_group === null ? (
             <PhotoNav
               backPath={
-                arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null
+                arrIndex !== 0 ? combinedGalleryList[arrIndex - 1] : null
               }
               backTitle={
-                arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null
+                arrIndex !== 0 ? combinedGalleryList[arrIndex - 1] : null
               }
               forwardTitle={
-                arrIndex >= combinedPhotosList.length
+                arrIndex >= combinedGalleryList.length
                   ? null
-                  : combinedPhotosList[arrIndex + 1]
+                  : combinedGalleryList[arrIndex + 1]
               }
               forwardPath={
-                arrIndex >= combinedPhotosList.length
+                arrIndex >= combinedGalleryList.length
                   ? null
-                  : combinedPhotosList[arrIndex + 1]
+                  : combinedGalleryList[arrIndex + 1]
               }
               homePath={"/photos"}
             />

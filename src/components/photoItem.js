@@ -29,16 +29,6 @@ const PhotoItem = props => {
   }
 
   return (
-    // <li
-    //   className={`photo ${props.rowClassName ? props.rowClassName : ""}`}
-    //   // onKeyDown={e => (e.key === "Enter" ? setCurrentIndex(props.index) : "")}
-    //   // onKeyUp={e => (e.key === "Enter" ? openLightbox(CurrentIndex) : "")}
-    //   onMouseDown={e => (e.key === "Enter" ? setCurrentIndex(props.index) : "")}
-    //   onMouseUp={e => (e.key === "Enter" ? openLightbox(CurrentIndex) : "")}
-
-    //     onMouseDown={e => setCurrentIndex(props.index)}
-    //     onMouseUp={e => openLightboxAt(CurrentIndex)}
-    //   >
     <div className="hovereffect" key={props.keyid} tabIndex="0">
       <GatsbyImage
         alt="hi"
