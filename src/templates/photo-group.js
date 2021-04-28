@@ -4,6 +4,7 @@ import Layout from "../components/layout"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import PhotoNav from "../components/photoNav"
 import OnImagesLoaded from "react-on-images-loaded"
+import PhotoCard from "../components/photoCard"
 
 export const query = graphql`
   query photoGroupQuery($id: String!) {
@@ -19,6 +20,7 @@ export const query = graphql`
         title
         id
         albumPhoto {
+          gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
           fluid {
             src
           }
@@ -57,26 +59,17 @@ const PhotoList = props => {
         <div className="row">
           {console.log(data)}
           {data.contentfulPhotoGroup.photoGalleries.map(node => (
-            <div className="cold-sm-12 col-md-6 col-lg-4">
-              <AniLink
-                paintDrip
-                color="rebeccapurple"
-                to={`/photos/` + node.slug}
-              >
-                <div className="card album hover-zoom-in">
-                  <img
-                    className="card-img"
-                    src={node.albumPhoto.fluid.src}
-                    alt="Card image"
-                  />
-                  <div className="card-img-overlay overlay-gradient">
-                    <h5 className="card-title text-white photo-list-title">
-                      {node.title}
-                    </h5>
-                  </div>
-                </div>
-              </AniLink>
-            </div>
+            <AniLink
+              paintDrip
+              color="rebeccapurple"
+              to={`/photos/` + node.slug}
+            >
+              <PhotoCard
+                photo={node.albumPhoto.gatsbyImageData}
+                slug={node.slug}
+                title={node.title}
+              />
+            </AniLink>
           ))}
         </div>
         {/* </OnImagesLoaded> */}

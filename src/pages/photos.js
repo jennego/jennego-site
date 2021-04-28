@@ -20,15 +20,7 @@ const PhotoList = () => {
               slug
             }
             albumPhoto {
-              file {
-                url
-              }
-            }
-            textRowPhotos {
-              id
-            }
-            firstRow {
-              id
+              gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
               file {
                 url
               }
@@ -45,6 +37,7 @@ const PhotoList = () => {
             updatedAt
             groupCoverPhoto {
               id
+              gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
               file {
                 url
               }
@@ -52,6 +45,7 @@ const PhotoList = () => {
             photoGalleries {
               title
               albumPhoto {
+                gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
                 file {
                   url
                 }
@@ -90,8 +84,8 @@ const PhotoList = () => {
             <PhotoCard
               photo={
                 node.albumPhoto
-                  ? node.albumPhoto.file.url
-                  : node.groupCoverPhoto.file.url
+                  ? node.albumPhoto.gatsbyImageData
+                  : node.groupCoverPhoto.gatsbyImageData
               }
               slug={node.slug}
               title={node.title}
