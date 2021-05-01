@@ -4,7 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 
 const photoCard = ({ photo, title, slug }) => (
   <div className="cold-sm-12 col-md-6 col-lg-4">
-    <AniLink paintDrip color="rebeccapurple" to={slug}>
+    <AniLink paintDrip color="rebeccapurple" to={`/photos/${slug}`}>
       <div className="card album hover-zoom-in">
         <GatsbyImage
           imgClassName="card-img"

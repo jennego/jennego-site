@@ -59,17 +59,11 @@ const PhotoList = props => {
         <div className="row">
           {console.log(data)}
           {data.contentfulPhotoGroup.photoGalleries.map(node => (
-            <AniLink
-              paintDrip
-              color="rebeccapurple"
-              to={`/photos/` + node.slug}
-            >
-              <PhotoCard
-                photo={node.albumPhoto.gatsbyImageData}
-                slug={node.slug}
-                title={node.title}
-              />
-            </AniLink>
+            <PhotoCard
+              photo={node.albumPhoto.gatsbyImageData}
+              slug={node.slug}
+              title={node.title}
+            />
           ))}
         </div>
         {/* </OnImagesLoaded> */}
