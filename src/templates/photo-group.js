@@ -49,15 +49,8 @@ const PhotoList = props => {
     <Layout>
       <div className="container-fluid">
         <h1> {data.contentfulPhotoGroup.title} </h1>
-        {console.log(pageContext)}
 
-        {/* <OnImagesLoaded
-          onLoaded={this.runAfterImagesLoaded}
-          onTimeout={this.runTimeoutFunction}
-          timeout={7000}
-        > */}
-        <div className="row">
-          {console.log(data)}
+        <div className="row" style={{ minHeight: "57vh" }}>
           {data.contentfulPhotoGroup.photoGalleries.map(node => (
             <PhotoCard
               photo={node.albumPhoto.gatsbyImageData}
@@ -66,7 +59,6 @@ const PhotoList = props => {
             />
           ))}
         </div>
-        {/* </OnImagesLoaded> */}
         <PhotoNav
           backPath={arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null}
           backTitle={arrIndex !== 0 ? combinedPhotosList[arrIndex - 1] : null}
