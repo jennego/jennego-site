@@ -22,12 +22,20 @@
 
 /* Position and sizing of burger button */
 .bm-burger-button {
+  border-radius: 1px;
+  box-shadow: 0px 0px 0px 8px $background-half;
   position: fixed;
   width: 36px;
   height: 30px;
   right: 20px;
   top: 13px;
-  opacity: 1;
+  background-color: $background-half;
+  padding: 1rem;
+}
+
+.bm-burger-button:hover {
+  box-shadow: 0px 0px 0px 8px $background;
+  background-color: $background;
 }
 
 /* Color/shape of burger icon bars */
@@ -49,6 +57,8 @@
 /* Color/shape of close button cross */
 .bm-cross {
   background: #bdc3c7;
+  height: 44px;
+  width: 44px;
 }
 
 /*

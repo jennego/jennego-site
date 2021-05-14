@@ -1,6 +1,5 @@
-import { elastic as Menu } from "react-burger-menu"
 import React from "react"
-import { Link } from "gatsby"
+import { elastic as Menu } from "react-burger-menu"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const Nav = () => {

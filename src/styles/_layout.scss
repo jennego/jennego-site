@@ -7,6 +7,10 @@ $slab: "Zilla Slab", serif;
   }
 }
 
+a:hover {
+  color: $hover-color;
+}
+
 .social-media-block {
   clear: both;
   .social-media-container {

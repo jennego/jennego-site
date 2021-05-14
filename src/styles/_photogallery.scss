@@ -10,7 +10,7 @@ $text-height: 50vh;
   flex-flow: nowrap !important;
 }
 
-.hovereffect {
+.gallery-hovereffect {
   width: 100%;
   height: 100%;
   float: left;
@@ -20,7 +20,7 @@ $text-height: 50vh;
   cursor: default;
 }
 
-.hovereffect.photo-overlay {
+.gallery-hovereffect.photo-overlay {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -30,27 +30,27 @@ $text-height: 50vh;
   transition: all 0.4s ease-in;
 }
 
-.hovereffect:hover {
-  .hovereffect.photo-overlay {
+.gallery-hovereffect:hover {
+  .gallery-hovereffect.photo-overlay {
     background-color: rgba(108, 56, 167, 0.5);
   }
 }
 
-.hovereffect:focus {
+.galllery-hovereffect:focus {
   border: #fff 2px solid;
-  .hovereffect.photo-overlay {
+  .gallery-hovereffect.photo-overlay {
     background-color: rgba(108, 56, 167, 0.5);
   }
 }
 
-.hovereffect img {
+.gallery-hovereffect img {
   display: block;
   position: relative;
   -webkit-transition: all 0.4s ease-in;
   transition: all 0.4s ease-in;
 }
 
-.hovereffect:hover img {
+.gallery-hovereffect:hover img {
   filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0" /></filter></svg>#filter');
   filter: grayscale(1);
   -webkit-filter: grayscale(1);

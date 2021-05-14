@@ -29,14 +29,14 @@ const PhotoItem = props => {
   }
 
   return (
-    <div className="hovereffect" key={props.keyid} tabIndex="0">
+    <div className="gallery-hovereffect" key={props.keyid} tabIndex="0">
       <GatsbyImage
         alt="hi"
         imgClassName="photo-img"
         className="gallery-photo-wrapper"
         image={props.imageSrc}
       />
-      <div className="hovereffect photo-overlay"></div>
+      <div className="gallery-hovereffect photo-overlay"></div>
     </div>
   )
 }
