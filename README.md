@@ -8,10 +8,9 @@ Need to redo dev portfolio after this
 
 <http://jennego.netlify.app>
 
-to do
+### To do
 
-- try to use the new gatsby image - migrate images to that 
-be more consistent with colours / tidy sass
+- be more consistent with colours / tidy sass
 - add more content to cms - rest of photos - more videos
 - add accordion to menu - ? do I still need this / how to use with path matching
 - make video modal accessible / autoplay? / add description
@@ -19,7 +18,7 @@ be more consistent with colours / tidy sass
 - about pages subpages ?
 - Animation
 
-Uses
+### Uses
 
 - Gatsby (default starter)
 - Sass (SCSS)
@@ -29,3 +28,4 @@ Uses
 - Bootstrap / Reactstrap
 - react-menu-burger
 - simple-react-lightbox
+- react-awesome-slider
