@@ -6,7 +6,7 @@ Showcases photography, videos and a blog.
 
 Need to redo dev portfolio after this
 
-<http://jennego.netlify.app>
+<https://jennego.com>
 
 ### To do
 
