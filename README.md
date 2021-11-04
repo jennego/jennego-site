@@ -4,8 +4,6 @@ This is my personal hobby site using Gatsby.
 
 Showcases photography, videos and a blog.
 
-Need to redo dev portfolio after this
-
 <https://jennego.com>
 
 ### To do
