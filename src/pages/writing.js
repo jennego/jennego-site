@@ -1,7 +1,7 @@
 import React from "react"
 import Layout from "../components/layout"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import { ListGroup, ListGroupItem } from "reactstrap"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const WritingPage = () => {
   const data = useStaticQuery(graphql`
@@ -10,7 +10,7 @@ const WritingPage = () => {
         edges {
           node {
             title
-            date
+            date(formatString: "MMMM DD, YYYY")
             publication
             slug
           }
@@ -29,7 +29,15 @@ const WritingPage = () => {
         <ul className="writing-list">
           {articles.map(({ node }) => (
             <li>
-              <Link to={`/writing/${node.slug}`}>{node.title}</Link>
+              <div>
+                <Link to={`/writing/${node.slug}`}>
+                  {node.title}
+                  <div className="small-text">
+                    {node.date}{" "}
+                    {node.publication ? `/ ${node.publication}` : ""}
+                  </div>
+                </Link>
+              </div>
             </li>
           ))}
         </ul>

@@ -4,3 +4,15 @@
   padding: 0.5rem;
   font-size: 17px;
 }
+
+.writing-list {
+  list-style-type: none;
+  font-size: 22px;
+  .small-text {
+    color: #778aa3;
+    font-size: 15px;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
