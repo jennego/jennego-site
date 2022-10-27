@@ -266,9 +266,50 @@ async function createBlogPosts(graphql, actions) {
   })
 }
 
+async function createWritingPages(graphql, actions) {
+  const { createPage } = actions
+  const result = await graphql(`
+    {
+      allContentfulWriting {
+        edges {
+          node {
+            id
+            title
+            date
+            publication
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) throw result.errors
+
+  const pageEdges = (result.data.allContentfulWriting || {}).edges || []
+
+  console.log(pageEdges)
+
+  pageEdges.forEach((edge, index) => {
+    const { id, slug, title } = edge.node
+    const path = `/writing/${slug}`
+
+    createPage({
+      path,
+      component: require.resolve("./src/templates/writing-template.js"),
+      context: {
+        id,
+        title,
+        slug,
+      },
+    })
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   await createPhotoPages(graphql, actions)
   await createPhotoGroupPages(graphql, actions)
   // await createBasicPages(graphql, actions)
   await createBlogPosts(graphql, actions)
+  await createWritingPages(graphql, actions)
 }

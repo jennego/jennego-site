@@ -59,6 +59,18 @@ const Nav = () => {
       <AniLink
         paintDrip
         color="rebeccapurple"
+        to="/writing"
+        getProps={({ isPartiallyCurrent }) => {
+          return isPartiallyCurrent
+            ? { className: "active-menu-link bm-item" }
+            : null
+        }}
+      >
+        Writing
+      </AniLink>
+      <AniLink
+        paintDrip
+        color="rebeccapurple"
         to="/blog"
         getProps={({ isPartiallyCurrent }) => {
           return isPartiallyCurrent
