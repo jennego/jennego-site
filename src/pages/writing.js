@@ -23,7 +23,7 @@ const WritingPage = () => {
 
   return (
     <Layout>
-      <div className="container-fluid">
+      <div className="container-fluid" style={{ minHeight: "78vh" }}>
         <h1 className="display-2">Writing</h1>
         {console.log(articles)}
         <ul className="writing-list">
@@ -41,8 +41,6 @@ const WritingPage = () => {
             </li>
           ))}
         </ul>
-
-        {console.log(data)}
       </div>
     </Layout>
   )
