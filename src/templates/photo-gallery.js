@@ -9,6 +9,7 @@ import PhotoNav from "../components/photoNav"
 import AlbumPhotoNav from "../components/subGalleryNav"
 import FakeLightbox from "../components/fake-lightbox"
 // import FsLightbox from "fslightbox-react"
+import { Breadcrumb } from "gatsby-plugin-breadcrumb"
 
 export const query = graphql`
   query galleryQuery($id: String!) {
@@ -61,7 +62,7 @@ export const query = graphql`
 `
 
 const PhotoGallery = props => {
-  const { data, errors, pageContext } = props
+  const { data, errors, pageContext, location } = props
   const photos = data.contentfulPhotoGallery
   const [arrIndex, setArrIndex] = useState(null)
   const [groupIndex, setGroupIndex] = useState(null)
@@ -73,6 +74,12 @@ const PhotoGallery = props => {
   const [animateCss, setAnimateCss] = useState(
     "animate__animated animate__zoomIn"
   )
+
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext
+
+  console.log(pageContext)
 
   const lightboxPhotoListCombine = [
     ...photos.firstRow,

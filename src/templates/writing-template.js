@@ -4,6 +4,9 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { Breadcrumb } from "gatsby-plugin-breadcrumb"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons"
 
 export const query = graphql`
   query pageQuery($id: String!) {
@@ -26,12 +29,30 @@ export const query = graphql`
 `
 
 const WritingPage = props => {
-  const { data, errors, pageContext } = props
+  const { data, errors, pageContext, location } = props
   const pageData = data.contentfulWriting
+  const {
+    breadcrumb: { crumbs },
+  } = pageContext
+
+  // Example of dynamically using location prop as a crumbLabel
+  // NOTE: this code will not work for every use case, and is only an example
+
+  console.log(pageContext)
+
   return (
     <Layout>
+      <SEO title={pageData.title} />
       <div className="container">
-        <SEO title={pageData.title} />
+        <Breadcrumb
+          crumbs={crumbs}
+          crumbSeparator={
+            <span style={{ margin: "0 0.5rem" }}>
+              <FontAwesomeIcon icon={faChevronRight} />
+            </span>
+          }
+          crumbLabel={pageData.title}
+        />
         <h1>{pageData.title}</h1>
         <div className="infobox">
           Published Date: {pageData.date} <br />

@@ -115,3 +115,19 @@ p {
 //   clear: both;
 //   float: left;
 // }
+
+.breadcrumb {
+  font-size: 15px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+}
+
+.breadcrumb__list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}

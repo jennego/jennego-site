@@ -25,7 +25,6 @@ const WritingPage = () => {
     <Layout>
       <div className="container-fluid" style={{ minHeight: "78vh" }}>
         <h1 className="display-2">Writing</h1>
-        {console.log(articles)}
         <ul className="writing-list">
           {articles.map(({ node }) => (
             <li>
