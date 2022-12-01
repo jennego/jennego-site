@@ -21,9 +21,6 @@ export const query = graphql`
         id
         albumPhoto {
           gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
-          fluid {
-            src
-          }
         }
       }
     }

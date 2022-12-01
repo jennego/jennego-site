@@ -225,46 +225,46 @@ async function createPhotoGroupPages(graphql, actions) {
 //   })
 // }
 
-async function createBlogPosts(graphql, actions) {
-  const { createPage } = actions
-  const result = await graphql(`
-    {
-      allWordpressPost {
-        edges {
-          node {
-            id
-            wordpress_id
-            slug
-            title
-            featured_media {
-              source_url
-            }
-          }
-        }
-      }
-    }
-  `)
+// async function createBlogPosts(graphql, actions) {
+//   const { createPage } = actions
+//   const result = await graphql(`
+//     {
+//       allWordpressPost {
+//         edges {
+//           node {
+//             id
+//             wordpress_id
+//             slug
+//             title
+//             featured_media {
+//               source_url
+//             }
+//           }
+//         }
+//       }
+//     }
+//   `)
 
-  if (result.errors) throw result.errors
+//   if (result.errors) throw result.errors
 
-  const pageEdges = (result.data.allWordpressPost || {}).edges || []
+//   const pageEdges = (result.data.allWordpressPost || {}).edges || []
 
-  pageEdges.forEach((edge, index) => {
-    const { id, slug, title } = edge.node
-    const path = `/blog/${slug}/`
+//   pageEdges.forEach((edge, index) => {
+//     const { id, slug, title } = edge.node
+//     const path = `/blog/${slug}/`
 
-    createPage({
-      path,
-      component: require.resolve("./src/templates/blog-post.js"),
-      context: {
-        id,
-        title,
-        prev: index === 0 ? null : pageEdges[index - 1].node,
-        next: index === pageEdges.length - 1 ? null : pageEdges[index + 1].node,
-      },
-    })
-  })
-}
+//     createPage({
+//       path,
+//       component: require.resolve("./src/templates/blog-post.js"),
+//       context: {
+//         id,
+//         title,
+//         prev: index === 0 ? null : pageEdges[index - 1].node,
+//         next: index === pageEdges.length - 1 ? null : pageEdges[index + 1].node,
+//       },
+//     })
+//   })
+// }
 
 async function createWritingPages(graphql, actions) {
   const { createPage } = actions
@@ -310,6 +310,6 @@ exports.createPages = async ({ graphql, actions }) => {
   await createPhotoPages(graphql, actions)
   await createPhotoGroupPages(graphql, actions)
   // await createBasicPages(graphql, actions)
-  await createBlogPosts(graphql, actions)
+  // await createBlogPosts(graphql, actions)
   await createWritingPages(graphql, actions)
 }

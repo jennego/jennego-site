@@ -1,66 +1,37 @@
 $text-height: 50vh;
 
 .gallery-photo-wrapper {
-  position: initial !important;
+  // position: initial;
   display: flex;
-  overflow: hidden;
+  width: fit-content;
+  // overflow: hidden;
 }
 
-.nowrap-row {
-  flex-flow: nowrap !important;
-}
+.photo-hover:hover {
+  img {
+    filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0" /></filter></svg>#filter');
+    filter: grayscale(1);
+    -webkit-filter: grayscale(1);
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition: all 0.4s ease-in;
+    transition: all 0.4s ease-in;
+  }
 
-.gallery-hovereffect {
-  width: 100%;
-  height: 100%;
-  float: left;
-  overflow: hidden;
-  position: relative;
-  text-align: center;
-  cursor: default;
-}
-
-.gallery-hovereffect.photo-overlay {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-  transition: all 0.4s ease-in;
-}
-
-.gallery-hovereffect:hover {
-  .gallery-hovereffect.photo-overlay {
+  .photo-overlay {
+    position: absolute;
     background-color: rgba(108, 56, 167, 0.5);
+    z-index: 4;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
   }
 }
 
-.galllery-hovereffect:focus {
-  border: #fff 2px solid;
-  .gallery-hovereffect.photo-overlay {
-    background-color: rgba(108, 56, 167, 0.5);
-  }
-}
-
-.gallery-hovereffect img {
-  display: block;
+.photo-hover {
   position: relative;
-  -webkit-transition: all 0.4s ease-in;
-  transition: all 0.4s ease-in;
-}
-
-.gallery-hovereffect:hover img {
-  filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feColorMatrix type="matrix" color-interpolation-filters="sRGB" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0" /></filter></svg>#filter');
-  filter: grayscale(1);
-  -webkit-filter: grayscale(1);
-  -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  transform: scale(1.2);
-}
-
-img.photo-img {
-  width: 100%;
 }
 
 .photo-layout {
@@ -69,8 +40,6 @@ img.photo-img {
     margin: 0;
     padding: 0;
     flex-flow: wrap;
-    // justify-content: space-between;
-    // align-content: space-between;
   }
 
   li {
@@ -110,22 +79,30 @@ img.photo-img {
 }
 
 // small and xs
-@include media-breakpoint-down(sm) {
-  .text-row {
-    order: 1;
-    flex-wrap: wrap;
-    .text-block {
-      width: 100%;
-    }
-  }
-  .top-row {
-    order: 2;
-  }
+// @include media-breakpoint-down(sm) {
+//   .text-row {
+//     order: 1;
+//     flex-wrap: wrap;
+//     .text-block {
+//       width: 100%;
+//     }
+//   }
+//   .top-row {
+//     order: 2;
+//   }
 
-  .photo {
-    .gallery-photo-wrapper {
-      max-height: 50vh;
-    }
+//   .photo {
+//     .gallery-photo-wrapper {
+//       max-height: 50vh;
+//     }
+//   }
+// }
+
+.gallery {
+  li {
+    height: 50vh;
+    object-fit: cover;
+    width: 34vw;
   }
 }
 
@@ -133,6 +110,7 @@ img.photo-img {
   .top-row {
     img {
       height: 45vh;
+      width: fit-content;
     }
   }
 
@@ -141,14 +119,14 @@ img.photo-img {
       width: 105vw;
     }
   }
-  .gallery {
-    img {
-      height: 50vh;
-    }
-    .gallery-photo-wrapper {
-      max-width: 40vw; // 2 column
-    }
-  }
+  // .gallery {
+  //   img {
+  //     height: 50vh;
+  //   }
+  //   .gallery-photo-wrapper {
+  //     max-width: 40vw; // 2 column
+  //   }
+  // }
 }
 
 @include media-breakpoint-up(lg) {
@@ -162,33 +140,38 @@ img.photo-img {
       width: 80vw;
     }
   }
-  .gallery {
-    img {
-      height: 50vh;
-    }
-    .gallery-photo-wrapper {
-      max-width: 33vw; // 3 column
-    }
-  }
+  // .gallery {
+  //   .img-photo img {
+  //     height: 50vh;
+  //     width: 100%;
+  //   }
+  //   .photo-hover {
+  //     width: 100%;
+  //   }
+  //   .gallery-photo-wrapper li {
+  //     min-width: 20vw;
+  //     max-width: 33vw;
+  //   }
+  // }
 }
 
-@include media-breakpoint-up(xl) {
-  .top-row {
-    img {
-      height: 45vh;
-    }
-  }
-  .text-row {
-    .text-block {
-      width: 60vw;
-    }
-  }
-  .gallery {
-    img {
-      height: 50vh;
-    }
-    .gallery-photo-wrapper {
-      max-width: 33vw; // 3 column
-    }
-  }
-}
+// @include media-breakpoint-up(xl) {
+//   .top-row {
+//     img {
+//       height: 45vh;
+//     }
+//   }
+//   .text-row {
+//     .text-block {
+//       width: 60vw;
+//     }
+//   }
+//   .gallery {
+//     img {
+//       height: 50vh;
+//     }
+//     .gallery-photo-wrapper {
+//       max-width: 33vw; // 3 column
+//     }
+//   }
+// }

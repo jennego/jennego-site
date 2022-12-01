@@ -9,7 +9,7 @@ module.exports = {
     author: `@jennego`,
   },
   plugins: [
-    // `gatsby-plugin-image`, // screws up my layout somehow
+    `gatsby-plugin-image`, // screws up my layout somehow
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-transition-link`,

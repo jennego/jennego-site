@@ -4,7 +4,7 @@ import { Link, useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import { GatsbyImage, Sta } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import backyardsky from "../images/backyardsky.jpg"
 
 const IndexPage = () => {

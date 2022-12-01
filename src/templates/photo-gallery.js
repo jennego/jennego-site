@@ -8,7 +8,6 @@ import { graphql, Link } from "gatsby"
 import PhotoNav from "../components/photoNav"
 import AlbumPhotoNav from "../components/subGalleryNav"
 import FakeLightbox from "../components/fake-lightbox"
-// import FsLightbox from "fslightbox-react"
 import { Breadcrumb } from "gatsby-plugin-breadcrumb"
 
 export const query = graphql`
@@ -31,9 +30,6 @@ export const query = graphql`
         file {
           url
         }
-        resize(width: 1000) {
-          src
-        }
       }
       gallery {
         contentful_id
@@ -42,9 +38,6 @@ export const query = graphql`
         file {
           url
         }
-        resize(width: 1000) {
-          src
-        }
       }
       textRowPhotos {
         contentful_id
@@ -52,9 +45,6 @@ export const query = graphql`
         gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
         file {
           url
-        }
-        resize(width: 1000) {
-          src
         }
       }
     }
@@ -205,7 +195,7 @@ const PhotoGallery = props => {
               ))}
             </ul>
 
-            <ul className="gallery photo-row">
+            <ul className="gallery gallery-photo-wrapper">
               {photos.gallery.map((p, index) => (
                 <li
                   onClick={() =>
@@ -241,6 +231,7 @@ const PhotoGallery = props => {
               ))}
             </ul>
           </div>
+
           {photos.photo_group === null ? (
             <PhotoNav
               backPath={
