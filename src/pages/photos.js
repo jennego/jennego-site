@@ -20,7 +20,11 @@ const PhotoList = () => {
               slug
             }
             albumPhoto {
-              gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
+              gatsbyImageData(
+                placeholder: BLURRED
+                formats: [AUTO]
+                aspectRatio: 1.3333333333
+              )
               file {
                 url
               }
@@ -37,7 +41,11 @@ const PhotoList = () => {
             updatedAt
             groupCoverPhoto {
               id
-              gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
+              gatsbyImageData(
+                placeholder: BLURRED
+                formats: [AUTO]
+                aspectRatio: 1.3333333333
+              )
               file {
                 url
               }
@@ -45,7 +53,11 @@ const PhotoList = () => {
             photoGalleries {
               title
               albumPhoto {
-                gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
+                gatsbyImageData(
+                  placeholder: BLURRED
+                  formats: [AUTO]
+                  aspectRatio: 1.3333333333
+                )
                 file {
                   url
                 }
@@ -79,7 +91,7 @@ const PhotoList = () => {
         {console.log("combined photos list", combinedPhotosList)}
 
         <h1 className="display-2">Photography</h1>
-        <div className="row mb-3">
+        <div className="row mb-3 photo-album-row">
           {combinedPhotosList.map(({ node }) => (
             <PhotoCard
               photo={

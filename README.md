@@ -6,6 +6,12 @@ Showcases photography, videos and a blog.
 
 <https://jennego.com>
 
+## UPDATE FIX TO DO
+
+- Upgrade to Gatsby 5
+- Fix gallery more (allow more stretch), fix breaking points, fix device breakpoints
+- add crumbs to photo pages
+
 ### To do
 
 - be more consistent with colours / tidy sass

@@ -20,7 +20,11 @@ export const query = graphql`
         title
         id
         albumPhoto {
-          gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
+          gatsbyImageData(
+            placeholder: BLURRED
+            formats: [AUTO]
+            aspectRatio: 1.3333333333
+          )
         }
       }
     }
@@ -44,10 +48,10 @@ const PhotoList = props => {
 
   return (
     <Layout>
-      <div className="container-fluid">
+      <div className="container-fluid" style={{ minHeight: "79vh" }}>
         <h1> {data.contentfulPhotoGroup.title} </h1>
 
-        <div className="row" style={{ minHeight: "57vh" }}>
+        <div className="row">
           {data.contentfulPhotoGroup.photoGalleries.map(node => (
             <PhotoCard
               photo={node.albumPhoto.gatsbyImageData}

@@ -34,7 +34,11 @@ export const query = graphql`
       gallery {
         contentful_id
         id
-        gatsbyImageData(placeholder: BLURRED, formats: [AUTO])
+        gatsbyImageData(
+          placeholder: BLURRED
+          formats: [AUTO]
+          resizingBehavior: FILL
+        )
         file {
           url
         }

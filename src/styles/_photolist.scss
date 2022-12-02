@@ -13,23 +13,20 @@
 
 .album {
   border: 0;
-  max-height: 300px;
-  margin-bottom: 1.5rem;
 }
 
 .album:hover {
   border: 0;
 }
 
+.card {
+  height: 200px;
+}
+
 .photo-list-title {
   font-size: 25px;
   position: absolute;
   bottom: 0;
-}
-
-.card-img {
-  object-fit: cover;
-  height: 100%;
 }
 
 .hover-zoom-in {
@@ -41,12 +38,11 @@
 }
 
 .hover-zoom-in img {
-  display: block;
-  position: relative;
-  -webkit-transition: all 0.4s ease-in;
-  transition: all 0.4s ease-in;
+  display: flex;
 }
 
 .hover-zoom-in:hover img {
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
   transform: scale(1.2);
 }

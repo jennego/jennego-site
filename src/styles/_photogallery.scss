@@ -104,6 +104,9 @@ $text-height: 50vh;
     object-fit: cover;
     width: 34vw;
   }
+  img {
+    height: 50vh;
+  }
 }
 
 @include media-breakpoint-up(md) {
