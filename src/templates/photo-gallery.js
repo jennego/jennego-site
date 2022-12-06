@@ -9,6 +9,8 @@ import PhotoNav from "../components/photoNav"
 import AlbumPhotoNav from "../components/subGalleryNav"
 import FakeLightbox from "../components/fake-lightbox"
 import { Breadcrumb } from "gatsby-plugin-breadcrumb"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons"
 
 export const query = graphql`
   query galleryQuery($id: String!) {
@@ -72,8 +74,6 @@ const PhotoGallery = props => {
   const {
     breadcrumb: { crumbs },
   } = pageContext
-
-  console.log(pageContext)
 
   const lightboxPhotoListCombine = [
     ...photos.firstRow,
@@ -177,7 +177,11 @@ const PhotoGallery = props => {
             </ul>
 
             <ul className="text-row photo-row flex-md-nowrap flex-lg-nowrap flex-xl-nowrap">
-              <TextBlock title={photos.title} text={photos.textBlock.raw} />
+              <TextBlock
+                title={photos.title}
+                text={photos.textBlock.raw}
+                pageContext={pageContext}
+              />
               {photos.textRowPhotos.map((p, index) => (
                 <li
                   onClick={() =>

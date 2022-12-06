@@ -35,11 +35,6 @@ const WritingPage = props => {
     breadcrumb: { crumbs },
   } = pageContext
 
-  // Example of dynamically using location prop as a crumbLabel
-  // NOTE: this code will not work for every use case, and is only an example
-
-  console.log(pageContext)
-
   return (
     <Layout>
       <SEO title={pageData.title} />
