@@ -32,5 +32,4 @@ Showcases photography, videos and a blog.
 - Font Awesome
 - Bootstrap / Reactstrap
 - react-menu-burger
-- simple-react-lightbox
 - react-awesome-slider

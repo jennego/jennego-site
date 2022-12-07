@@ -6,9 +6,6 @@ import { graphql, Link } from "gatsby"
 import PhotoNav from "../components/photoNav"
 import AlbumPhotoNav from "../components/subGalleryNav"
 import FakeLightbox from "../components/fake-lightbox"
-import { Breadcrumb } from "gatsby-plugin-breadcrumb"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons"
 
 export const query = graphql`
   query galleryQuery($id: String!) {

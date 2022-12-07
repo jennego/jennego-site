@@ -3,9 +3,6 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
 const PhotoItem = props => {
-  const { openLightbox, closeLightbox } = useLightbox()
-  let [CurrentIndex, setCurrentIndex] = useState(0)
-
   const lightbox = {
     buttons: { showDownloadButton: false },
     thumbnails: {
@@ -17,14 +14,6 @@ const PhotoItem = props => {
     toggler: false,
     slide: 0,
   })
-
-  const openLightboxAt = number => {
-    setLightboxController({
-      toggler: !lightboxController.toggler,
-      slide: number,
-    })
-    console.log(lightboxController)
-  }
 
   return (
     <>
