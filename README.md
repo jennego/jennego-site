@@ -8,9 +8,10 @@ Showcases photography, videos and a blog.
 
 ## UPDATE FIX TO DO
 
-- Upgrade to Gatsby 5
-- Fix gallery more (allow more stretch), fix breaking points, fix device breakpoints
-- add crumbs to photo pages
+- Fix gallery more (allow more stretch) - get rid of gaps, fix breaking points, fix device breakpoints, see if object fit regular is possible with gatsby image
+- clean up crumbs in photo-gallery
+- add breadcrumbs site wide
+- put galleries in albums in appropriate routes
 
 ### To do
 
