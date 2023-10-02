@@ -9,8 +9,8 @@ import ResponsiveEmbed from "react-responsive-embed"
 const VideoPage = props => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulVideo(sort: { order: DESC, fields: date }) {
-        edges {
+  allContentfulVideo(sort: {date: DESC}) { 
+          edges {
           node {
             date
             id
