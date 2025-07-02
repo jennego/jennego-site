@@ -1,0 +1,128 @@
+/* forget stupid sass */
+
+/* LAYOUT */
+
+.short-content {
+  .container-fluid {
+    min-height: 100vh;
+  }
+}
+
+a {
+  color: #4dbdff;
+}
+
+a:hover {
+  color: rgb(36, 156, 255);
+}
+
+.social-media-block {
+  clear: both;
+  .social-media-container {
+    background-color: rgb(37, 6, 53);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    .social-media {
+      display: block;
+      svg {
+        margin: 0 1rem;
+      }
+      a:hover {
+        color: rgb(36, 156, 255);
+      }
+    }
+  }
+  .social-title {
+    top: 20px;
+    position: relative;
+    left: 1rem;
+  }
+}
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  min-height: 90vh;
+}
+body {
+  background: rgb(49, 9, 87);
+  color: white;
+}
+
+footer {
+  font-size: 10px;
+  text-align: center;
+}
+
+/* Typography */
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,600;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Just+Me+Again+Down+Here&display=swap");
+
+.display-1,
+.display-2,
+.display-3,
+.display-4 {
+  font-family: "Just Me Again Down Here", cursive;
+  font-weight: normal;
+  margin-bottom: 1.5rem;
+}
+
+.display-5 {
+  font-family: "Just Me Again Down Here", cursive;
+  font-size: 3rem;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Zilla Slab", serif;
+}
+
+p {
+  font-family: "Oxygen", sans-serif;
+  font-size: 1.1rem;
+}
+
+.image-float-right {
+  width: 300px;
+  clear: both;
+  float: right;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .image-float-right {
+    width: 40%;
+    clear: both;
+  }
+}
+
+@media (max-width: 576px) {
+  .image-float-right {
+    width: 100%;
+    clear: both;
+    margin-left: 0;
+  }
+}
+
+.breadcrumb {
+  font-size: 15px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+}
+
+.breadcrumb__list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}

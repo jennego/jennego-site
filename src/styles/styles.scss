@@ -1,9 +1,9 @@
-// src/components/layout.scss
-@import "~bootstrap/scss/functions.scss";
-@import "~bootstrap/scss/variables.scss";
-@import "~bootstrap/scss/mixins.scss";
-@import "~bootstrap/scss/reboot.scss";
-@import "~bootstrap/scss/type.scss";
+@import "~bootstrap/scss/_functions.scss";
+@import "~bootstrap/scss/_variables.scss";
+@import "~bootstrap/scss/_mixins.scss";
+@import "~bootstrap/scss/bootstrap-reboot.scss";
+@import "~bootstrap/scss/_type.scss";
+@import "~bootstrap/scss/bootstrap-grid";
 
 /* put your custom stuff here */
 @import "variables";

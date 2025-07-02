@@ -9,8 +9,8 @@ import ResponsiveEmbed from "react-responsive-embed"
 const VideoPage = props => {
   const data = useStaticQuery(graphql`
     {
-  allContentfulVideo(sort: {date: DESC}) { 
-          edges {
+      allContentfulVideo(sort: { date: DESC }) {
+        edges {
           node {
             date
             id
@@ -35,6 +35,13 @@ const VideoPage = props => {
     setModal(!modal)
   }
 
+  const closeBtn = (
+    <button
+      className="close btn-close btn-close-white"
+      onClick={toggle}
+      type="button"
+    ></button>
+  )
   return (
     <Layout>
       <div className="container-fluid">
@@ -43,9 +50,9 @@ const VideoPage = props => {
         <div className="row no-gutters mb-3">
           {data.allContentfulVideo.edges.map(({ node }, number) => (
             <>
-              <div className="col-xl-4 col-lg-6 col-xs-12 ">
+              <div className="col-xl-4 col-lg-6 col-md-6 col-xs-12 ">
                 <a href="#" onClick={() => toggle(number)}>
-                  <div className="card video-thumb bg-dark border-0">
+                  <div className="card vid-card video-thumb bg-dark border-0">
                     <img
                       className="card-img video-thumb-img"
                       src={node.thumbUrl}
@@ -64,7 +71,7 @@ const VideoPage = props => {
             </>
           ))}
           <Modal isOpen={modal} toggle={toggleOnly} className="modal-lg">
-            <ModalHeader toggle={toggleOnly}>
+            <ModalHeader toggle={toggleOnly} close={closeBtn}>
               <h2
                 dangerouslySetInnerHTML={{
                   __html: `${data.allContentfulVideo.edges[selectedItem].node.title}`,

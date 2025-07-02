@@ -1,5 +1,4 @@
-$handwriting: "Just Me Again Down Here", cursive;
-$slab: "Zilla Slab", serif;
+@use "./variables.scss";
 
 .short-content {
   .container-fluid {
