@@ -2,7 +2,7 @@
 
 This is my personal hobby site using Gatsby.
 
-Showcases photography, videos and a blog.
+Showcases photography, videos and writing.
 
 <https://jennego.com>
 
@@ -28,7 +28,6 @@ Showcases photography, videos and a blog.
 - Gatsby (default starter)
 - Sass (SCSS)
 - Contentful CMS (content source)
-- WordPress.com (content source) - no auto rebuilds with WordPress
 - Font Awesome
 - Bootstrap / Reactstrap
 - react-menu-burger
