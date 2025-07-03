@@ -17,6 +17,10 @@ const VideoPage = props => {
             title
             thumbUrl
             videoUrl
+            thumbFile {
+              id
+              url
+            }
           }
         }
       }
@@ -52,19 +56,25 @@ const VideoPage = props => {
             <>
               <div className="col-xl-4 col-lg-6 col-md-6 col-xs-12 ">
                 <a href="#" onClick={() => toggle(number)}>
-                  <div className="card vid-card video-thumb bg-dark border-0">
-                    <img
-                      className="card-img video-thumb-img"
-                      src={node.thumbUrl}
-                    />
-                    <div className="d-flex card-img-overlay thumb-overlay justify-content-center align-items-center">
-                      <FontAwesomeIcon
-                        icon={faPlayCircle}
-                        size="8x"
-                        color="rgba(45, 139, 247, 0)"
-                        className="play-icon"
+                  <div
+                    className="card vid-card video-thumb border-0"
+                    style={{ background: "rgb(49, 9, 87)" }}
+                  >
+                    <div className="card-img-top">
+                      <img
+                        className="card-img video-thumb-img"
+                        src={node.thumbUrl ? node.thumbUrl : node.thumbFile.url}
                       />
+                      <div className="d-flex card-img-overlay thumb-overlay justify-content-center align-items-center">
+                        <FontAwesomeIcon
+                          icon={faPlayCircle}
+                          size="8x"
+                          color="rgba(45, 139, 247, 0)"
+                          className="play-icon"
+                        />
+                      </div>
                     </div>
+                    {/* <h2 className="video-title card-title">{node.title}</h2> */}
                   </div>
                 </a>
               </div>
